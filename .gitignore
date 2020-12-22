@@ -1,0 +1,4 @@
+/.vscode
+.DS_Store
+.eslintrc.json
+node_modules
