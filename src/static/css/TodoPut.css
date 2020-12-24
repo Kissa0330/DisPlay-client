@@ -3,7 +3,7 @@
   top: 80px;
   margin: 100px 12px 0 12px;
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
-  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.1),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
   border-radius: 14px;
   width: 351px;

@@ -1,13 +1,20 @@
 <template>
   <div>
     <transition>
-      <TodoPut v-if="todoPutView" @childEvent="todoPutView = false" />
-    </transition>
-    <transition>
       <TodoAdd
         v-if="todoAddView"
         @childEvent="todoAddView = false"
         @notificationPost="reGetTodo"
+      />
+    </transition>
+    <transition>
+      <TodoPut
+        :id="this.id"
+        :title="this.title"
+        :date="this.d_date"
+        :time="this.d_time"
+        v-if="todoPutView"
+        @childEvent="todoPutView = false"
       />
     </transition>
     <div class="TodoMenu">
@@ -26,17 +33,28 @@
     </div>
     <div class="TaskList">
       <div class="Task" v-for="todo in todos" :key="todo.id">
-        <h4 class="TaskTitle">{{ todo.title }}</h4>
-        <button class="CircleButton Play" @click="todoPutView = true">
-          <img
-            class="PlayImg"
-            src="../assets/img/Play.svg"
-            alt="Play"
-          /></button
-        ><button class="CircleButton Check" @click="deleteTodo(todo.id)">
-          <img src="../assets/img/Check.svg" alt="check" />
-        </button>
-        <p class="TaskDeadline">Deadline {{ todo.displayDate }}</p>
+        <div class="TaskWrapper">
+          <h4 class="TaskTitle">{{ todo.title }}</h4>
+          <button
+            class="CircleButton Play"
+            @click="
+              (todoPutView = true),
+                (id = todo.id),
+                (d_date = todo.d_date),
+                (d_time = todo.d_time),
+                (title = todo.title)
+            "
+          >
+            <img
+              class="PlayImg"
+              src="../assets/img/Play.svg"
+              alt="Play"
+            /></button
+          ><button class="CircleButton Check" @click="deleteTodo(todo.id)">
+            <img src="../assets/img/Check.svg" alt="check" />
+          </button>
+          <p class="TaskDeadline">Deadline {{ todo.displayDate }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -57,15 +75,19 @@ export default {
     return {
       todoAddView: false,
       todoPutView: false,
+      id: Number,
+      d_date: "",
+      d_time: "",
+      title: "",
     };
   },
   computed: {
     todos() {
       return store.todos;
     },
-    token(){
-      return store.token
-  },
+    token() {
+      return store.token;
+    },
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   mounted() {
@@ -77,7 +99,7 @@ export default {
       this.todoAddView = false;
     },
     deleteTodo(id) {
-      actions.deleteTodo(id,this.token);
+      actions.deleteTodo(id, this.token);
       actions.getTodo(this.token);
     },
   },
