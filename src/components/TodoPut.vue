@@ -114,8 +114,9 @@ export default {
         this.deadline_time,
         this.start_time,
         this.end_time,
-        store.token
+        this.token
       );
+      actions.getTodo(this.token)
     },
     sendTodoPutView() {
       this.$emit("childEvent");
