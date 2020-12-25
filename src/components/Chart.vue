@@ -164,6 +164,7 @@ export default {
               _this.task = _this.todos[clickedNumber];
               _this.scheduleDetailView = true;
             };
+            changeFavicon();
           }
         }
       }
