@@ -23,7 +23,7 @@
       <h3 class="captionText">Date</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <h2 class="dateText">{{ task.start_time }}~{{ task.end_time }}</h2>
+        <h2 class="dateText">{{ task.displayStart }}~{{ task.displayEnd }}</h2>
       </div>
     </div>
     <!-- <div class="wrap">

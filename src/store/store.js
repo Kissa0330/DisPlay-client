@@ -52,8 +52,6 @@ const actions = {
       start_time: start_time,
       end_time: end_time,
     };
-    console.log(config)
-    console.log(data)
     axios.put(url, data, config).then((response) => {
       console.log(response);
     });
@@ -111,6 +109,9 @@ const actions = {
     }
     console.log("token is already updated");
   },
+  updateCustoms(customs){
+    store.customs = customs
+  }
 };
 
 export { store, actions };
