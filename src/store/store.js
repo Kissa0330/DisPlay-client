@@ -37,13 +37,23 @@ const actions = {
       console.log(response);
     });
   },
-  putTodo(id, token) {
+  putTodo(id,title, deadline_time, start_time, end_time, token) {
     const url = "http://127.0.0.1:8000/api/todo/" + id;
     const config = {
       headers: {
         Authorization: token,
       },
     };
+    const data = {
+      id: id,
+      author: 1,
+      title: title,
+      deadline_time: deadline_time,
+      start_time: start_time,
+      end_time: end_time,
+    };
+    console.log(config)
+    console.log(data)
     axios.put(url, data, config).then((response) => {
       console.log(response);
     });
@@ -83,7 +93,7 @@ const actions = {
         store.token = "jwt " + response.data.token;
       })
       .then(function () {
-          _this.$router.push("/");
+        _this.$router.push("/");
       })
       .catch(function (error) {
         _this.err = true;

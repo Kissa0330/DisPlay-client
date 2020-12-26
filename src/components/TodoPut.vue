@@ -39,7 +39,7 @@
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
-import store from "../store/store";
+import { store, actions } from "../store/store";
 
 export default {
   name: "TodoPut",
@@ -58,10 +58,65 @@ export default {
     token() {
       return store.token;
     },
+    deadline_time() {
+      return this.date + "T" + this.time + "+09:00";
+    },
+    start_time() {
+      let date = new Date();
+      return (
+        date.getFullYear() +
+        "-" +
+        date.getMonth() +
+        "-" +
+        date.getDate() +
+        "T" +
+        this.hour +
+        ":" +
+        this.minute +
+        ":00+09:00"
+      );
+    },
+    end_time() {
+      let date = new Date();
+      return (
+        date.getFullYear() +
+        "-" +
+        date.getMonth() +
+        "-" +
+        date.getDate() +
+        "T" +
+        this.hour2 +
+        ":" +
+        this.minute2 +
+        ":00+09:00"
+      );
+    },
+  },
+  props: {
+    id: {
+      type: Number,
+    },
+    title: {
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    time: {
+      type: String,
+    },
   },
   methods: {
-    todoPut(){
-      console.log("this is todo put")
+    todoPut() {
+      actions.putTodo(
+        this.id,
+        this.title,
+        this.deadline_time,
+        this.start_time,
+        this.end_time,
+        this.token
+      );
+      actions.getTodo(this.token)
     },
     sendTodoPutView() {
       this.$emit("childEvent");
@@ -74,7 +129,6 @@ export default {
       this.hour2 = e.hour;
       this.minute2 = e.minute;
     },
-    // todoPut() {},
   },
 };
 </script>
