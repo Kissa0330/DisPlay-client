@@ -171,6 +171,10 @@ const createClock = function () {
 
 // create task
 const createTask = function (startTime, endTime, code, id) {
+  let task = document.getElementById(id);
+  if (task) {
+    task.remove;
+  }
   let w = 307;
   let h = 307;
   let outerRadius = w / 2 - 30;

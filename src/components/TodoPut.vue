@@ -108,15 +108,45 @@ export default {
   },
   methods: {
     todoPut() {
-      actions.putTodo(
-        this.id,
-        this.title,
-        this.deadline_time,
-        this.start_time,
-        this.end_time,
-        this.token
-      );
-      actions.getTodo(this.token)
+      if (
+        this.hour + this.minute * 0.0166 <=
+        this.hour2 + this.minute2 * 0.0166
+      ) {
+        for (let i = 0; i < store.customs.length; ++i) {
+          let date = new Date();
+          let dayOfWeek = date.getDay();
+          let repeatFlag = store.customs[i].repeat_flag.split("");
+          if (repeatFlag[dayOfWeek]) {
+            if (
+              !(
+                store.customs[i].calculateStartTime <=
+                  this.hour2 + this.minute2 * 0.0166 &&
+                this.hour + this.minute * 0.0166 <=
+                  store.customs[i].calculateEndTime
+              )
+            ) {
+              if ((i = store.customs.length - 1)) {
+                actions.putTodo(
+                  this.id,
+                  this.title,
+                  this.deadline_time,
+                  this.start_time,
+                  this.end_time,
+                  this.token
+                );
+                actions.getTodo(this.token);
+                this.$emit("childEvent");
+              }
+            } else {
+              alert("タスクは習慣と時間が被っていない必要があります");
+              return;
+            }
+          }
+        }
+      } else {
+        alert("start_timeはend_timeより小さい必要があります");
+        return;
+      }
     },
     sendTodoPutView() {
       this.$emit("childEvent");
