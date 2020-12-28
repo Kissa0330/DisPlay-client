@@ -41,6 +41,9 @@ export default {
     todos() {
       return store.todos;
     },
+    todoHandler(){
+      return store.todoHandler;
+    }
   },
   mounted() {
     depiction.svg();
@@ -116,7 +119,7 @@ export default {
         changeFavicon();
       },
     },
-    todos: {
+    todoHandler: {
       deep: true,
       handler() {
         let date = new Date();

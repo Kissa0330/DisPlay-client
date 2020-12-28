@@ -2,7 +2,12 @@
 import Vue from "vue";
 import axios from "axios";
 
-const store = Vue.observable({ customs: {}, todos: {}, token: {} });
+const store = Vue.observable({
+  customs: {},
+  todos: {},
+  token: {},
+  todoHandler: true,
+});
 
 const actions = {
   getTodo(token) {
@@ -24,6 +29,7 @@ const actions = {
         data[i].displayDate = month + "/" + day;
       }
       store.todos = data;
+      store.todoHandler =  ! store.todoHandler;
     });
   },
   postTodo(data, token) {
@@ -37,7 +43,7 @@ const actions = {
       console.log(response);
     });
   },
-  putTodo(id,title, deadline_time, start_time, end_time, token) {
+  putTodo(id, title, deadline_time, start_time, end_time, token) {
     const url = "http://127.0.0.1:8000/api/todo/" + id;
     const config = {
       headers: {
@@ -54,16 +60,17 @@ const actions = {
     };
     axios.put(url, data, config).then((response) => {
       console.log(response);
+      store.todoHandler = ! store.todoHandler;
     });
   },
-  deconsteTodo(id, token) {
+  deleteTodo(id, token) {
     const url = "http://127.0.0.1:8000/api/todo/" + id;
     const config = {
       headers: {
         Authorization: token,
       },
     };
-    axios.deconste(url, config).then((response) => {
+    axios.delete(url, config).then((response) => {
       console.log(response);
     });
   },
@@ -109,9 +116,9 @@ const actions = {
     }
     console.log("token is already updated");
   },
-  updateCustoms(customs){
-    store.customs = customs
-  }
+  updateCustoms(customs) {
+    store.customs = customs;
+  },
 };
 
 export { store, actions };

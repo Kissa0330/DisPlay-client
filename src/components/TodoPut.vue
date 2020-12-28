@@ -108,7 +108,10 @@ export default {
   },
   methods: {
     todoPut() {
-      if (this.hour * 60 + this.minute <= this.hour2 * 60 + this.minute2) {
+      if (
+        this.hour + this.minute * 0.0166 <=
+        this.hour2 + this.minute2 * 0.0166
+      ) {
         for (let i = 0; i < store.customs.length; ++i) {
           let date = new Date();
           let dayOfWeek = date.getDay();
