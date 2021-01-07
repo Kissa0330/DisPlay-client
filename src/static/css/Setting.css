@@ -1,1 +1,60 @@
+.setting p{
+  font-size: 10px;
+  margin: 0;
+}
+.headerTitle{
+  margin: 50px 0 0 0;
+}
+.background{
+  background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.1),
+    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
+    width: 329px;
+    min-height: 670px;
+    border-radius: 16px 16px 0 0;
+    margin: 30px auto 0 auto;
+}
+p.headerDescription{
+  margin: 20px 0 0 0;
+}
+.customTitle{
+  font-size: 15px;
+  padding: 26px 0 0 0;
+}
+p.customDescription{
+  margin: 3px 0 0 0;
+}
+.customList{
+  margin: 6px 0 0 0;
+}
+.custom{
+  margin: 20px 0 0 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+.customRight{
+  margin: 0 0 0 23px;
+}
+img.Pen{
+  position: absolute;
+  margin: 5px 0 0 6px;
+}
+.customTime{
+  margin: 7px 0 0 1px;
+}
+.customLeft{
+  margin: 0 29px 0 0;
+}
+img.Trashcan{
+  margin: 13px 0 0 0;
+}
+button.Add{
+  display: block;
+  margin: 25px auto 0 23px;
+}
+button.Next{
+  display: block;
+  margin: 100px 18px 0 auto;
+}
 
