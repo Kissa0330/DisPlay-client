@@ -2,6 +2,9 @@
   font-size: 10px;
   margin: 0;
 }
+.setting h2{
+  font-weight: 400;
+}
 .headerTitle{
   margin: 50px 0 0 0;
 }

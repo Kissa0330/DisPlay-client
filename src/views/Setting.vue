@@ -32,10 +32,12 @@
         <button class="LandscapeButton Login Next">Next</button>
       </div>
     </div>
+    <CustomAdd/>
   </div>
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
+import CustomAdd from "../components/CustomAdd"
 export default {
   name: "Setting",
   data: function () {
@@ -54,5 +56,8 @@ export default {
       ],
     };
   },
+  components:{
+    CustomAdd,
+  }
 };
 </script>
