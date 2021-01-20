@@ -61,4 +61,32 @@ button.Next{
   display: block;
   margin: 100px 18px 0 auto;
 }
+/* CustomAddのアニメーション */
+.v-enter {
+  opacity: 0;
+  top: 300px;
+}
+
+.v-enter-to {
+  opacity: 1;
+  top: 90px;
+}
+
+.v-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.v-leave {
+  opacity: 1;
+  top: 90px;
+}
+
+.v-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.v-leave-active {
+  transition: all 400ms ease-in-out;
+}
 

@@ -29,7 +29,7 @@ const actions = {
         data[i].displayDate = month + "/" + day;
       }
       store.todos = data;
-      store.todoHandler =  ! store.todoHandler;
+      store.todoHandler = !store.todoHandler;
     });
   },
   postTodo(data, token) {
@@ -52,6 +52,7 @@ const actions = {
     };
     const data = {
       id: id,
+      // TODO authorを動的に取得し設定する
       author: 1,
       title: title,
       deadline_time: deadline_time,
@@ -60,7 +61,7 @@ const actions = {
     };
     axios.put(url, data, config).then((response) => {
       console.log(response);
-      store.todoHandler = ! store.todoHandler;
+      store.todoHandler = !store.todoHandler;
     });
   },
   deleteTodo(id, token) {
@@ -83,6 +84,24 @@ const actions = {
     };
     axios.get(url, config).then((response) => {
       store.customs = response.data;
+    });
+  },
+  postCustom(token,title,start_time,end_time,flag) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const data = {
+      author:"1",
+      title: title,
+      start_time: start_time,
+      end_time: end_time,
+      repeat_flag: flag
+    };
+    axios.post(url, data, config).then((response) => {
+      console.log(response);
     });
   },
   postAuth(username, password, _this) {

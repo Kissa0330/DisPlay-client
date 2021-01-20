@@ -7,17 +7,20 @@
   border-radius: 16px;
   position: fixed;
   top: 90px;
-  left:calc(50% - 351px/2);
+  left: calc(50% - 351px / 2);
 }
-.wrap{
+.wrap {
   margin: 0 0 0 27px;
 }
 .detailHeader {
   display: flex;
   justify-content: space-between;
 }
-.headerLeft{
+.headerLeft {
   margin: -5px 0 0 0;
+}
+input.titleInputArea{
+  letter-spacing: 0.15em;
 }
 h3.captionText {
   font-family: "Roboto", sans-serif;
@@ -26,20 +29,17 @@ h3.captionText {
   text-align: left;
   font-weight: 300;
 }
-img.stick{
+img.stick {
   display: block;
   margin: 0 auto 0 0px;
   height: 1px;
   width: 87px;
 }
-img.stick.first{
+img.stick.first {
   margin: 0 0 0 0px;
   vertical-align: top;
   height: 1px;
   width: 87px;
-}
-.link {
-  display: flex;
 }
 .editText {
   text-align: right;
@@ -58,12 +58,17 @@ img.X {
   margin: 10px 0 0 1px;
   text-align: left;
 }
-.dayOfTheWeeks{
+.timePicker{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 30px 0 0;
+}
+.dayOfTheWeeks {
   margin: 19.5px 0 0 -12px;
   display: flex;
   justify-content: center;
 }
-.dayOfTheWeek{
+.dayOfTheWeek {
   margin: 0 12px 0 0;
   height: 32px;
   width: 32px;
@@ -74,29 +79,46 @@ img.X {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease-in-out;
 }
-.dayOfTheWeekText{
+.dayOfTheWeek.active {
+  background-color: #6AB2FA;
+}
+.dayOfTheWeekText {
   margin: 0 0 1px 2px;
   font-size: 10px;
   font-weight: 400;
-  color: #4D4C4C;
+  color: #4d4c4c;
+  transition: all 0.2s ease-in-out;
 }
-.buttonsInDayOfTheWeeks{
+.dayOfTheWeek.active .dayOfTheWeekText {
+  color: white;
+}
+.buttonsInDayOfTheWeeks {
   margin: 15px 0 0 -27px;
   display: flex;
   justify-content: center;
 }
-button.inDayOfTheWeeks{
+button.inDayOfTheWeeks {
   width: 122px;
   height: 27px;
   border-radius: 11px;
   letter-spacing: 0.12em;
   background-color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25),
+    -2px -2px 4px rgba(248, 253, 255, 1), inset 1px 1.5px 3px transparent,
+    inset -1px -1.5px 3px transparent;
+  transition: box-shadow 0.5s;
 }
-button.inDayOfTheWeeks.left{
+button.inDayOfTheWeeks:active {
+  box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
+    inset 1px 1.5px 3px rgba(0, 0, 0, 0.1),
+    inset -1px -1.5px 3px rgba(248, 253, 255, 0.9);
+}
+button.inDayOfTheWeeks.left {
   margin: 0 15px 0 0;
 }
-button.Login{
+button.Login {
   display: block;
   margin: 30px 30px 0 auto;
 }

@@ -28,18 +28,28 @@
             </div>
           </div>
         </div>
-        <button class="LandscapeButton Login Add">Add</button>
+        <button class="LandscapeButton Login Add" @click="customAddView = true">
+          Add
+        </button>
         <button class="LandscapeButton Login Next">Next</button>
       </div>
     </div>
-    <CustomAdd/>
+    <transition>
+      <CustomAdd
+        v-if="customAddView"
+        @childEvent="customAddView = false"
+      ></CustomAdd>
+    </transition>
   </div>
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
-import CustomAdd from "../components/CustomAdd"
+import CustomAdd from "../components/CustomAdd";
 export default {
   name: "Setting",
+  components: {
+    CustomAdd,
+  },
   data: function () {
     return {
       customs: [
@@ -54,10 +64,8 @@ export default {
           times: "毎日 12:00~12:30",
         },
       ],
+      customAddView: false,
     };
   },
-  components:{
-    CustomAdd,
-  }
 };
 </script>
