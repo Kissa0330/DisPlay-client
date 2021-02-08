@@ -14,7 +14,7 @@
           <div class="custom" v-for="custom in customs" :key="custom.id">
             <div class="customRight">
               <h3 class="customName">
-                {{ custom.name
+                {{ custom.title
                 }}<img class="Pen" src="../assets/img/Pen.svg" alt="pen" />
               </h3>
               <p class="customTime">{{ custom.times }}</p>
@@ -31,7 +31,7 @@
         <button class="LandscapeButton Login Add" @click="customAddView = true">
           Add
         </button>
-        <button class="LandscapeButton Login Next">Next</button>
+        <button class="LandscapeButton Login Next">Confirm</button>
       </div>
     </div>
     <transition>
@@ -44,7 +44,9 @@
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
+/* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
+import { store, actions } from "../store/store";
 export default {
   name: "Setting",
   components: {
@@ -52,20 +54,53 @@ export default {
   },
   data: function () {
     return {
-      customs: [
-        {
-          id: "1",
-          name: "朝食",
-          times: "毎日 7:00~7:30",
-        },
-        {
-          id: "2",
-          name: "昼食",
-          times: "毎日 12:00~12:30",
-        },
-      ],
       customAddView: false,
     };
+  },
+  computed: {
+    token() {
+      return store.token;
+    },
+    customs() {
+      for (let i = 0; i < store.customs.length; i++) {
+        let repeatFlagSplit = store.customs[i].repeat_flag.split("");
+        let repeatFlagSum =
+          Number(repeatFlagSplit[0]) +
+          Number(repeatFlagSplit[1]) +
+          Number(repeatFlagSplit[2]) +
+          Number(repeatFlagSplit[3]) +
+          Number(repeatFlagSplit[4]) +
+          Number(repeatFlagSplit[5]) +
+          Number(repeatFlagSplit[6]);
+        let frequency;
+        if (repeatFlagSum >= 7) {
+          frequency = "毎日";
+        } else {
+          frequency = Number(repeatFlagSplit[0]) ? "月曜日" : "";
+          frequency = Number(repeatFlagSplit[1]) ? frequency + " 火曜日" : frequency;
+          frequency = Number(repeatFlagSplit[2]) ? frequency + " 水曜日" : frequency;
+          frequency = Number(repeatFlagSplit[3]) ? frequency + " 木曜日" : frequency;
+          frequency = Number(repeatFlagSplit[4]) ? frequency + " 金曜日" : frequency;
+          frequency = Number(repeatFlagSplit[5]) ? frequency + " 土曜日" : frequency;
+          frequency = Number(repeatFlagSplit[6]) ? frequency + " 日曜日" : frequency;
+        }
+        let startTimeSpilit = store.customs[i].start_time.split(":");
+        let endTimeSpilit = store.customs[i].end_time.split(":");
+        let displayTime =
+          startTimeSpilit[0] +
+          ":" +
+          startTimeSpilit[1] +
+          "~" +
+          endTimeSpilit[0] +
+          ":" +
+          endTimeSpilit[1];
+        store.customs[i].times = frequency + displayTime;
+      }
+      return store.customs;
+    },
+  },
+  mounted() {
+    actions.getCustoms(this.token);
   },
 };
 </script>
