@@ -19,7 +19,7 @@
               </h3>
               <p class="customTime">{{ custom.times }}</p>
             </div>
-            <div class="customLeft">
+            <div class="customLeft" @click="deleteCustom(custom.id)">
               <img
                 class="Trashcan"
                 src="../assets/img/Trashcan.svg"
@@ -102,5 +102,10 @@ export default {
   mounted() {
     actions.getCustoms(this.token);
   },
+  methods:{
+  deleteCustom(id){
+    actions.deleteCustom(id,this.token)
+  },
+  }
 };
 </script>

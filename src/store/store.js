@@ -86,7 +86,7 @@ const actions = {
       store.customs = response.data;
     });
   },
-  postCustom(token,title,start_time,end_time,flag) {
+  postCustom(token, title, start_time, end_time, flag) {
     const url = "http://127.0.0.1:8000/api/customs/";
     const config = {
       headers: {
@@ -94,15 +94,29 @@ const actions = {
       },
     };
     const data = {
-      author:"1",
+      author: "1",
       title: title,
       start_time: start_time,
       end_time: end_time,
-      repeat_flag: flag
+      repeat_flag: flag,
     };
     axios.post(url, data, config).then((response) => {
       console.log(response);
     });
+  },
+  deleteCustom(id,token) {
+    const url = "http://127.0.0.1:8000/api/customs/" + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    axios.delete(url, config).then((response) => {
+      console.log(response);
+    });
+  },
+  updateCustoms(customs) {
+    store.customs = customs;
   },
   postAuth(username, password, _this) {
     let data = {
@@ -134,9 +148,6 @@ const actions = {
       store.token = "jwt " + tokenValue;
     }
     console.log("token is already updated");
-  },
-  updateCustoms(customs) {
-    store.customs = customs;
   },
 };
 

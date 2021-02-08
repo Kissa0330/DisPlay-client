@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <button class="LandscapeButton Login" @click="postCustom">Add</button>
+    <button class="LandscapeButton Login" @click="postCustom();sendCustomAddView()">Add</button>
   </div>
 </template>
 <style scoped src="../static/css/CustomAdd.css"></style>
