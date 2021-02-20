@@ -3,7 +3,7 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a>プライバシーポリシー</a>に則って管理されます
+        情報は<a @click="test">プライバシーポリシー</a>に則って管理されます
       </p>
     </header>
     <div class="background">
@@ -31,7 +31,9 @@
         <button class="LandscapeButton Login Add" @click="customAddView = true">
           Add
         </button>
-        <button class="LandscapeButton Login Next">Confirm</button>
+        <div class="Adjustment">
+          <button class="LandscapeButton Login Next">Confirm</button>
+        </div>
       </div>
     </div>
     <transition>
@@ -77,12 +79,24 @@ export default {
           frequency = "毎日";
         } else {
           frequency = Number(repeatFlagSplit[0]) ? "月曜日" : "";
-          frequency = Number(repeatFlagSplit[1]) ? frequency + " 火曜日" : frequency;
-          frequency = Number(repeatFlagSplit[2]) ? frequency + " 水曜日" : frequency;
-          frequency = Number(repeatFlagSplit[3]) ? frequency + " 木曜日" : frequency;
-          frequency = Number(repeatFlagSplit[4]) ? frequency + " 金曜日" : frequency;
-          frequency = Number(repeatFlagSplit[5]) ? frequency + " 土曜日" : frequency;
-          frequency = Number(repeatFlagSplit[6]) ? frequency + " 日曜日" : frequency;
+          frequency = Number(repeatFlagSplit[1])
+            ? frequency + " 火曜日"
+            : frequency;
+          frequency = Number(repeatFlagSplit[2])
+            ? frequency + " 水曜日"
+            : frequency;
+          frequency = Number(repeatFlagSplit[3])
+            ? frequency + " 木曜日"
+            : frequency;
+          frequency = Number(repeatFlagSplit[4])
+            ? frequency + " 金曜日"
+            : frequency;
+          frequency = Number(repeatFlagSplit[5])
+            ? frequency + " 土曜日"
+            : frequency;
+          frequency = Number(repeatFlagSplit[6])
+            ? frequency + " 日曜日"
+            : frequency;
         }
         let startTimeSpilit = store.customs[i].start_time.split(":");
         let endTimeSpilit = store.customs[i].end_time.split(":");
@@ -100,12 +114,70 @@ export default {
     },
   },
   mounted() {
+    const _this = this;
+    function addSampleCustom() {
+      console.log("addSampleCustom is runnning");
+      console.log("store Boolean is " + Boolean(store.customs));
+      if (!store.customs.length) {
+        const sampleCustoms = [
+          {
+            title: "朝食",
+            start_time: "07:00:00",
+            end_time: "07:30:00",
+            repeatFlag: "1111111",
+          },
+          {
+            title: "昼食",
+            start_time: "12:00:00",
+            end_time: "13:00:00",
+            repeatFlag: "1111111",
+          },
+          {
+            title: "夕食",
+            start_time: "19:00:00",
+            end_time: "20:00:00",
+            repeatFlag: "1111111",
+          },
+          {
+            title: "睡眠",
+            start_time: "23:00:00",
+            end_time: "07:00:00",
+            repeatFlag: "1111111",
+          },
+          {
+            title: "入浴",
+            start_time: "22:00:00",
+            end_time: "23:30:00",
+            repeatFlag: "1111111",
+          },
+        ];
+        for (let i = 0; i < sampleCustoms.length; i++) {
+          actions.postCustom(
+            _this.token,
+            sampleCustoms[i].title,
+            sampleCustoms[i].start_time,
+            sampleCustoms[i].end_time,
+            sampleCustoms[i].repeatFlag
+          );
+          console.log(i + "番のタスクを設定しました");
+        }
+        console.log("初期値を設定しました");
+        actions.getCustoms(_this.token);
+      } else {
+        console.log("初期値は設定されませんでした");
+      }
+    }
     actions.getCustoms(this.token);
+    // getCustom終了後に初期値設定の処理を行う
+    setTimeout(addSampleCustom, 50);
   },
-  methods:{
-  deleteCustom(id){
-    actions.deleteCustom(id,this.token)
+  methods: {
+    deleteCustom(id) {
+      actions.deleteCustom(id, this.token);
+    },
+    test() {
+      alert("未実装");
+    },
   },
-  }
 };
 </script>

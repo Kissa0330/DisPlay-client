@@ -84,6 +84,7 @@ const actions = {
     };
     axios.get(url, config).then((response) => {
       store.customs = response.data;
+      console.log("Customs is already update")
     });
   },
   postCustom(token, title, start_time, end_time, flag) {

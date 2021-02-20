@@ -91,13 +91,13 @@ export default {
   data: function () {
     return {
       dayOfTheWeeks: [
-        { name: "Su", id: "1", isActive: false },
-        { name: "M", id: "2", isActive: false },
-        { name: "Tu", id: "3", isActive: false },
-        { name: "W", id: "4", isActive: false },
-        { name: "Th", id: "5", isActive: false },
-        { name: "F", id: "6", isActive: false },
-        { name: "Sa", id: "7", isActive: false },
+        { name: "Su", id: "1", isActive: true },
+        { name: "M", id: "2", isActive: true },
+        { name: "Tu", id: "3", isActive: true },
+        { name: "W", id: "4", isActive: true },
+        { name: "Th", id: "5", isActive: true },
+        { name: "F", id: "6", isActive: true },
+        { name: "Sa", id: "7", isActive: true },
       ],
       title: "",
       hour: new Date().getHours(),
@@ -154,6 +154,7 @@ export default {
       this.minute2 = e.minute;
     },
     postCustom() {
+      //TODO Promiseで実装する
       actions.postCustom(
         this.token,
         this.title,
@@ -161,6 +162,7 @@ export default {
         this.end_time,
         this.repeatFlag
       );
+      actions.getCustoms(this.token);
     },
   },
 };
