@@ -3,7 +3,7 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a @click="test">プライバシーポリシー</a>に則って管理されます
+        情報は<a @click="polycyViewChange">プライバシーポリシー</a>に則って管理されます
       </p>
     </header>
     <div class="background">
@@ -42,21 +42,27 @@
         @childEvent="customAddView = false"
       ></CustomAdd>
     </transition>
+    <transition>
+      <Polycy v-if="polycyView"> </Polycy>
+    </transition>
   </div>
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
 /* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
+import Polycy from "../components/Polycy"
 import { store, actions } from "../store/store";
 export default {
   name: "Setting",
   components: {
     CustomAdd,
+    Polycy
   },
   data: function () {
     return {
       customAddView: false,
+      polycyView:false,
     };
   },
   computed: {
@@ -162,21 +168,24 @@ export default {
           console.log(i + "番のタスクを設定しました");
         }
         console.log("初期値を設定しました");
-        actions.getCustoms(_this.token);
+        // TODO 初期値設定後に値を更新する
+        //現状は2~3個設定された後に取得されている
+        setTimeout(actions.getCustoms(_this.token), 50);
       } else {
         console.log("初期値は設定されませんでした");
       }
     }
     actions.getCustoms(this.token);
     // getCustom終了後に初期値設定の処理を行う
-    setTimeout(addSampleCustom, 50);
+    setTimeout(addSampleCustom, 5);
   },
   methods: {
     deleteCustom(id) {
       actions.deleteCustom(id, this.token);
     },
-    test() {
-      alert("未実装");
+    polycyViewChange() {
+      alert("このページは現在実装されていません")
+      // this.polycyView = true;
     },
   },
 };
