@@ -45,6 +45,9 @@
     <transition>
       <Polycy v-if="polycyView"> </Polycy>
     </transition>
+        <transition>
+      <DeleateConfirmation v-if="deleateConfirmationView"> </DeleateConfirmation>
+    </transition>
   </div>
 </template>
 <style scoped src="../static/css/Setting.css"></style>
@@ -52,17 +55,20 @@
 /* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
 import Polycy from "../components/Polycy"
+import DeleateConfirmation from "../components/DeleateConfirmation"
 import { store, actions } from "../store/store";
 export default {
   name: "Setting",
   components: {
     CustomAdd,
-    Polycy
+    Polycy,
+    DeleateConfirmation
   },
   data: function () {
     return {
       customAddView: false,
       polycyView:false,
+      deleateConfirmationView:false,
     };
   },
   computed: {
