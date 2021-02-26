@@ -68,7 +68,7 @@ export default {
     return {
       customAddView: false,
       polycyView:false,
-      deleateConfirmationView:false,
+      deleateConfirmationView:true,
     };
   },
   computed: {
