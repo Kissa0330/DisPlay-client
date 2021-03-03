@@ -52,6 +52,7 @@ img.Pen{
 }
 img.Trashcan{
   margin: 13px 0 0 0;
+  cursor: pointer;
 }
 button.Add{
   display: block;
@@ -65,31 +66,60 @@ button.Next{
   padding-bottom: 30px;
 }
 /* CustomAddのアニメーション */
-.v-enter {
+.customAdd-enter {
   opacity: 0;
   top: 300px;
 }
 
-.v-enter-to {
+.customAdd-enter-to {
   opacity: 1;
   top: 90px;
 }
 
-.v-enter-active {
+.customAdd-enter-active {
   transition: all 400ms ease-in-out;
 }
 
-.v-leave {
+.customAdd-leave {
   opacity: 1;
   top: 90px;
 }
 
-.v-leave-to {
+.customAdd-leave-to {
   opacity: 0;
   top: 300px
 }
 
-.v-leave-active {
+.customAdd-leave-active {
+  transition: all 400ms ease-in-out;
+}
+
+/* deleateConfirmationのアニメーション */
+.deleateConfirmation-enter {
+  opacity: 0;
+  top: 300px;
+}
+
+.deleateConfirmation-enter-to {
+  opacity: 1;
+  top: 180px;
+}
+
+.deleateConfirmation-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.deleateConfirmation-leave {
+  opacity: 1;
+  top: 180px;
+}
+
+.deleateConfirmation-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.deleateConfirmation-leave-active {
   transition: all 400ms ease-in-out;
 }
 

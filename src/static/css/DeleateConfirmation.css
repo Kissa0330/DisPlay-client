@@ -6,7 +6,7 @@
   width: 267px;
   height: 178px;
   position: fixed;
-  top: 120px;
+  top: 180px;
   left: calc(50% - 267px / 2);
 }
 h2.confirmationText {
@@ -31,6 +31,7 @@ h2.confirmationText {
 .hitBox{
   width: 132.5px;
   height: 54px;
+  cursor: pointer;
 }
 .positiveText{
   font-size: 15px;

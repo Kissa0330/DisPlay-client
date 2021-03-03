@@ -3,7 +3,8 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a @click="polycyViewChange">プライバシーポリシー</a>に則って管理されます
+        情報は<a @click="polycyViewChange">プライバシーポリシー</a
+        >に則って管理されます
       </p>
     </header>
     <div class="background">
@@ -19,7 +20,7 @@
               </h3>
               <p class="customTime">{{ custom.times }}</p>
             </div>
-            <div class="customLeft" @click="deleteCustom(custom.id)">
+            <div class="customLeft" @click="delConViewChange(custom.id, setID)">
               <img
                 class="Trashcan"
                 src="../assets/img/Trashcan.svg"
@@ -36,7 +37,7 @@
         </div>
       </div>
     </div>
-    <transition>
+    <transition name="customAdd">
       <CustomAdd
         v-if="customAddView"
         @childEvent="customAddView = false"
@@ -45,8 +46,13 @@
     <transition>
       <Polycy v-if="polycyView"> </Polycy>
     </transition>
-        <transition>
-      <DeleateConfirmation v-if="deleateConfirmationView"> </DeleateConfirmation>
+    <transition name="deleateConfirmation">
+      <DeleateConfirmation
+        v-if="deleateConfirmationView"
+        @childEvent="deleateConfirmationView = false"
+        :id="setID"
+      >
+      </DeleateConfirmation>
     </transition>
   </div>
 </template>
@@ -54,21 +60,22 @@
 <script>
 /* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
-import Polycy from "../components/Polycy"
-import DeleateConfirmation from "../components/DeleateConfirmation"
+import Polycy from "../components/Polycy";
+import DeleateConfirmation from "../components/DeleateConfirmation";
 import { store, actions } from "../store/store";
 export default {
   name: "Setting",
   components: {
     CustomAdd,
     Polycy,
-    DeleateConfirmation
+    DeleateConfirmation,
   },
   data: function () {
     return {
       customAddView: false,
-      polycyView:false,
-      deleateConfirmationView:true,
+      polycyView: false,
+      deleateConfirmationView: false,
+      setID: 0,
     };
   },
   computed: {
@@ -186,12 +193,15 @@ export default {
     setTimeout(addSampleCustom, 5);
   },
   methods: {
-    deleteCustom(id) {
-      actions.deleteCustom(id, this.token);
-    },
     polycyViewChange() {
-      alert("このページは現在実装されていません")
-      // this.polycyView = true;
+      alert("このページは現在実装されていません");
+      // this.polycyView = !this.polycyView;
+    },
+    delConViewChange(id) {
+      console.log("id is " + id);
+      this.setID = id;
+      console.log("this.setID is " + this.setID);
+      this.deleateConfirmationView = true;
     },
   },
 };
