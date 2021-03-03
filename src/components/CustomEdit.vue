@@ -1,5 +1,5 @@
 <template>
-  <div class="customAdd">
+  <div class="customEdit">
     <div class="wrap">
       <div class="detailHeader">
         <div class="headerLeft">
@@ -10,7 +10,7 @@
           src="../assets/img/X.svg"
           alt="X"
           class="X"
-          @click="sendCustomAddView"
+          @click="sendcustomEditView"
         />
       </div>
       <div class="field">
@@ -75,16 +75,16 @@
         </div>
       </div>
     </div>
-    <button class="LandscapeButton Login" @click="postCustom();sendCustomAddView()">Add</button>
+    <button class="LandscapeButton Login" @click="postCustom();sendcustomEditView()">Add</button>
   </div>
 </template>
-<style scoped src="../static/css/CustomAdd.css"></style>
+<style scoped src="../static/css/customEdit.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
 import { store, actions } from "../store/store.js";
 
 export default {
-  name: "CustomAdd",
+  name: "customEdit",
   components: {
     VueClockPicker,
   },
@@ -132,7 +132,7 @@ export default {
     },
   },
   methods: {
-    sendCustomAddView() {
+    sendcustomEditView() {
       this.$emit("childEvent");
     },
     allActive() {

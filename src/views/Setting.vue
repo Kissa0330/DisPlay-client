@@ -43,6 +43,12 @@
         @childEvent="customAddView = false"
       ></CustomAdd>
     </transition>
+    <transition name="customAdd">
+      <CustomEdit
+        v-if="customEditView"
+        @childEvent="customEditView = false"
+      ></CustomEdit>
+    </transition>
     <transition>
       <Polycy v-if="polycyView"> </Polycy>
     </transition>
@@ -60,6 +66,7 @@
 <script>
 /* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
+import CustomEdit from "../components/CustomEdit";
 import Polycy from "../components/Polycy";
 import DeleateConfirmation from "../components/DeleateConfirmation";
 import { store, actions } from "../store/store";
@@ -69,10 +76,12 @@ export default {
     CustomAdd,
     Polycy,
     DeleateConfirmation,
+    CustomEdit
   },
   data: function () {
     return {
       customAddView: false,
+      customEditView: true,
       polycyView: false,
       deleateConfirmationView: false,
       setID: 0,
@@ -198,9 +207,9 @@ export default {
       // this.polycyView = !this.polycyView;
     },
     delConViewChange(id) {
-      console.log("id is " + id);
+      // console.log("id is " + id);
       this.setID = id;
-      console.log("this.setID is " + this.setID);
+      // console.log("this.setID is " + this.setID);
       this.deleateConfirmationView = true;
     },
   },
