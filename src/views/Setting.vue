@@ -13,7 +13,10 @@
         <p class="customDescription">(睡眠、仕事、学校、読書など)</p>
         <div class="customList">
           <div class="custom" v-for="custom in customs" :key="custom.id">
-            <div class="customRight">
+            <div
+              class="customRight"
+              @click="customEditViewChange(custom)"
+            >
               <h3 class="customName">
                 {{ custom.title
                 }}<img class="Pen" src="../assets/img/Pen.svg" alt="pen" />
@@ -47,6 +50,7 @@
       <CustomEdit
         v-if="customEditView"
         @childEvent="customEditView = false"
+        :custom="selectedCustom"
       ></CustomEdit>
     </transition>
     <transition>
@@ -76,15 +80,17 @@ export default {
     CustomAdd,
     Polycy,
     DeleateConfirmation,
-    CustomEdit
+    CustomEdit,
   },
   data: function () {
     return {
       customAddView: false,
-      customEditView: true,
+      customEditView: false,
       polycyView: false,
       deleateConfirmationView: false,
+      selectedCustom: undefined,
       setID: 0,
+      custom:"",
     };
   },
   computed: {
@@ -205,6 +211,11 @@ export default {
     polycyViewChange() {
       alert("このページは現在実装されていません");
       // this.polycyView = !this.polycyView;
+    },
+    customEditViewChange(custom){
+      this.selectedCustom = custom;
+      console.log(this.selectedCustom);
+      this.customEditView =true;
     },
     delConViewChange(id) {
       // console.log("id is " + id);

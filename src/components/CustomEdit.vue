@@ -75,10 +75,18 @@
         </div>
       </div>
     </div>
-    <button class="LandscapeButton Login" @click="postCustom();sendcustomEditView()">Add</button>
+    <button
+      class="LandscapeButton Login"
+      @click="
+        putCustom();
+        sendcustomEditView();
+      "
+    >
+      Update
+    </button>
   </div>
 </template>
-<style scoped src="../static/css/customEdit.css"></style>
+<style scoped src="../static/css/CustomEdit.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
 import { store, actions } from "../store/store.js";
@@ -99,11 +107,11 @@ export default {
         { name: "F", id: "6", isActive: true },
         { name: "Sa", id: "7", isActive: true },
       ],
-      title: "",
-      hour: new Date().getHours(),
-      minute: new Date().getMinutes(),
-      hour2: new Date().getHours() + 1,
-      minute2: new Date().getMinutes(),
+      title: this.custom.title,
+      hour: Number(this.custom.start_time.split(":")[0]),
+      minute: Number(this.custom.start_time.split(":")[1]),
+      hour2: Number(this.custom.end_time.split(":")[0]),
+      minute2: Number(this.custom.end_time.split(":")[1]),
       isActiveChange: false,
     };
   },
@@ -131,6 +139,7 @@ export default {
       return time;
     },
   },
+  props: ["custom"],
   methods: {
     sendcustomEditView() {
       this.$emit("childEvent");
@@ -153,8 +162,9 @@ export default {
       this.hour2 = e.hour;
       this.minute2 = e.minute;
     },
-    postCustom() {
+    putCustom() {
       //TODO Promiseで実装する
+      alert("未実装")
       actions.postCustom(
         this.token,
         this.title,

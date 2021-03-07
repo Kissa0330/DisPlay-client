@@ -14,7 +14,7 @@ h2.confirmationText {
   line-height: 30px;
 }
 .verticalLine {
-  background-color: #b6b6b6;
+  background-color: #cccccc;
   height: 0.1px;
   width: 267px;
   margin: 34px 0 0 0;
@@ -26,7 +26,7 @@ h2.confirmationText {
 .sideLine{
   width: 1px;
   height: 54px;
-  background-color: #b6b6b6;
+  background-color:#cccccc;
 }
 .hitBox{
   width: 132.5px;

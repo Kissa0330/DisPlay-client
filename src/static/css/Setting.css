@@ -38,6 +38,7 @@ p.customDescription{
   justify-content: space-between;
 }
 .customRight{
+  padding-right: 150px;
   margin: 0 0 0 23px;
 }
 img.Pen{
