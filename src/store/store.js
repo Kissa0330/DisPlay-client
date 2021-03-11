@@ -119,6 +119,9 @@ const actions = {
   updateCustoms(customs) {
     store.customs = customs;
   },
+  putCustoms (){
+    console.log("test")
+  },
   postAuth(username, password, _this) {
     let data = {
       username: username,

@@ -99,13 +99,13 @@ export default {
   data: function () {
     return {
       dayOfTheWeeks: [
-        { name: "Su", id: "1", isActive: true },
-        { name: "M", id: "2", isActive: true },
-        { name: "Tu", id: "3", isActive: true },
-        { name: "W", id: "4", isActive: true },
-        { name: "Th", id: "5", isActive: true },
-        { name: "F", id: "6", isActive: true },
-        { name: "Sa", id: "7", isActive: true },
+        { name: "Su", id: "1", isActive: false },
+        { name: "M", id: "2", isActive: false },
+        { name: "Tu", id: "3", isActive: false },
+        { name: "W", id: "4", isActive: false },
+        { name: "Th", id: "5", isActive: false },
+        { name: "F", id: "6", isActive: false },
+        { name: "Sa", id: "7", isActive: false },
       ],
       title: this.custom.title,
       hour: Number(this.custom.start_time.split(":")[0]),
@@ -164,7 +164,7 @@ export default {
     },
     putCustom() {
       //TODO Promiseで実装する
-      alert("未実装")
+      alert("未実装");
       actions.postCustom(
         this.token,
         this.title,
@@ -174,6 +174,20 @@ export default {
       );
       actions.getCustoms(this.token);
     },
+  },
+  mounted() {
+    let flag = this.custom.repeat_flag.split("");
+    console.log(flag)
+    for (let i = 0; i < flag.length; i++) {
+      console.log("今回は" + i + "回目のループです")
+      if (flag[i]) {
+        this.dayOfTheWeeks[i].isActive = true;
+        console.log("is Activeをtrueに設定しました")
+      } else {
+        this.dayOfTheWeeks[i].isActive = false;
+        console.log("is Activeをfalseに設定しました")
+      }
+    }
   },
 };
 </script>
