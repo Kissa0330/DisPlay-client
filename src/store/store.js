@@ -105,6 +105,9 @@ const actions = {
       console.log(response);
     });
   },
+  putCustom (){
+    console.log("test")
+  },
   deleteCustom(id,token) {
     const url = "http://127.0.0.1:8000/api/customs/" + id;
     const config = {
@@ -118,9 +121,6 @@ const actions = {
   },
   updateCustoms(customs) {
     store.customs = customs;
-  },
-  putCustoms (){
-    console.log("test")
   },
   postAuth(username, password, _this) {
     let data = {

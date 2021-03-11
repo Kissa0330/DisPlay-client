@@ -92,7 +92,7 @@ button.Next{
 }
 
 .customAdd-leave-active {
-  transition: all 400ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 
 /* deleateConfirmationのアニメーション */
