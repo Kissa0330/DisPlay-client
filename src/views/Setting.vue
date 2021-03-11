@@ -135,11 +135,11 @@ export default {
         let startTimeSpilit = store.customs[i].start_time.split(":");
         let endTimeSpilit = store.customs[i].end_time.split(":");
         let displayTime =
-          startTimeSpilit[0] +
+          Number(startTimeSpilit[0]) +
           ":" +
           startTimeSpilit[1] +
           "~" +
-          endTimeSpilit[0] +
+          Number(endTimeSpilit[0]) +
           ":" +
           endTimeSpilit[1];
         store.customs[i].times = frequency + displayTime;
