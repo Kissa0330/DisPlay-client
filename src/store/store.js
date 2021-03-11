@@ -84,7 +84,7 @@ const actions = {
     };
     axios.get(url, config).then((response) => {
       store.customs = response.data;
-      console.log("Customs is already update")
+      console.log("Customs is already update");
     });
   },
   postCustom(token, title, start_time, end_time, flag) {
@@ -105,10 +105,25 @@ const actions = {
       console.log(response);
     });
   },
-  putCustom (){
-    console.log("test")
+  putCustom(token, title, flag, start_time, end_time, id) {
+    const url = "http://127.0.0.1:8000/api/customs/" + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const data = {
+      author: "1",
+      title: title,
+      start_time: start_time,
+      end_time: end_time,
+      repeat_flag: flag,
+    };
+    axios.put(url, data, config).then((response) => {
+      console.log(response);
+    });
   },
-  deleteCustom(id,token) {
+  deleteCustom(id, token) {
     const url = "http://127.0.0.1:8000/api/customs/" + id;
     const config = {
       headers: {

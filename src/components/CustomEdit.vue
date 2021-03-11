@@ -164,7 +164,14 @@ export default {
     },
     putCustom() {
       //TODO Promiseで実装する
-      actions.putCustom();
+      actions.putCustom(
+        this.token,
+        this.title,
+        this.repeatFlag,
+        this.start_time,
+        this.end_time,
+        this.custom.id
+      );
       actions.getCustoms(this.token);
     },
   },
