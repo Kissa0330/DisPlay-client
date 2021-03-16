@@ -138,31 +138,32 @@ const actions = {
               repeatFlag: "1111111",
             },
           ];
-          const data = {
-            author: "1",
-            title: sampleCustoms[0].title,
-            start_time: sampleCustoms[0].start_time,
-            end_time: sampleCustoms[0].end_time,
-            repeat_flag: sampleCustoms[0].repeatFlag,
-          };
-          Promise.resolve()
-            .then(() => axios.post(url, data, config))
-            .then((response) => {
-              console.log(response.data);
+          let myPromise = Promise.resolve();
+          for (let i = 0; i < sampleCustoms.length; i++) {
+            myPromise = myPromise
+              .then(postSampleCustom.bind(this, i))
+              .then((response) => {
+                console.log(response);
+              });
+          }
+          myPromise
+            .then(function () {
               return axios.get(url, config);
             })
             .then((response) => {
               console.log(response.data);
               store.customs = response.data;
             });
-          // .then(response => {
-          //   // 2個目の通信が成功
-          //   // console.log(response.data)
-          // })
-          // .finally(() => {
-          //   // 最終的な処理を書く
-          //   console.log('hoge')
-          // })
+          function postSampleCustom(i) {
+            let data = {
+              author: "1",
+              title: sampleCustoms[i].title,
+              start_time: sampleCustoms[i].start_time,
+              end_time: sampleCustoms[i].end_time,
+              repeat_flag: sampleCustoms[i].repeatFlag,
+            };
+            return axios.post(url, data, config);
+          }
         }
       });
   },
