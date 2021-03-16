@@ -151,7 +151,6 @@ export default {
     const _this = this;
     function addSampleCustom() {
       console.log("addSampleCustom is runnning");
-      console.log("store Boolean is " + Boolean(store.customs));
       if (!store.customs.length) {
         const sampleCustoms = [
           {
@@ -196,16 +195,14 @@ export default {
           console.log(i + "番のタスクを設定しました");
         }
         console.log("初期値を設定しました");
-        // TODO 初期値設定後に値を更新する
-        //現状は2~3個設定された後に取得されている
         setTimeout(actions.getCustoms(_this.token), 50);
       } else {
         console.log("初期値は設定されませんでした");
       }
     }
-    actions.getCustoms(this.token);
+    actions.initialCustomSetting(this.token);
     // getCustom終了後に初期値設定の処理を行う
-    setTimeout(addSampleCustom, 5);
+    // setTimeout(addSampleCustom, 5);
   },
   methods: {
     polycyViewChange() {

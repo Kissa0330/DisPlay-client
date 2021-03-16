@@ -87,6 +87,85 @@ const actions = {
       console.log("Customs is already update");
     });
   },
+  initialCustomSetting(token) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    axios
+      .get(url, config)
+      .then((response) => {
+        store.customs = response.data;
+        console.log("Customs is already update");
+      })
+      .then(() => {
+        console.log("store Boolean is " + Boolean(store.customs.length));
+        if (store.customs.length) {
+          console.log("custom is set.");
+        } else {
+          console.log("custom is not set.");
+          const sampleCustoms = [
+            {
+              title: "朝食",
+              start_time: "07:00:00",
+              end_time: "07:30:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "昼食",
+              start_time: "12:00:00",
+              end_time: "13:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "夕食",
+              start_time: "19:00:00",
+              end_time: "20:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "睡眠",
+              start_time: "23:00:00",
+              end_time: "07:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "入浴",
+              start_time: "22:00:00",
+              end_time: "23:30:00",
+              repeatFlag: "1111111",
+            },
+          ];
+          const data = {
+            author: "1",
+            title: sampleCustoms[0].title,
+            start_time: sampleCustoms[0].start_time,
+            end_time: sampleCustoms[0].end_time,
+            repeat_flag: sampleCustoms[0].repeatFlag,
+          };
+          Promise.resolve()
+            .then(() => axios.post(url, data, config))
+            .then((response) => {
+              console.log(response.data);
+              return axios.get(url, config);
+            })
+            .then((response) => {
+              console.log(response.data);
+              store.customs = response.data;
+            });
+          // .then(response => {
+          //   // 2個目の通信が成功
+          //   // console.log(response.data)
+          // })
+          // .finally(() => {
+          //   // 最終的な処理を書く
+          //   console.log('hoge')
+          // })
+        }
+      });
+  },
   postCustom(token, title, start_time, end_time, flag) {
     const url = "http://127.0.0.1:8000/api/customs/";
     const config = {
