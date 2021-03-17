@@ -89,7 +89,6 @@ export default {
       return store.token;
     },
   },
-  //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   mounted() {
     actions.getTodo(this.token);
   },

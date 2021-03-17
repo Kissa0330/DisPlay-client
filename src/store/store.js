@@ -39,12 +39,29 @@ const actions = {
         Authorization: token,
       },
     };
-    axios.post(url, data, config).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post(url, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        let data;
+        for (let i = 0; i < response.data.length; i++) {
+          data = response.data;
+          const splitDate = data[i].d_date.split("-");
+          const month = Number(splitDate[1]);
+          const day = Number(splitDate[2]);
+
+          data[i].displayDate = month + "/" + day;
+        }
+        store.todos = data;
+        store.todoHandler = !store.todoHandler;
+      });
   },
   putTodo(id, title, deadline_time, start_time, end_time, token) {
-    const url = "http://127.0.0.1:8000/api/todo/" + id;
+    const url = "http://127.0.0.1:8000/api/todo/";
+    const puturl = url + id;
     const config = {
       headers: {
         Authorization: token,
@@ -59,21 +76,53 @@ const actions = {
       start_time: start_time,
       end_time: end_time,
     };
-    axios.put(url, data, config).then((response) => {
-      console.log(response);
-      store.todoHandler = !store.todoHandler;
-    });
+    axios
+      .put(puturl, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        let data;
+        for (let i = 0; i < response.data.length; i++) {
+          data = response.data;
+          const splitDate = data[i].d_date.split("-");
+          const month = Number(splitDate[1]);
+          const day = Number(splitDate[2]);
+
+          data[i].displayDate = month + "/" + day;
+        }
+        store.todos = data;
+        store.todoHandler = !store.todoHandler;
+      });
   },
   deleteTodo(id, token) {
-    const url = "http://127.0.0.1:8000/api/todo/" + id;
+    const url = "http://127.0.0.1:8000/api/todo/";
+    const delurl = url + id;
     const config = {
       headers: {
         Authorization: token,
       },
     };
-    axios.delete(url, config).then((response) => {
-      console.log(response);
-    });
+    axios
+      .delete(delurl, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        let data;
+        for (let i = 0; i < response.data.length; i++) {
+          data = response.data;
+          const splitDate = data[i].d_date.split("-");
+          const month = Number(splitDate[1]);
+          const day = Number(splitDate[2]);
+
+          data[i].displayDate = month + "/" + day;
+        }
+        store.todos = data;
+        store.todoHandler = !store.todoHandler;
+      });
   },
   getCustoms(token) {
     const url = "http://127.0.0.1:8000/api/customs/";
