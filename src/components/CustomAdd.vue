@@ -154,7 +154,6 @@ export default {
       this.minute2 = e.minute;
     },
     postCustom() {
-      //TODO Promiseで実装する
       actions.postCustom(
         this.token,
         this.title,
@@ -162,7 +161,6 @@ export default {
         this.end_time,
         this.repeatFlag
       );
-      actions.getCustoms(this.token);
     },
   },
 };

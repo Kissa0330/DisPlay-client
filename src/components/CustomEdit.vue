@@ -163,7 +163,6 @@ export default {
       this.minute2 = e.minute;
     },
     putCustom() {
-      //TODO Promiseで実装する
       actions.putCustom(
         this.token,
         this.title,
@@ -172,7 +171,6 @@ export default {
         this.end_time,
         this.custom.id
       );
-      actions.getCustoms(this.token);
     },
   },
   mounted() {

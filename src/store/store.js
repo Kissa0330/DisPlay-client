@@ -181,12 +181,20 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
-    axios.post(url, data, config).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post(url, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
   },
   putCustom(token, title, flag, start_time, end_time, id) {
-    const url = "http://127.0.0.1:8000/api/customs/" + id;
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const puturl = url + id;
     const config = {
       headers: {
         Authorization: token,
@@ -199,9 +207,16 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
-    axios.put(url, data, config).then((response) => {
-      console.log(response);
-    });
+    axios
+      .put(puturl, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
   },
   deleteCustom(id, token) {
     const url = "http://127.0.0.1:8000/api/customs/" + id;

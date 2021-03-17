@@ -201,8 +201,6 @@ export default {
       }
     }
     actions.initialCustomSetting(this.token);
-    // getCustom終了後に初期値設定の処理を行う
-    // setTimeout(addSampleCustom, 5);
   },
   methods: {
     polycyViewChange() {
