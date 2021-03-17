@@ -219,15 +219,23 @@ const actions = {
       });
   },
   deleteCustom(id, token) {
-    const url = "http://127.0.0.1:8000/api/customs/" + id;
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const deleateurl = url + id;
     const config = {
       headers: {
         Authorization: token,
       },
     };
-    axios.delete(url, config).then((response) => {
-      console.log(response);
-    });
+    axios
+      .delete(deleateurl, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
   },
   updateCustoms(customs) {
     store.customs = customs;
