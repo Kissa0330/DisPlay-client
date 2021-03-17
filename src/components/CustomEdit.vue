@@ -177,13 +177,13 @@ export default {
     let flag = this.custom.repeat_flag.split("");
     console.log(flag);
     for (let i = 0; i < flag.length; i++) {
-      // console.log("今回は" + i + "回目のループです");
-      if (flag[i]) {
+      console.log("今回は" + i + "回目のループです");
+      if (Number(flag[i])) {
         this.dayOfTheWeeks[i].isActive = true;
-        // console.log("is Activeをtrueに設定しました");
+        console.log("is Activeをtrueに設定しました");
       } else {
         this.dayOfTheWeeks[i].isActive = false;
-        // console.log("is Activeをfalseに設定しました");
+        console.log("is Activeをfalseに設定しました");
       }
     }
   },
