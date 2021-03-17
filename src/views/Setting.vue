@@ -13,10 +13,7 @@
         <p class="customDescription">(睡眠、仕事、学校、読書など)</p>
         <div class="customList">
           <div class="custom" v-for="custom in customs" :key="custom.id">
-            <div
-              class="customRight"
-              @click="customEditViewChange(custom)"
-            >
+            <div class="customRight" @click="customEditViewChange(custom)">
               <h3 class="customName">
                 {{ custom.title
                 }}<img class="Pen" src="../assets/img/Pen.svg" alt="pen" />
@@ -36,7 +33,9 @@
           Add
         </button>
         <div class="Adjustment">
-          <button class="LandscapeButton Login Next">Confirm</button>
+          <router-link to="/">
+            <button class="LandscapeButton Login Next">Confirm</button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -90,7 +89,7 @@ export default {
       deleateConfirmationView: false,
       selectedCustom: undefined,
       setID: 0,
-      custom:"",
+      custom: "",
     };
   },
   computed: {
@@ -207,10 +206,10 @@ export default {
       alert("このページは現在実装されていません");
       // this.polycyView = !this.polycyView;
     },
-    customEditViewChange(custom){
+    customEditViewChange(custom) {
       this.selectedCustom = custom;
       console.log(this.selectedCustom);
-      this.customEditView =true;
+      this.customEditView = true;
     },
     delConViewChange(id) {
       // console.log("id is " + id);
