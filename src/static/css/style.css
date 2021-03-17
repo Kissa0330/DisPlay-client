@@ -106,3 +106,7 @@ button:focus {
 input:focus {
   outline: 0;
 }
+img.Pen{
+  width: 9px;
+  height: 16px;
+}

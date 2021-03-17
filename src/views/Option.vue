@@ -8,7 +8,9 @@
     </header>
     <div class="customOptionHeader">
       <h3 class="customOptionTitle">Custom</h3>
+      <router-link to="/setting">
       <button class="LandscapeButton RessetingButton">Resseting</button>
+      </router-link>
     </div>
     <CustomTable />
     <div class="logoutSection">

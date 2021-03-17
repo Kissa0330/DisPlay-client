@@ -29,7 +29,7 @@ const actions = {
         data[i].displayDate = month + "/" + day;
       }
       store.todos = data;
-      store.todoHandler =  ! store.todoHandler;
+      store.todoHandler = !store.todoHandler;
     });
   },
   postTodo(data, token) {
@@ -52,6 +52,7 @@ const actions = {
     };
     const data = {
       id: id,
+      // TODO authorを動的に取得し設定する
       author: 1,
       title: title,
       deadline_time: deadline_time,
@@ -60,7 +61,7 @@ const actions = {
     };
     axios.put(url, data, config).then((response) => {
       console.log(response);
-      store.todoHandler = ! store.todoHandler;
+      store.todoHandler = !store.todoHandler;
     });
   },
   deleteTodo(id, token) {
@@ -83,7 +84,161 @@ const actions = {
     };
     axios.get(url, config).then((response) => {
       store.customs = response.data;
+      console.log("Customs is already update");
     });
+  },
+  initialCustomSetting(token) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    axios
+      .get(url, config)
+      .then((response) => {
+        store.customs = response.data;
+        console.log("Customs is already update");
+      })
+      .then(() => {
+        console.log("store Boolean is " + Boolean(store.customs.length));
+        if (store.customs.length) {
+          console.log("custom is set.");
+        } else {
+          console.log("custom is not set.");
+          const sampleCustoms = [
+            {
+              title: "朝食",
+              start_time: "07:00:00",
+              end_time: "07:30:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "昼食",
+              start_time: "12:00:00",
+              end_time: "13:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "夕食",
+              start_time: "19:00:00",
+              end_time: "20:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "睡眠",
+              start_time: "23:00:00",
+              end_time: "07:00:00",
+              repeatFlag: "1111111",
+            },
+            {
+              title: "入浴",
+              start_time: "22:00:00",
+              end_time: "23:30:00",
+              repeatFlag: "1111111",
+            },
+          ];
+          let myPromise = Promise.resolve();
+          for (let i = 0; i < sampleCustoms.length; i++) {
+            myPromise = myPromise
+              .then(postSampleCustom.bind(this, i))
+              .then((response) => {
+                console.log(response);
+              });
+          }
+          myPromise
+            .then(function () {
+              return axios.get(url, config);
+            })
+            .then((response) => {
+              console.log(response.data);
+              store.customs = response.data;
+            });
+          function postSampleCustom(i) {
+            let data = {
+              author: "1",
+              title: sampleCustoms[i].title,
+              start_time: sampleCustoms[i].start_time,
+              end_time: sampleCustoms[i].end_time,
+              repeat_flag: sampleCustoms[i].repeatFlag,
+            };
+            return axios.post(url, data, config);
+          }
+        }
+      });
+  },
+  postCustom(token, title, start_time, end_time, flag) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const data = {
+      author: "1",
+      title: title,
+      start_time: start_time,
+      end_time: end_time,
+      repeat_flag: flag,
+    };
+    axios
+      .post(url, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
+  },
+  putCustom(token, title, flag, start_time, end_time, id) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const puturl = url + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const data = {
+      author: "1",
+      title: title,
+      start_time: start_time,
+      end_time: end_time,
+      repeat_flag: flag,
+    };
+    axios
+      .put(puturl, data, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
+  },
+  deleteCustom(id, token) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const deleateurl = url + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    axios
+      .delete(deleateurl, config)
+      .then((response) => {
+        console.log(response);
+        return axios.get(url, config);
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.customs = response.data;
+      });
+  },
+  updateCustoms(customs) {
+    store.customs = customs;
   },
   postAuth(username, password, _this) {
     let data = {
@@ -115,9 +270,6 @@ const actions = {
       store.token = "jwt " + tokenValue;
     }
     console.log("token is already updated");
-  },
-  updateCustoms(customs) {
-    store.customs = customs;
   },
 };
 
