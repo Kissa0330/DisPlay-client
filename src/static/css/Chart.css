@@ -4,24 +4,29 @@
 /* ScheduleDetailのアニメーション */
 .v-enter {
   opacity: 0;
+  top: 300px;
 }
 
 .v-enter-to {
   opacity: 1;
+  top: 80px;
 }
 
 .v-enter-active {
-  transition: all 250ms;
+  transition: all 370ms;
 }
 
 .v-leave {
   opacity: 1;
+  top: 80px;
 }
 
 .v-leave-to {
   opacity: 0;
+  top: 300px;
+
 }
 
 .v-leave-active {
-  transition: all 250ms;
+  transition: all 370ms;
 }
