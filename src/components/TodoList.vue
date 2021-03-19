@@ -17,18 +17,24 @@
         @childEvent="todoPutView = false"
       />
     </transition>
+    <transition>
+      <TodoEdit
+        :id="this.id"
+        :title="this.title"
+        :date="this.d_date"
+        :time="this.d_time"
+        v-if="todoEditView"
+        @childEvent="todoEditView = false"
+      />
+    </transition>
     <div class="TodoMenu">
       <div class="MenuRight">
         <h3>Todolist</h3>
       </div>
       <div class="MenuLeft">
         <button class="LandscapeButton" @click="todoAddView = true">
-          <div class="buttonText">Add</div></button
-        ><img
-          class="Trashcan"
-          src="../assets/img/Trashcan.svg"
-          alt="trashcan"
-        />
+          <div class="buttonText">Add</div>
+        </button>
       </div>
     </div>
     <div class="TaskList">
@@ -66,15 +72,17 @@
 import axios from "axios";
 import TodoAdd from "./TodoAdd";
 import TodoPut from "./TodoPut";
+import TodoEdit from "./TodoEdit";
 import { store, actions } from "../store/store";
 
 export default {
   name: "TodoList",
-  components: { TodoAdd, TodoPut },
+  components: { TodoAdd, TodoPut, TodoEdit },
   data: function () {
     return {
       todoAddView: false,
       todoPutView: false,
+      todoEditView: false,
       id: Number,
       d_date: "",
       d_time: "",
