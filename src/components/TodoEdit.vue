@@ -1,5 +1,5 @@
 <template>
-  <div class="todoAdd">
+  <div class="todoEdit">
     <div class="wrap">
       <div class="detailHeader">
         <div class="headerLeft">
@@ -7,7 +7,7 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText" @click="postTodo">Add</div>
+          <div class="editText" @click="postTodo">Delete</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
@@ -49,20 +49,20 @@
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
+    <button class="LandscapeButton Login">Update</button>
   </div>
 </template>
-<style scoped src="../static/css/TodoAdd.css"></style>
+<style scoped src="../static/css/TodoEdit.css"></style>
 <script>
-import { store,actions } from "../store/store";
+import { store, actions } from "../store/store";
 
 export default {
-  name: "TodoAdd",
+  name: "TodoEdit",
   data: function () {
     let date = new Date();
     let month = date.getMonth() + 1;
     let day = date.getDate();
     return {
-      title: "",
       month: month,
       day: day,
     };
@@ -80,6 +80,20 @@ export default {
       return store.token;
     },
   },
+  props: {
+    id: {
+      type: Number,
+    },
+    title: {
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    time: {
+      type: String,
+    },
+  },
   methods: {
     sendTodoAddView() {
       this.$emit("childEvent");
@@ -91,7 +105,7 @@ export default {
         deadline_time:
           "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
       };
-      actions.postTodo(data,this.token);
+      actions.postTodo(data, this.token);
       this.$emit("childEvent");
     },
   },

@@ -1,11 +1,7 @@
 <template>
   <div>
     <transition>
-      <TodoAdd
-        v-if="todoAddView"
-        @childEvent="todoAddView = false"
-        @notificationPost="reGetTodo"
-      />
+      <TodoAdd v-if="todoAddView" @childEvent="todoAddView = false" />
     </transition>
     <transition>
       <TodoPut
@@ -17,24 +13,41 @@
         @childEvent="todoPutView = false"
       />
     </transition>
+    <transition>
+      <TodoEdit
+        :id="this.id"
+        :title="this.title"
+        :date="this.d_date"
+        :time="this.d_time"
+        v-if="todoEditView"
+        @childEvent="todoEditView = false"
+      />
+    </transition>
     <div class="TodoMenu">
       <div class="MenuRight">
         <h3>Todolist</h3>
       </div>
       <div class="MenuLeft">
         <button class="LandscapeButton" @click="todoAddView = true">
-          <div class="buttonText">Add</div></button
-        ><img
-          class="Trashcan"
-          src="../assets/img/Trashcan.svg"
-          alt="trashcan"
-        />
+          <div class="buttonText">Add</div>
+        </button>
       </div>
     </div>
     <div class="TaskList">
       <div class="Task" v-for="todo in todos" :key="todo.id">
         <div class="TaskWrapper">
-          <h4 class="TaskTitle">{{ todo.title }}</h4>
+          <h4
+            class="TaskTitle"
+            @click="
+              (todoEditView = true),
+                (id = todo.id),
+                (d_date = todo.d_date),
+                (d_time = todo.d_time),
+                (title = todo.title)
+            "
+          >
+            {{ todo.title }}
+          </h4>
           <button
             class="CircleButton Play"
             @click="
@@ -66,15 +79,17 @@
 import axios from "axios";
 import TodoAdd from "./TodoAdd";
 import TodoPut from "./TodoPut";
+import TodoEdit from "./TodoEdit";
 import { store, actions } from "../store/store";
 
 export default {
   name: "TodoList",
-  components: { TodoAdd, TodoPut },
+  components: { TodoAdd, TodoPut, TodoEdit },
   data: function () {
     return {
       todoAddView: false,
       todoPutView: false,
+      todoEditView: false,
       id: Number,
       d_date: "",
       d_time: "",
@@ -93,10 +108,6 @@ export default {
     actions.getTodo(this.token);
   },
   methods: {
-    reGetTodo() {
-      actions.getTodo(this.token);
-      this.todoAddView = false;
-    },
     deleteTodo(id) {
       actions.deleteTodo(id, this.token);
       actions.getTodo(this.token);

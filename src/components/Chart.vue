@@ -99,6 +99,7 @@ export default {
             this.customs[i].calculateEndTime = endTime;
             actions.updateCustoms(this.customs);
 
+            console.log(code + " " + i)
             depiction.createGradient(
               gradients[code].color,
               gradients[code].color1,

@@ -134,7 +134,6 @@ export default {
                   this.end_time,
                   this.token
                 );
-                actions.getTodo(this.token);
                 this.$emit("childEvent");
               }
             } else {

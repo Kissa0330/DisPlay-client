@@ -1,14 +1,14 @@
-.todoAdd {
+.todoEdit {
   opacity: 1;
   position: fixed;
-  top: 80px;
+  top: 60px;
   margin: 100px 12px 0 12px;
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
   border-radius: 14px;
   width: 351px;
-  height: 230px;
+  height: 287px;
 }
 .detailHeader {
   display: flex;
@@ -16,7 +16,7 @@
 }
 h3.captionText {
   font-family: "Roboto", sans-serif;
-  margin: 26px 0 0 27px;
+  margin: 33px 0 0 27px;
   font-size: 15px;
   text-align: left;
   font-weight: 300;
@@ -57,9 +57,9 @@ img.stick.first{
 .editText {
   cursor: pointer;
   text-align: right;
-  margin: 24px 16px 0 0;
+  margin: 28px 16px 0 0;
   font-family: "Roboto", sans-serif;
-  color: #8baaf0;
+  color: #fa696a;
   font-weight: 300;
   letter-spacing: 0.15em;
   font-size: 15px;
@@ -80,6 +80,10 @@ img.X {
 img.Pen{
   margin: -4px 0 0 5px;
 }
+button.LandscapeButton{
+  display: block;
+  margin: 35px 28px 0 auto;
+}
 .v-enter {
   opacity: 0;
   top: 270px;
@@ -87,7 +91,7 @@ img.Pen{
 
 .v-enter-to {
   opacity: 1;
-  top: 80px;
+  top: 60px;
 }
 
 .v-enter-active {
@@ -96,7 +100,7 @@ img.Pen{
 
 .v-leave {
   opacity: 1;
-  top: 80px;
+  top: 60px;
 }
 
 .v-leave-to {
