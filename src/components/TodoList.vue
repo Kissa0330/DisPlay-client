@@ -1,11 +1,7 @@
 <template>
   <div>
     <transition>
-      <TodoAdd
-        v-if="todoAddView"
-        @childEvent="todoAddView = false"
-        @notificationPost="reGetTodo"
-      />
+      <TodoAdd v-if="todoAddView" @childEvent="todoAddView = false" />
     </transition>
     <transition>
       <TodoPut
@@ -40,7 +36,18 @@
     <div class="TaskList">
       <div class="Task" v-for="todo in todos" :key="todo.id">
         <div class="TaskWrapper">
-          <h4 class="TaskTitle">{{ todo.title }}</h4>
+          <h4
+            class="TaskTitle"
+            @click="
+              (todoEditView = true),
+                (id = todo.id),
+                (d_date = todo.d_date),
+                (d_time = todo.d_time),
+                (title = todo.title)
+            "
+          >
+            {{ todo.title }}
+          </h4>
           <button
             class="CircleButton Play"
             @click="
@@ -101,10 +108,6 @@ export default {
     actions.getTodo(this.token);
   },
   methods: {
-    reGetTodo() {
-      actions.getTodo(this.token);
-      this.todoAddView = false;
-    },
     deleteTodo(id) {
       actions.deleteTodo(id, this.token);
       actions.getTodo(this.token);

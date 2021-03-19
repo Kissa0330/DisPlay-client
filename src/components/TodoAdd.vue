@@ -92,7 +92,7 @@ export default {
           "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
       };
       actions.postTodo(data,this.token);
-      this.$emit("notificationPost");
+      this.$emit("childEvent");
     },
   },
 };
