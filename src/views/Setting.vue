@@ -57,8 +57,8 @@
     </transition>
     <transition name="deleteConfirmation">
       <deleteConfirmation
-        v-if="deleteConfirmationView"
-        @childEvent="deleteConfirmationView = false"
+        v-if="delConView"
+        @childEvent="delConView = false"
         :id="setID"
         :typeCheck="type"
       >
@@ -87,7 +87,7 @@ export default {
       customAddView: false,
       customEditView: false,
       polycyView: false,
-      deleteConfirmationView: false,
+      delConView: false,
       selectedCustom: undefined,
       setID: 0,
       custom: "",
@@ -217,7 +217,7 @@ export default {
       // console.log("id is " + id);
       this.setID = id;
       // console.log("this.setID is " + this.setID);
-      this.deleteConfirmationView = true;
+      this.delConView = true;
     },
   },
 };

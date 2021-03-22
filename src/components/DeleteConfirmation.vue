@@ -1,5 +1,5 @@
 <template>
-  <div class="deleeConfirmation">
+  <div class="deleteConfirmation">
     <h2 class="confirmationText">本当に削除しても<br />よろしいですか？</h2>
     <div class="verticalLine"></div>
     <div class="choices">
@@ -33,7 +33,8 @@ export default {
       actions.deleteCustom(id, this.token);
       this.$emit("childEvent");
       }else if(this.typeCheck === "todo"){
-        alert("TODO時の処理を実装, idは" + id + "です")
+        actions.deleteTodo(id, this.token);
+        this.$emit("childEvent");
       }
     },
   },

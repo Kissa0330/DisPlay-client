@@ -95,32 +95,4 @@ button.Next{
   transition: all 500ms ease-in-out;
 }
 
-/* deleteConfirmationのアニメーション */
-.deleteConfirmation-enter {
-  opacity: 0;
-  top: 300px;
-}
-
-.deleteConfirmation-enter-to {
-  opacity: 1;
-  top: 180px;
-}
-
-.deleteConfirmation-enter-active {
-  transition: all 400ms ease-in-out;
-}
-
-.deleteConfirmation-leave {
-  opacity: 1;
-  top: 180px;
-}
-
-.deleteConfirmation-leave-to {
-  opacity: 0;
-  top: 300px
-}
-
-.deleteConfirmation-leave-active {
-  transition: all 400ms ease-in-out;
-}
 

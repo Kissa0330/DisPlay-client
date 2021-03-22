@@ -49,15 +49,27 @@
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
-    <button class="LandscapeButton Login">Update</button>
+    <button class="LandscapeButton Login" @click="updateTodo">Update</button>
+    <transition name="deleteConfirmation">
+      <DeleteConfirmation
+        v-if="delConView"
+        @childEvent="delConView = false"
+        :id="id"
+        :typeCheck="type"
+      />
+    </transition>
   </div>
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
 import { store } from "../store/store";
+import DeleteConfirmation from "./DeleteConfirmation";
 
 export default {
   name: "TodoEdit",
+  components: {
+    DeleteConfirmation,
+  },
   data: function () {
     let date = new Date();
     let month = date.getMonth() + 1;
@@ -65,6 +77,8 @@ export default {
     return {
       month: month,
       day: day,
+      delConView: false,
+      type: "todo",
     };
   },
   computed: {
@@ -99,10 +113,11 @@ export default {
       this.$emit("childEvent");
     },
     deleteTodo() {
-      // 削除確認を出し、deleteリクエストを送る
-      alert("未実装です");
-      this.$emit("childEvent");
+      this.delConView = true;
     },
+    updateTodo(){
+      alert("未実装")
+    }
   },
 };
 </script>
