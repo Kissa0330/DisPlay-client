@@ -7,7 +7,7 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText" @click="postTodo">Delete</div>
+          <div class="editText" @click="deleteTodo">Delete</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
@@ -54,7 +54,7 @@
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { store } from "../store/store";
 
 export default {
   name: "TodoEdit",
@@ -98,14 +98,9 @@ export default {
     sendTodoAddView() {
       this.$emit("childEvent");
     },
-    postTodo() {
-      let data = {
-        author: 1,
-        title: this.title,
-        deadline_time:
-          "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
-      };
-      actions.postTodo(data, this.token);
+    deleteTodo() {
+      // 削除確認を出し、deleteリクエストを送る
+      alert("未実装です");
       this.$emit("childEvent");
     },
   },
