@@ -269,14 +269,14 @@ const actions = {
   },
   deleteCustom(id, token) {
     const url = "http://127.0.0.1:8000/api/customs/";
-    const deleateurl = url + id;
+    const deleteurl = url + id;
     const config = {
       headers: {
         Authorization: token,
       },
     };
     axios
-      .delete(deleateurl, config)
+      .delete(deleteurl, config)
       .then((response) => {
         console.log(response);
         return axios.get(url, config);

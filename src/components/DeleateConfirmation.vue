@@ -1,5 +1,5 @@
 <template>
-  <div class="deleateConfirmation">
+  <div class="deleeConfirmation">
     <h2 class="confirmationText">本当に削除しても<br />よろしいですか？</h2>
     <div class="verticalLine"></div>
     <div class="choices">
@@ -13,11 +13,11 @@
     </div>
   </div>
 </template>
-<style src="../static/css/DeleateConfirmation.css" scoped></style>
+<style src="../static/css/deleeConfirmation.css" scoped></style>
 <script>
 import { store, actions } from "../store/store";
 export default {
-  name: "DeleateConfirmation",
+  name: "deleeConfirmation",
   data: function () {
     return {
       token: store.token,
