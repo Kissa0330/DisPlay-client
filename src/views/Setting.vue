@@ -60,6 +60,7 @@
         v-if="deleateConfirmationView"
         @childEvent="deleateConfirmationView = false"
         :id="setID"
+        :typeCheck="type"
       >
       </DeleateConfirmation>
     </transition>
@@ -90,6 +91,7 @@ export default {
       selectedCustom: undefined,
       setID: 0,
       custom: "",
+      type: "custom",
     };
   },
   computed: {
