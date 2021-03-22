@@ -13,7 +13,7 @@
     </div>
   </div>
 </template>
-<style src="../static/css/deleeConfirmation.css" scoped></style>
+<style src="../static/css/DeleteConfirmation.css" scoped></style>
 <script>
 import { store, actions } from "../store/store";
 export default {
