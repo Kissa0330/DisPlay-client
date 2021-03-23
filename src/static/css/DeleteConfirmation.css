@@ -1,4 +1,4 @@
-.deleateConfirmation {
+.deleteConfirmation {
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
@@ -42,4 +42,33 @@ h2.confirmationText {
   font-size: 15px;
   color: #FA696A;
   margin: 17px 0 0 0;
+}
+
+/* deleteConfirmationのアニメーション */
+.deleteConfirmation-enter {
+  opacity: 0;
+  top: 300px;
+}
+
+.deleteConfirmation-enter-to {
+  opacity: 1;
+  top: 180px;
+}
+
+.deleteConfirmation-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.deleteConfirmation-leave {
+  opacity: 1;
+  top: 180px;
+}
+
+.deleteConfirmation-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.deleteConfirmation-leave-active {
+  transition: all 400ms ease-in-out;
 }

@@ -84,6 +84,7 @@
     >
       Update
     </button>
+    
   </div>
 </template>
 <style scoped src="../static/css/CustomEdit.css"></style>

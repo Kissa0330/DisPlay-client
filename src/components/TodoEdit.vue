@@ -7,7 +7,7 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText" @click="postTodo">Delete</div>
+          <div class="editText" @click="deleteTodo">Delete</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
@@ -20,7 +20,7 @@
         <input
           class="titleInputArea"
           type="text"
-          v-model="title"
+          v-model="newTitle"
           placeholder="enter title"
           :style="{ width: inputTitleWidth }"
         />
@@ -49,22 +49,37 @@
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
-    <button class="LandscapeButton Login">Update</button>
+    <button class="LandscapeButton Login" @click="updateTodo">Update</button>
+    <transition name="deleteConfirmation">
+      <DeleteConfirmation
+        v-if="delConView"
+        @childEvent="delConView = false"
+        :id="id"
+        :typeCheck="type"
+      />
+    </transition>
   </div>
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
 import { store, actions } from "../store/store";
+import DeleteConfirmation from "./DeleteConfirmation";
 
 export default {
   name: "TodoEdit",
+  components: {
+    DeleteConfirmation,
+  },
   data: function () {
-    let date = new Date();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
+    let date = this.date.split("-");
+    let month = Number(date[1]);
+    let day = Number(date[2]);
     return {
+      newTitle: this.title,
       month: month,
       day: day,
+      delConView: false,
+      type: "todo",
     };
   },
   computed: {
@@ -78,6 +93,10 @@ export default {
     },
     token() {
       return store.token;
+    },
+    deadline_time() {
+      let date = this.date.split("-");
+      return date[0] + "-" + this.month + "-" + this.day + "T" + this.time + "+09:00";
     },
   },
   props: {
@@ -98,14 +117,19 @@ export default {
     sendTodoAddView() {
       this.$emit("childEvent");
     },
-    postTodo() {
-      let data = {
-        author: 1,
-        title: this.title,
-        deadline_time:
-          "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
-      };
-      actions.postTodo(data, this.token);
+    deleteTodo() {
+      this.delConView = true;
+    },
+    updateTodo() {
+      actions.putTodo(
+        false,
+        this.id,
+        this.newTitle,
+        this.deadline_time,
+        null,
+        null,
+        this.token
+      );
       this.$emit("childEvent");
     },
   },

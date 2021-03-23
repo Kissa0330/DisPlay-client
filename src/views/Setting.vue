@@ -55,13 +55,14 @@
     <transition>
       <Polycy v-if="polycyView"> </Polycy>
     </transition>
-    <transition name="deleateConfirmation">
-      <DeleateConfirmation
-        v-if="deleateConfirmationView"
-        @childEvent="deleateConfirmationView = false"
+    <transition name="deleteConfirmation">
+      <deleteConfirmation
+        v-if="delConView"
+        @childEvent="delConView = false"
         :id="setID"
+        :typeCheck="type"
       >
-      </DeleateConfirmation>
+      </deleteConfirmation>
     </transition>
   </div>
 </template>
@@ -71,14 +72,14 @@
 import CustomAdd from "../components/CustomAdd";
 import CustomEdit from "../components/CustomEdit";
 import Polycy from "../components/Polycy";
-import DeleateConfirmation from "../components/DeleateConfirmation";
+import deleteConfirmation from "../components/DeleteConfirmation";
 import { store, actions } from "../store/store";
 export default {
   name: "Setting",
   components: {
     CustomAdd,
     Polycy,
-    DeleateConfirmation,
+    deleteConfirmation,
     CustomEdit,
   },
   data: function () {
@@ -86,10 +87,11 @@ export default {
       customAddView: false,
       customEditView: false,
       polycyView: false,
-      deleateConfirmationView: false,
+      delConView: false,
       selectedCustom: undefined,
       setID: 0,
       custom: "",
+      type: "custom",
     };
   },
   computed: {
@@ -215,7 +217,7 @@ export default {
       // console.log("id is " + id);
       this.setID = id;
       // console.log("this.setID is " + this.setID);
-      this.deleateConfirmationView = true;
+      this.delConView = true;
     },
   },
 };
