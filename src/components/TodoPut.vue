@@ -127,6 +127,7 @@ export default {
             ) {
               if ((i = store.customs.length - 1)) {
                 actions.putTodo(
+                  true,
                   this.id,
                   this.title,
                   this.deadline_time,

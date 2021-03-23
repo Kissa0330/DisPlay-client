@@ -20,7 +20,7 @@
         <input
           class="titleInputArea"
           type="text"
-          v-model="title"
+          v-model="newTitle"
           placeholder="enter title"
           :style="{ width: inputTitleWidth }"
         />
@@ -62,7 +62,7 @@
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
-import { store } from "../store/store";
+import { store, actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
 
 export default {
@@ -71,10 +71,11 @@ export default {
     DeleteConfirmation,
   },
   data: function () {
-    let date = new Date();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
+    let date = this.date.split("-");
+    let month = Number(date[1]);
+    let day = Number(date[2]);
     return {
+      newTitle: this.title,
       month: month,
       day: day,
       delConView: false,
@@ -92,6 +93,10 @@ export default {
     },
     token() {
       return store.token;
+    },
+    deadline_time() {
+      let date = this.date.split("-");
+      return date[0] + "-" + this.month + "-" + this.day + "T" + this.time + "+09:00";
     },
   },
   props: {
@@ -115,9 +120,18 @@ export default {
     deleteTodo() {
       this.delConView = true;
     },
-    updateTodo(){
-      alert("未実装")
-    }
+    updateTodo() {
+      actions.putTodo(
+        false,
+        this.id,
+        this.newTitle,
+        this.deadline_time,
+        null,
+        null,
+        this.token
+      );
+      this.$emit("childEvent");
+    },
   },
 };
 </script>

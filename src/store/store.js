@@ -59,7 +59,7 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  putTodo(id, title, deadline_time, start_time, end_time, token) {
+  putTodo(setTime, id, title, deadline_time, start_time, end_time, token) {
     const url = "http://127.0.0.1:8000/api/todo/";
     const puturl = url + id;
     const config = {
@@ -67,15 +67,27 @@ const actions = {
         Authorization: token,
       },
     };
-    const data = {
-      id: id,
-      // TODO authorを動的に取得し設定する
-      author: 1,
-      title: title,
-      deadline_time: deadline_time,
-      start_time: start_time,
-      end_time: end_time,
-    };
+    let data;
+    if (setTime) {
+      console.log("setTime")
+      data = {
+        id: id,
+        author: 1,
+        title: title,
+        deadline_time: deadline_time,
+        start_time: start_time,
+        end_time: end_time,
+      };
+    } else {
+      console.log("not setTime")
+      data = {
+        id: id,
+        author: 1,
+        title: title,
+        deadline_time: deadline_time,
+      };
+    }
+
     axios
       .put(puturl, data, config)
       .then((response) => {
