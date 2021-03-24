@@ -35,7 +35,6 @@
         <Datepicker
           v-model="date"
           :format="DatePickerFormat"
-          :value="defaultDate"
           :typeable="true"
           :input-class="inputClass"
         />
@@ -57,14 +56,10 @@ export default {
   },
   data: function () {
     let date = new Date();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
     return {
       date: date,
       title: "",
-      defaultDate: month + "/" + day,
       DatePickerFormat: "M/d",
-      test: "",
       inputClass:"datepicker"
     };
   },

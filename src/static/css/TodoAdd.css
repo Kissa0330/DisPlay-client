@@ -66,10 +66,9 @@ img.X {
 }
 .field {
   display: flex;
-  margin: 0 0 0 29px;
 }
 .datepickerWrap {
-  margin: -10px 0 0 0;
+  margin: -9px 0 0 0;
 }
 img.Pen {
   margin: -4px 0 0 5px;
