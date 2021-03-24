@@ -41,9 +41,9 @@ export default {
     todos() {
       return store.todos;
     },
-    todoHandler(){
+    todoHandler() {
       return store.todoHandler;
-    }
+    },
   },
   mounted() {
     depiction.svg();
@@ -99,7 +99,6 @@ export default {
             this.customs[i].calculateEndTime = endTime;
             actions.updateCustoms(this.customs);
 
-            console.log(code + " " + i)
             depiction.createGradient(
               gradients[code].color,
               gradients[code].color1,

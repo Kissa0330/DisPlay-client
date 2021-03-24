@@ -31,21 +31,14 @@
       <h3 class="captionText">Deadline</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <input
-          type="number"
-          min="1"
-          max="12"
-          class="dateInputArea"
-          v-model="month"
-        />
-        <h2 class="dateText">/</h2>
-        <input
-          type="number"
-          min="1"
-          max="31"
-          class="dateInputArea"
-          v-model="day"
-        />
+        <div class="datepickerWrap">
+          <Datepicker
+            v-model="newDate"
+            :format="DatePickerFormat"
+            :typeable="true"
+            :input-class="inputClass"
+          />
+        </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -64,11 +57,13 @@
 <script>
 import { store, actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
+import Datepicker from "vuejs-datepicker";
 
 export default {
   name: "TodoEdit",
   components: {
     DeleteConfirmation,
+    Datepicker,
   },
   data: function () {
     let date = this.date.split("-");
@@ -80,6 +75,9 @@ export default {
       day: day,
       delConView: false,
       type: "todo",
+      newDate: month + "/" + day,
+      DatePickerFormat: "M/d",
+      inputClass: "datepicker",
     };
   },
   computed: {
@@ -95,8 +93,10 @@ export default {
       return store.token;
     },
     deadline_time() {
-      let date = this.date.split("-");
-      return date[0] + "-" + this.month + "-" + this.day + "T" + this.time + "+09:00";
+      let year = this.newDate.getFullYear();
+      let month = this.newDate.getMonth() + 1;
+      let day = this.newDate.getDate();
+      return year + "-" + month + "-" + day + "T" + this.time + "+09:00";
     },
   },
   props: {
