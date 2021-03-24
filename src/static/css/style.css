@@ -110,3 +110,13 @@ img.Pen{
   width: 9px;
   height: 16px;
 }
+
+input.datepicker{
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  font-size: 17px;
+  height: auto;
+  width: 60px;
+}

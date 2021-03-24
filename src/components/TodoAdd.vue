@@ -31,12 +31,15 @@
       <h3 class="captionText">Deadline</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
+        <div class="datepickerWrap">
         <Datepicker
           v-model="date"
           :format="DatePickerFormat"
           :value="defaultDate"
           :typeable="true"
+          :input-class="inputClass"
         />
+        </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -62,6 +65,7 @@ export default {
       defaultDate: month + "/" + day,
       DatePickerFormat: "M/d",
       test: "",
+      inputClass:"datepicker"
     };
   },
   computed: {

@@ -21,7 +21,7 @@ h3.captionText {
   text-align: left;
   font-weight: 300;
 }
-input.titleInputArea{
+input.titleInputArea {
   font-family: "Roboto", sans-serif;
   margin: -10px 0 0 0;
   font-size: 15px;
@@ -30,22 +30,13 @@ input.titleInputArea{
   letter-spacing: 0.15em;
   height: auto;
 }
-input.dateInputArea{
-  font-family: "Roboto", sans-serif;
-  margin: -14px 0 0 0;
-  font-size: 17px;
-  text-align: left;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  height: auto;
-}
-img.stick{
+img.stick {
   margin: 0 237px 0 27px;
   vertical-align: top;
   height: 1px;
   width: 87px;
 }
-img.stick.first{
+img.stick.first {
   margin: 0 0 0 27px;
   vertical-align: top;
   height: 1px;
@@ -71,13 +62,16 @@ img.X {
 
 .field h2 {
   text-align: left;
-  margin: -14px 0 0 0;
+  
 }
 .field {
   display: flex;
   margin: 0 0 0 29px;
 }
-img.Pen{
+.datepickerWrap {
+  margin: -10px 0 0 0;
+}
+img.Pen {
   margin: -4px 0 0 5px;
 }
 .v-enter {
@@ -110,6 +104,6 @@ img.Pen{
 /* delete input allows */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
