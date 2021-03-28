@@ -9,6 +9,13 @@
       <div id="CustomTable" />
       <div id="CustomTable" />
     </div>
+    <transition name="customAdd">
+      <CustomEdit
+        v-if="customEditView"
+        @childEvent="customEditView = false"
+        :custom="selectedCustom"
+      ></CustomEdit>
+    </transition>
   </div>
 </template>
 <style scoped>
@@ -25,10 +32,17 @@
 /* eslint-disable */
 import depiction from "../static/js/depictionCustomTable";
 import gradients from "../assets/gradients";
+import CustomEdit from "./CustomEdit";
 import { store, actions } from "../store/store";
 
 export default {
   name: "CustomTable",
+  components: { CustomEdit },
+  data: function () {
+    return {
+      customEditView: false,
+    };
+  },
   computed: {
     customs() {
       return store.customs;
