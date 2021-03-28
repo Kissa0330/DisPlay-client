@@ -9,13 +9,13 @@
     <div class="customOptionHeader">
       <h3 class="customOptionTitle">Custom</h3>
       <router-link to="/setting">
-      <button class="LandscapeButton RessetingButton">Resseting</button>
+        <button class="LandscapeButton RessetingButton">Resseting</button>
       </router-link>
     </div>
     <CustomTable />
     <div class="logoutSection">
       <h3 class="logoutTitle">Logout</h3>
-      <button class="Logout LandscapeButton">Logout</button>
+      <button class="Logout LandscapeButton" @click="logout">Logout</button>
     </div>
   </div>
 </template>
@@ -25,5 +25,11 @@ import CustomTable from "../components/CustomTable";
 export default {
   name: "Option",
   components: { CustomTable },
+  methods: {
+    logout() {
+      document.cookie = "token=; max-age=0";
+      location.reload();
+    },
+  },
 };
 </script>
