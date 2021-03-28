@@ -1,7 +1,7 @@
 <template>
-  <div class="completeConfirmation">
+  <div class="logoutConfirmation">
     <h2 class="confirmationText">
-      タスクを完了状態にして<br />よろしいですか？
+      本当にログアウト<br />よろしいですか？
     </h2>
     <div class="verticalLine"></div>
     <div class="choices">
@@ -9,30 +9,29 @@
         <h3 class="positiveText">いいえ</h3>
       </div>
       <div class="sideLine"></div>
-      <div class="hitBox" @click="deleteRequest(id)">
+      <div class="hitBox" @click="deleteToken()">
         <h3 class="negativeText">はい</h3>
       </div>
     </div>
   </div>
 </template>
-<style src="../static/css/CompleteConfirmation.css" scoped></style>
+<style src="../static/css/LogoutConfirmation.css" scoped></style>
 <script>
-import { store, actions } from "../store/store";
+import { store} from "../store/store";
 export default {
-  name: "completeConfirmation",
+  name: "logoutConfirmation",
   data: function () {
     return {
       token: store.token,
     };
   },
-  props: ["id"],
   methods: {
     sendComConViewChange() {
       this.$emit("childEvent");
     },
-    deleteRequest(id) {
-      actions.deleteTodo(id, this.token);
-      this.$emit("childEvent");
+    deleteToken() {
+      document.cookie = "token=; max-age=0";
+      location.reload();
     },
   },
 };
