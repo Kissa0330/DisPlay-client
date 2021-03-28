@@ -1,0 +1,74 @@
+.logoutConfirmation {
+  background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
+  border-radius: 14px;
+  width: 267px;
+  height: 178px;
+  position: fixed;
+  top: 180px;
+  left: calc(50% - 267px / 2);
+}
+h2.confirmationText {
+  margin: 33px 0 0 0;
+  line-height: 30px;
+}
+.verticalLine {
+  background-color: #cccccc;
+  height: 0.1px;
+  width: 267px;
+  margin: 34px 0 0 0;
+}
+.choices{
+  display: flex;
+  justify-content: space-between;
+}
+.sideLine{
+  width: 1px;
+  height: 54px;
+  background-color:#cccccc;
+}
+.hitBox{
+  width: 132.5px;
+  height: 54px;
+  cursor: pointer;
+}
+.positiveText{
+  font-size: 15px;
+  color: #6BB3FC;
+  margin: 16px 0 0 0;
+}
+.negativeText{
+  font-size: 15px;
+  color: #FA696A;
+  margin: 17px 0 0 0;
+}
+
+/* logoutConfirmationのアニメーション */
+.logoutConfirmation-enter {
+  opacity: 0;
+  top: 300px;
+}
+
+.logoutConfirmation-enter-to {
+  opacity: 1;
+  top: 180px;
+}
+
+.logoutConfirmation-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.logoutConfirmation-leave {
+  opacity: 1;
+  top: 180px;
+}
+
+.logoutConfirmation-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.logoutConfirmation-leave-active {
+  transition: all 400ms ease-in-out;
+}

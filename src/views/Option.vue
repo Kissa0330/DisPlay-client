@@ -15,20 +15,31 @@
     <CustomTable />
     <div class="logoutSection">
       <h3 class="logoutTitle">Logout</h3>
-      <button class="Logout LandscapeButton" @click="logout">Logout</button>
+      <button class="Logout LandscapeButton" @click="logoutConViewChange">Logout</button>
+      <transition name="logoutConfirmation">
+        <LogoutConfirmation
+          v-if="logoutConView"
+          @childEvent="logoutConView = false"
+        />
+      </transition>
     </div>
   </div>
 </template>
 <style scoped src="../static/css/Option.css"></style>
 <script>
 import CustomTable from "../components/CustomTable";
+import LogoutConfirmation from "../components/LogoutConfirmation.vue";
 export default {
   name: "Option",
-  components: { CustomTable },
+  components: { CustomTable, LogoutConfirmation },
+  data: function () {
+    return {
+      logoutConView: false,
+    };
+  },
   methods: {
-    logout() {
-      document.cookie = "token=; max-age=0";
-      location.reload();
+    logoutConViewChange() {
+      this.logoutConView = true;
     },
   },
 };

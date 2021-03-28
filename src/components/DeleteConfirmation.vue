@@ -17,7 +17,7 @@
 <script>
 import { store, actions } from "../store/store";
 export default {
-  name: "deleeConfirmation",
+  name: "deleteConfirmation",
   data: function () {
     return {
       token: store.token,
