@@ -23,6 +23,12 @@
         @childEvent="todoEditView = false"
       />
     </transition>
+    <transition name="completeConfirmation">
+      <CompleteConfirmation
+        @childEvent="comConView = false"
+        v-if="comConView"
+      />
+    </transition>
     <div class="TodoMenu">
       <div class="MenuRight">
         <h3>Todolist</h3>
@@ -63,7 +69,10 @@
               src="../assets/img/Play.svg"
               alt="Play"
             /></button
-          ><button class="CircleButton Check" @click="deleteTodo(todo.id)">
+          ><button
+            class="CircleButton Check"
+            @click="(comConView = true), (id = todo.id)"
+          >
             <img src="../assets/img/Check.svg" alt="check" />
           </button>
           <p class="TaskDeadline">Deadline {{ todo.displayDate }}</p>
@@ -80,16 +89,18 @@ import axios from "axios";
 import TodoAdd from "./TodoAdd";
 import TodoPut from "./TodoPut";
 import TodoEdit from "./TodoEdit";
+import CompleteConfirmation from "./CompleteConfirmation";
 import { store, actions } from "../store/store";
 
 export default {
   name: "TodoList",
-  components: { TodoAdd, TodoPut, TodoEdit },
+  components: { TodoAdd, TodoPut, TodoEdit, CompleteConfirmation },
   data: function () {
     return {
       todoAddView: false,
       todoPutView: false,
       todoEditView: false,
+      comConView: true,
       id: Number,
       d_date: "",
       d_time: "",
@@ -107,11 +118,11 @@ export default {
   mounted() {
     actions.getTodo(this.token);
   },
-  methods: {
-    deleteTodo(id) {
-      actions.deleteTodo(id, this.token);
-      actions.getTodo(this.token);
-    },
-  },
+  // methods: {
+  //   deleteTodo(id) {
+  //     actions.deleteTodo(id, this.token);
+  //     actions.getTodo(this.token);
+  //   },
+  // },
 };
 </script>
