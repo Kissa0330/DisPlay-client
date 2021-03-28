@@ -9,7 +9,7 @@
       <div id="CustomTable" />
       <div id="CustomTable" />
     </div>
-    <transition name="customAdd">
+    <transition name="customEdit">
       <CustomEdit
         v-if="customEditView"
         @childEvent="customEditView = false"

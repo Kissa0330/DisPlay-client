@@ -45,7 +45,7 @@
         @childEvent="customAddView = false"
       ></CustomAdd>
     </transition>
-    <transition name="customAdd">
+    <transition name="customEdit">
       <CustomEdit
         v-if="customEditView"
         @childEvent="customEditView = false"

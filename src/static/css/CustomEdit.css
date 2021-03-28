@@ -125,3 +125,31 @@ button.Login {
   height: 32px;
   font-size: 12px;
 }
+/* CustomEditのアニメーション */
+.customEdit-enter {
+  opacity: 0;
+  top: 300px;
+}
+
+.customEdit-enter-to {
+  opacity: 1;
+  top: 90px;
+}
+
+.customEdit-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.customEdit-leave {
+  opacity: 1;
+  top: 90px;
+}
+
+.customEdit-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.customEdit-leave-active {
+  transition: all 500ms ease-in-out;
+}

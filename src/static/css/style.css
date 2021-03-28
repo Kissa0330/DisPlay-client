@@ -40,6 +40,9 @@ a{
   text-decoration: underline;
   text-underline-offset: 2.4px;
 }
+a.router-link-active{
+  text-decoration: none;
+}
 .LandscapeButton {
   width: 55px;
   height: 18px;
