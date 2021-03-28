@@ -27,6 +27,7 @@
       <CompleteConfirmation
         @childEvent="comConView = false"
         v-if="comConView"
+        :id="this.id"
       />
     </transition>
     <div class="TodoMenu">
@@ -118,11 +119,5 @@ export default {
   mounted() {
     actions.getTodo(this.token);
   },
-  // methods: {
-  //   deleteTodo(id) {
-  //     actions.deleteTodo(id, this.token);
-  //     actions.getTodo(this.token);
-  //   },
-  // },
 };
 </script>

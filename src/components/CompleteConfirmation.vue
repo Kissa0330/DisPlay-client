@@ -1,6 +1,8 @@
 <template>
   <div class="completeConfirmation">
-    <h2 class="confirmationText">タスクを完了状態にして<br />よろしいですか？</h2>
+    <h2 class="confirmationText">
+      タスクを完了状態にして<br />よろしいですか？
+    </h2>
     <div class="verticalLine"></div>
     <div class="choices">
       <div class="hitBox" @click="sendComConViewChange()">
@@ -8,14 +10,14 @@
       </div>
       <div class="sideLine"></div>
       <div class="hitBox" @click="deleteRequest(id)">
-        <h3 class="negativeText">削除</h3>
+        <h3 class="negativeText">はい</h3>
       </div>
     </div>
   </div>
 </template>
 <style src="../static/css/CompleteConfirmation.css" scoped></style>
 <script>
-import { store } from "../store/store";
+import { store, actions } from "../store/store";
 export default {
   name: "deleeConfirmation",
   data: function () {
@@ -29,7 +31,8 @@ export default {
       this.$emit("childEvent");
     },
     deleteRequest(id) {
-      console.log(id)
+      actions.deleteTodo(id, this.token);
+      this.$emit("childEvent");
     },
   },
 };
