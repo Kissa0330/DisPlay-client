@@ -67,8 +67,7 @@ const base = function () {
   }
 };
 // create custom
-const custom = function (number, startTime, endTime, name, gradientId) {
-
+const custom = function (number, startTime, endTime, name, gradientId, id) {
   const depictionStartTime = startTime[0];
   startTime[0] = startTime[0] > endTime[0] ? (startTime[0] = 0) : startTime[0];
   const calStartTime = Number(startTime[0]) + Number(startTime[1] / 60);
@@ -86,7 +85,8 @@ const custom = function (number, startTime, endTime, name, gradientId) {
     .attr("y", startHeight)
     .style("fill", "url(#customGradient" + gradientId + ")")
     .attr("rx", "3")
-    .attr("ry", "3");
+    .attr("ry", "3")
+    .attr("id", id);
 
   name = name.length > 6 ? name.substring(0, 5) + "…" : name;
   if (height >= 11) {

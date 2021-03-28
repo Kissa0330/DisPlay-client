@@ -1,8 +1,6 @@
 <template>
   <div class="logoutConfirmation">
-    <h2 class="confirmationText">
-      本当にログアウト<br />よろしいですか？
-    </h2>
+    <h2 class="confirmationText">本当にログアウト<br />よろしいですか？</h2>
     <div class="verticalLine"></div>
     <div class="choices">
       <div class="hitBox" @click="sendComConViewChange()">
@@ -17,7 +15,7 @@
 </template>
 <style src="../static/css/LogoutConfirmation.css" scoped></style>
 <script>
-import { store} from "../store/store";
+import { store } from "../store/store";
 export default {
   name: "logoutConfirmation",
   data: function () {

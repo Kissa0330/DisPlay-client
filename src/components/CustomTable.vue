@@ -41,6 +41,7 @@ export default {
   data: function () {
     return {
       customEditView: false,
+      selectedCustom:"",
     };
   },
   computed: {
@@ -60,6 +61,7 @@ export default {
   watch: {
     customs() {
       let i;
+      let _this = this;
       for (i = 0; i < this.customs.length; i++) {
         for (let j = 0; j < this.customs[i].repeat_flag.length; j++) {
           if (this.customs[i].repeat_flag[j]) {
@@ -76,13 +78,21 @@ export default {
               gradients[code].color1,
               "customGradient" + code
             );
+            let id = i;
             depiction.custom(
               j + 1,
               startTime,
               endTime,
               this.customs[i].title,
-              code
+              code,
+              id
             );
+            document.getElementById(id).onclick = function () {
+              let clickedNumber = this.id;
+              console.log(id)
+              _this.selectedCustom = _this.customs[clickedNumber];
+              _this.customEditView = true;
+            };
           }
         }
       }
