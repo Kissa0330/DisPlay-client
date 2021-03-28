@@ -100,7 +100,7 @@ export default {
       todoAddView: false,
       todoPutView: false,
       todoEditView: false,
-      comConView: true,
+      comConView: false,
       id: Number,
       d_date: "",
       d_time: "",
