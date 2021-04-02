@@ -4,7 +4,8 @@
     <div class="signinForm" :class="{ err: err }">
       <h1 class="signinTitle">Sign in</h1>
       <h4 class="errText" v-if="err">
-        You may mistake Username or Password.<br> <a class="resetLink">Reset Password Link</a>
+        You may mistake Username or Password.<br />
+        <a class="resetLink">Reset Password Link</a>
       </h4>
       <input
         class="usernameInputArea"
@@ -54,9 +55,16 @@ export default {
     actions.updateToken();
   },
   methods: {
-    sendSignIn() {
-      actions.postAuth(this.Username, this.Password, this);
-      this.Password = "";
+    handleClickSignIn() {
+      this.$gAuth
+        .signIn()
+        .then((user) => {
+          console.log(user, GoogleUser);
+          this.isSignIn = this.$gAuth.isAuthorized;
+        })
+        .catch((error) => {
+
+        });
     },
   },
 };
