@@ -321,17 +321,17 @@ const actions = {
         console.log(error);
       });
   },
-  updateToken() {
-    //TODO domainオプションとhttpsオプションを追加する
-    if (document.cookie) {
-      const tokenValue = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token"))
-        .split("=")[1];
-      store.token = "jwt " + tokenValue;
-    }
-    console.log("token is already updated");
-  },
+  // updateToken() {
+  //   //TODO domainオプションとhttpsオプションを追加する
+  //   if (document.cookie) {
+  //     const tokenValue = document.cookie
+  //       .split("; ")
+  //       .find((row) => row.startsWith("token"))
+  //       .split("=")[1];
+  //     store.token = "jwt " + tokenValue;
+  //   }
+  //   console.log("token is already updated");
+  // },
 };
 
 export { store, actions };

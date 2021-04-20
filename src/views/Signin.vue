@@ -28,14 +28,18 @@
       <label for="password">
         <div class="inputLine" />
       </label>
-      <button class="LandscapeButton Login" @click="sendSignIn">Login</button>
+      <button class="LandscapeButton Login" @click="handleClickSignIn">
+        Login
+      </button>
       <h4 class="signinCaption">Don't have account? <a>Sign up now</a></h4>
     </div>
   </div>
 </template>
 <style scoped src="../static/css/Signin.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { store
+// , actions
+ } from "../store/store";
 
 export default {
   name: "Signin",
@@ -52,19 +56,20 @@ export default {
     },
   },
   created() {
-    actions.updateToken();
+    // actions.updateToken();
+    document.cookie = "SameSite=None";
   },
   methods: {
     handleClickSignIn() {
-      this.$gAuth
-        .signIn()
-        .then((user) => {
-          console.log(user, GoogleUser);
-          this.isSignIn = this.$gAuth.isAuthorized;
-        })
-        .catch((error) => {
-
-        });
+        this.$gAuth
+          .signIn()
+          .then((user) => {
+            console.log(user);
+            this.isSignIn = this.$gAuth.isAuthorized;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
   },
 };
