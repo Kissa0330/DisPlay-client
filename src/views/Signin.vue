@@ -37,9 +37,7 @@
 </template>
 <style scoped src="../static/css/Signin.css"></style>
 <script>
-import { store
-// , actions
- } from "../store/store";
+import { store, actions } from "../store/store";
 
 export default {
   name: "Signin",
@@ -60,15 +58,15 @@ export default {
   },
   methods: {
     handleClickSignIn() {
-        this.$gAuth
-          .signIn()
-          .then((user) => {
-            console.log(user);
-            this.isSignIn = this.$gAuth.isAuthorized;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      this.$gAuth
+        .signIn()
+        .then((user) => {
+          console.log(user);
+          actions.createUser(user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

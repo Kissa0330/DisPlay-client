@@ -69,7 +69,7 @@ const actions = {
     };
     let data;
     if (setTime) {
-      console.log("setTime")
+      console.log("setTime");
       data = {
         id: id,
         author: 1,
@@ -79,7 +79,7 @@ const actions = {
         end_time: end_time,
       };
     } else {
-      console.log("not setTime")
+      console.log("not setTime");
       data = {
         id: id,
         author: 1,
@@ -332,6 +332,22 @@ const actions = {
   //   }
   //   console.log("token is already updated");
   // },
+  createUser(response) {
+    const data = {
+      access_token: response.qc.access_token,
+      id_token: response.qc.id_token,
+    };
+    console.log(data);
+    const url = "http://127.0.0.1:8000/social-login/google/";
+    axios
+      .post(url, data)
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 };
 
 export { store, actions };
