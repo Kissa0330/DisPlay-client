@@ -57,7 +57,6 @@ export default {
   },
   created() {
     // actions.updateToken();
-    document.cookie = "SameSite=None";
   },
   methods: {
     handleClickSignIn() {
