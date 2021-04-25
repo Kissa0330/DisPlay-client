@@ -6,6 +6,7 @@ const store = Vue.observable({
   customs: {},
   todos: {},
   token: {},
+  refresh_token: {},
   todoHandler: true,
 });
 
@@ -13,24 +14,29 @@ const actions = {
   getTodo(token) {
     const config = {
       headers: {
-        Authorization: token,
+        access_token: token,
       },
     };
-    const url = "http://127.0.0.1:8000/api/todo/";
-    axios.get(url, config).then((response) => {
-      // arrange todos data
-      let data;
-      for (let i = 0; i < response.data.length; i++) {
-        data = response.data;
-        const splitDate = data[i].d_date.split("-");
-        const month = Number(splitDate[1]);
-        const day = Number(splitDate[2]);
+    const url = "http://127.0.0.1:8000/api/todos/";
+    axios
+      .get(url, config)
+      .then((response) => {
+        // arrange todos data
+        let data;
+        for (let i = 0; i < response.data.length; i++) {
+          data = response.data;
+          const splitDate = data[i].d_date.split("-");
+          const month = Number(splitDate[1]);
+          const day = Number(splitDate[2]);
 
-        data[i].displayDate = month + "/" + day;
-      }
-      store.todos = data;
-      store.todoHandler = !store.todoHandler;
-    });
+          data[i].displayDate = month + "/" + day;
+        }
+        store.todos = data;
+        store.todoHandler = !store.todoHandler;
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   },
   postTodo(data, token) {
     const url = "http://127.0.0.1:8000/api/todo/";
@@ -140,13 +146,18 @@ const actions = {
     const url = "http://127.0.0.1:8000/api/customs/";
     const config = {
       headers: {
-        Authorization: token,
+        access_token: token,
       },
     };
-    axios.get(url, config).then((response) => {
-      store.customs = response.data;
-      console.log("Customs is already update");
-    });
+    axios
+      .get(url, config)
+      .then((response) => {
+        store.customs = response.data;
+        console.log("Customs is already update");
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   },
   initialCustomSetting(token) {
     const url = "http://127.0.0.1:8000/api/customs/";
@@ -301,38 +312,41 @@ const actions = {
   updateCustoms(customs) {
     store.customs = customs;
   },
-  postAuth(username, password, _this) {
-    let data = {
-      username: username,
-      password: password,
-    };
-    const url = "http://127.0.0.1:8000/auth/";
-    axios
-      .post(url, data)
-      .then((response) => {
-        document.cookie = "token = " + response.data.token + ";max-age = 86000";
-        store.token = "jwt " + response.data.token;
-      })
-      .then(function () {
-        _this.$router.push("/");
-      })
-      .catch(function (error) {
-        _this.err = true;
-        console.log(error);
-      });
-  },
-  // updateToken() {
-  //   //TODO domainオプションとhttpsオプションを追加する
-  //   if (document.cookie) {
-  //     const tokenValue = document.cookie
-  //       .split("; ")
-  //       .find((row) => row.startsWith("token"))
-  //       .split("=")[1];
-  //     store.token = "jwt " + tokenValue;
-  //   }
-  //   console.log("token is already updated");
+  // postAuth(username, password, _this) {
+  //   let data = {
+  //     username: username,
+  //     password: password,
+  //   };
+  //   const url = "http://127.0.0.1:8000/auth/";
+  //   axios
+  //     .post(url, data)
+  //     .then((response) => {
+  //       document.cookie = "token = " + response.data.token + ";max-age = 86000";
+  //       store.token = "jwt " + response.data.token;
+  //     })
+  //     .then(function () {
+  //       _this.$router.push("/");
+  //     })
+  //     .catch(function (error) {
+  //       _this.err = true;
+  //       console.log(error);
+  //     });
   // },
-  createUser(response) {
+  updateToken() {
+    //TODO domainオプションとhttpsオプションを追加する
+    const tokenValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token"))
+      .split("=")[1];
+    store.token = tokenValue;
+    const refresh_tokenValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("refresh_token"))
+      .split("=")[1];
+    store.refresh_token = refresh_tokenValue;
+    console.log("tokens are already updated");
+  },
+  signIn(response, _this) {
     const data = {
       access_token: response.qc.access_token,
       id_token: response.qc.id_token,
@@ -341,13 +355,23 @@ const actions = {
     const url = "http://127.0.0.1:8000/social-login/google/";
     axios
       .post(url, data)
-      .then(function (res) {
+      .then((res) => {
+        document.cookie =
+          "token = " + res.data.access_token + ";max-age = 86400";
+        document.cookie =
+          "refresh_token = " + res.data.refresh_token + ";max-age = 604800";
+        store.token = res.data.access_token;
+        store.refresh_token = res.data.refresh_token;
         console.log(res);
       })
-      .catch(function (error) {
-        console.log(error);
+      .then(() => {
+        _this.$router.push("/");
+      })
+      .catch((error) => {
+        console.log(error.response.data.messages);
       });
   },
 };
 
 export { store, actions };
+

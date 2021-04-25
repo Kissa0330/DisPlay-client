@@ -52,17 +52,21 @@ export default {
     token() {
       return store.token;
     },
+    refresh_token() {
+      return store.refresh_token;
+    },
   },
   created() {
-    // actions.updateToken();
+    actions.updateToken();
   },
   methods: {
     handleClickSignIn() {
+      let _this = this;
       this.$gAuth
         .signIn()
         .then((user) => {
           console.log(user);
-          actions.createUser(user);
+          actions.signIn(user, _this);
         })
         .catch((error) => {
           console.log(error);
