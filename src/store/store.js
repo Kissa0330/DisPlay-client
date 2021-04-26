@@ -12,14 +12,9 @@ const store = Vue.observable({
 
 const actions = {
   getTodo(token) {
-    const config = {
-      headers: {
-        access_token: token,
-      },
-    };
-    const url = "http://127.0.0.1:8000/api/todos/";
+    const url = "http://127.0.0.1:8000/api/todo/";
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         // arrange todos data
         let data;
@@ -144,13 +139,8 @@ const actions = {
   },
   getCustoms(token) {
     const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        access_token: token,
-      },
-    };
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -357,7 +347,7 @@ const actions = {
       .post(url, data)
       .then((res) => {
         document.cookie =
-          "token = " + res.data.access_token + ";max-age = 86400";
+          "access_token = " + res.data.access_token + ";max-age = 86400";
         document.cookie =
           "refresh_token = " + res.data.refresh_token + ";max-age = 604800";
         store.token = res.data.access_token;
@@ -368,10 +358,26 @@ const actions = {
         _this.$router.push("/");
       })
       .catch((error) => {
-        console.log(error.response.data.messages);
+        console.log(error.response.data);
+      });
+  },
+  refreshAccessToken(refresh_token) {
+    const url = "http://127.0.0.1:8000/accounts/token/refresh/";
+    const data = {
+      refresh_token: refresh_token,
+    };
+    axios
+      .post(url)
+      .then((res) => {
+        document.cookie =
+          "access_token = " + res.data.access_token + ";max-age = 86400";
+        store.token = res.data.access_token;
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
       });
   },
 };
 
 export { store, actions };
-
