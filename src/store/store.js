@@ -10,17 +10,10 @@ const store = Vue.observable({
   todoHandler: true,
 });
 const actions = {
-  getTodo(token) {
-    const config = {
-      headers: {
-        access_token: token,
-        "Access-Control-Allow-Credentials": "true",
-      },
-    };
-    sessionStorage.setItem("access_token", JSON.stringify(token));
-    const url = "http://127.0.0.1:8000/api/todo/";
+  getTodo() {
+    const url = "http://localhost:8000/api/todo/";
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         // arrange todos data
         let data;
@@ -40,17 +33,13 @@ const actions = {
       });
   },
   postTodo(data, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+    const url = "http://localhost:8000/api/todo/";
+
     axios
-      .post(url, data, config)
+      .post(url, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -67,13 +56,9 @@ const actions = {
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
+    const url = "http://localhost:8000/api/todo/";
     const puturl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     let data;
     if (setTime) {
       console.log("setTime");
@@ -96,10 +81,10 @@ const actions = {
     }
 
     axios
-      .put(puturl, data, config)
+      .put(puturl, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -116,18 +101,14 @@ const actions = {
       });
   },
   deleteTodo(id, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
+    const url = "http://localhost:8000/api/todo/";
     const delurl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     axios
-      .delete(delurl, config)
+      .delete(delurl)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -143,16 +124,10 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  getCustoms(token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        access_token: token,
-        "Access-Control-Allow-Credentials": "true",
-      },
-    };
+  getCustoms() {
+    const url = "http://localhost:8000/api/customs/";
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -161,15 +136,11 @@ const actions = {
         console.log(error.response);
       });
   },
-  initialCustomSetting(token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+  initialCustomSetting() {
+    const url = "http://localhost:8000/api/customs/";
+
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -222,7 +193,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return axios.get(url, config);
+              return axios.get(url);
             })
             .then((response) => {
               console.log(response.data);
@@ -236,18 +207,14 @@ const actions = {
               end_time: sampleCustoms[i].end_time,
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
-            return axios.post(url, data, config);
+            return axios.post(url, data);
           }
         }
       });
   },
-  postCustom(token, title, start_time, end_time, flag) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+  postCustom(title, start_time, end_time, flag) {
+    const url = "http://localhost:8000/api/customs/";
+
     const data = {
       author: "1",
       title: title,
@@ -256,24 +223,20 @@ const actions = {
       repeat_flag: flag,
     };
     axios
-      .post(url, data, config)
+      .post(url, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
       });
   },
-  putCustom(token, title, flag, start_time, end_time, id) {
-    const url = "http://127.0.0.1:8000/api/customs/";
+  putCustom(title, flag, start_time, end_time, id) {
+    const url = "http://localhost:8000/api/customs/";
     const puturl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     const data = {
       author: "1",
       title: title,
@@ -282,10 +245,10 @@ const actions = {
       repeat_flag: flag,
     };
     axios
-      .put(puturl, data, config)
+      .put(puturl, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
@@ -293,18 +256,14 @@ const actions = {
       });
   },
   deleteCustom(id, token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
+    const url = "http://localhost:8000/api/customs/";
     const deleteurl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     axios
-      .delete(deleteurl, config)
+      .delete(deleteurl)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
@@ -319,7 +278,7 @@ const actions = {
   //     username: username,
   //     password: password,
   //   };
-  //   const url = "http://127.0.0.1:8000/auth/";
+  //   const url = "http://localhost:8000/auth/";
   //   axios
   //     .post(url, data)
   //     .then((response) => {
@@ -354,7 +313,7 @@ const actions = {
       id_token: response.qc.id_token,
     };
     console.log(data);
-    const url = "http://127.0.0.1:8000/social-login/google/";
+    const url = "http://localhost:8000/social-login/google/";
     axios
       .post(url, data)
       .then((res) => {
@@ -374,12 +333,12 @@ const actions = {
       });
   },
   refreshAccessToken(refresh_token) {
-    const url = "http://127.0.0.1:8000/accounts/token/refresh/";
+    const url = "http://localhost:8000/accounts/token/refresh/";
     const data = {
-      Refresh: refresh_token,
+      Refresh_token: refresh_token,
     };
     axios
-      .post(url)
+      .post(url,data)
       .then((res) => {
         document.cookie =
           "access_token = " + res.data.access_token + ";max-age = 86400";
