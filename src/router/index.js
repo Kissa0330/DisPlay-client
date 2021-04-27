@@ -35,7 +35,7 @@ router.beforeEach((to, from, next) => {
   let tokenValue;
   tokenValue = document.cookie
     .split("; ")
-    .find((row) => row.startsWith("token"));
+    .find((row) => row.startsWith("access_token"));
   let isTokenValue = Boolean(tokenValue);
   if (isTokenValue) {
     tokenValue = tokenValue.split("=")[1];

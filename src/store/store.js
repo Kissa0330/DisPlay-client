@@ -9,12 +9,18 @@ const store = Vue.observable({
   refresh_token: {},
   todoHandler: true,
 });
-
 const actions = {
   getTodo(token) {
+    const config = {
+      headers: {
+        access_token: token,
+        "Access-Control-Allow-Credentials": "true",
+      },
+    };
+    sessionStorage.setItem("access_token", JSON.stringify(token));
     const url = "http://127.0.0.1:8000/api/todo/";
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         // arrange todos data
         let data;
@@ -139,8 +145,14 @@ const actions = {
   },
   getCustoms(token) {
     const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        access_token: token,
+        "Access-Control-Allow-Credentials": "true",
+      },
+    };
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -364,7 +376,7 @@ const actions = {
   refreshAccessToken(refresh_token) {
     const url = "http://127.0.0.1:8000/accounts/token/refresh/";
     const data = {
-      refresh_token: refresh_token,
+      Refresh: refresh_token,
     };
     axios
       .post(url)
