@@ -1,6 +1,7 @@
 /* eslint-disable */
 import Vue from "vue";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const store = Vue.observable({
   customs: {},
@@ -32,7 +33,7 @@ const actions = {
         console.log(error.response);
       });
   },
-  postTodo(data, token) {
+  postTodo(data) {
     const url = "http://localhost:8000/api/todo/";
 
     axios
@@ -55,7 +56,7 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  putTodo(setTime, id, title, deadline_time, start_time, end_time, token) {
+  putTodo(setTime, id, title, deadline_time, start_time, end_time ) {
     const url = "http://localhost:8000/api/todo/";
     const puturl = url + id;
 
@@ -100,7 +101,7 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  deleteTodo(id, token) {
+  deleteTodo(id ) {
     const url = "http://localhost:8000/api/todo/";
     const delurl = url + id;
 
@@ -255,7 +256,7 @@ const actions = {
         store.customs = response.data;
       });
   },
-  deleteCustom(id, token) {
+  deleteCustom(id ) {
     const url = "http://localhost:8000/api/customs/";
     const deleteurl = url + id;
 
@@ -273,37 +274,12 @@ const actions = {
   updateCustoms(customs) {
     store.customs = customs;
   },
-  // postAuth(username, password, _this) {
-  //   let data = {
-  //     username: username,
-  //     password: password,
-  //   };
-  //   const url = "http://localhost:8000/auth/";
-  //   axios
-  //     .post(url, data)
-  //     .then((response) => {
-  //       document.cookie = "token = " + response.data.token + ";max-age = 86000";
-  //       store.token = "jwt " + response.data.token;
-  //     })
-  //     .then(function () {
-  //       _this.$router.push("/");
-  //     })
-  //     .catch(function (error) {
-  //       _this.err = true;
-  //       console.log(error);
-  //     });
-  // },
+
   updateToken() {
     //TODO domainオプションとhttpsオプションを追加する
-    const tokenValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token"))
-      .split("=")[1];
+    const tokenValue = Cookies.get("access_token");
     store.token = tokenValue;
-    const refresh_tokenValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("refresh_token"))
-      .split("=")[1];
+    const refresh_tokenValue = Cookies.get("refresh_token");
     store.refresh_token = refresh_tokenValue;
     console.log("tokens are already updated");
   },
@@ -317,10 +293,12 @@ const actions = {
     axios
       .post(url, data)
       .then((res) => {
-        document.cookie =
-          "access_token = " + res.data.access_token + ";max-age = 86400";
-        document.cookie =
-          "refresh_token = " + res.data.refresh_token + ";max-age = 604800";
+        Cookies.set("access_token", res.data.access_token, {
+          expires: 1,
+        });
+        Cookies.set("refresh_token", res.data.refresh_token, {
+          expires: 7,
+        });
         store.token = res.data.access_token;
         store.refresh_token = res.data.refresh_token;
         console.log(res);
@@ -335,15 +313,16 @@ const actions = {
   refreshAccessToken(refresh_token) {
     const url = "http://localhost:8000/accounts/token/refresh/";
     const data = {
-      Refresh_token: refresh_token,
+      refresh: refresh_token,
     };
     axios
-      .post(url,data)
+      .post(url, data)
       .then((res) => {
-        document.cookie =
-          "access_token = " + res.data.access_token + ";max-age = 86400";
+        Cookies.set("access_token", res.data.access_token, {
+          expires: 1,
+        });
         store.token = res.data.access_token;
-        console.log(res);
+        console.log(res,"token is refreshed");
       })
       .catch((error) => {
         console.log(error.response.data);

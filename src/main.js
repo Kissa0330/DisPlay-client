@@ -24,6 +24,14 @@ export const GetDefaultHeader = () => {
     },
   };
 };
+export const PostDefaultHeader = () => {
+  const csrfToken = Cookies.get("csrftoken");
+  return {
+    headers: {
+      "X-CSRFToken": csrfToken,
+    },
+  };
+};
 Vue.use(GAuth, gauthOption);
 Vue.use(Vuetify);
 Vue.use(VueSession);
