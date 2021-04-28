@@ -55,9 +55,6 @@ export default {
     };
   },
   computed: {
-    token() {
-      return store.token;
-    },
     deadline_time() {
       return this.date + "T" + this.time + "+09:00";
     },
@@ -133,7 +130,6 @@ export default {
                   this.deadline_time,
                   this.start_time,
                   this.end_time,
-                  this.token
                 );
                 this.$emit("childEvent");
               }

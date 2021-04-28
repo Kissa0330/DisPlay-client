@@ -35,9 +35,6 @@ export default {
     customs() {
       return store.customs;
     },
-    token() {
-      return store.token;
-    },
     todos() {
       return store.todos;
     },
@@ -52,7 +49,7 @@ export default {
     depiction.createDropShadow();
     depiction.createGroove();
     depiction.createClock();
-    actions.getCustoms(this.token);
+    actions.getCustoms();
   },
   watch: {
     customs: {

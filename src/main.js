@@ -10,6 +10,8 @@ import VueAxios from "vue-axios";
 import GAuth from "vue-google-oauth2";
 
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 const gauthOption = {
   clientId:
     "267786724892-54th8p722dn7can40ntt7654ol1s4i6h.apps.googleusercontent.com",

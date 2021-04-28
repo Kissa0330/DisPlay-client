@@ -28,6 +28,8 @@ const actions = {
         }
         store.todos = data;
         store.todoHandler = !store.todoHandler;
+        console.log(data);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.response);
@@ -53,6 +55,7 @@ const actions = {
         }
         store.todos = data;
         store.todoHandler = !store.todoHandler;
+        console.log(response);
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time) {
@@ -130,10 +133,10 @@ const actions = {
       .get(url)
       .then((response) => {
         store.customs = response.data;
-        console.log("Customs is already update");
+        console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
   },
   initialCustomSetting() {
