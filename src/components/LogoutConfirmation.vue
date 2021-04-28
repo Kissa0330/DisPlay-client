@@ -15,20 +15,16 @@
 </template>
 <style src="../static/css/LogoutConfirmation.css" scoped></style>
 <script>
-import { store } from "../store/store";
+import Cookies from "js-cookie";
+
 export default {
   name: "logoutConfirmation",
-  data: function () {
-    return {
-      token: store.token,
-    };
-  },
   methods: {
     sendComConViewChange() {
       this.$emit("childEvent");
     },
     deleteToken() {
-      document.cookie = "token=; max-age=0";
+      Cookies.remove("access_token");
       location.reload();
     },
   },

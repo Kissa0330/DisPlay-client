@@ -4,7 +4,8 @@
     <div class="signinForm" :class="{ err: err }">
       <h1 class="signinTitle">Sign in</h1>
       <h4 class="errText" v-if="err">
-        You may mistake Username or Password.<br> <a class="resetLink">Reset Password Link</a>
+        You may mistake Username or Password.<br />
+        <a class="resetLink">Reset Password Link</a>
       </h4>
       <input
         class="usernameInputArea"
@@ -27,14 +28,16 @@
       <label for="password">
         <div class="inputLine" />
       </label>
-      <button class="LandscapeButton Login" @click="sendSignIn">Login</button>
+      <button class="LandscapeButton Login" @click="handleClickSignIn">
+        Login
+      </button>
       <h4 class="signinCaption">Don't have account? <a>Sign up now</a></h4>
     </div>
   </div>
 </template>
 <style scoped src="../static/css/Signin.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 
 export default {
   name: "Signin",
@@ -45,18 +48,21 @@ export default {
       err: false,
     };
   },
-  computed: {
-    token() {
-      return store.token;
-    },
-  },
   created() {
     actions.updateToken();
   },
   methods: {
-    sendSignIn() {
-      actions.postAuth(this.Username, this.Password, this);
-      this.Password = "";
+    handleClickSignIn() {
+      let _this = this;
+      this.$gAuth
+        .signIn()
+        .then((user) => {
+          console.log(user);
+          actions.signIn(user, _this);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

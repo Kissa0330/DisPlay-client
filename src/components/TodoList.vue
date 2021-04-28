@@ -112,12 +112,10 @@ export default {
     todos() {
       return store.todos;
     },
-    token() {
-      return store.token;
-    },
+
   },
   mounted() {
-    actions.getTodo(this.token);
+    actions.getTodo();
   },
 };
 </script>

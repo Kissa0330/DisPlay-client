@@ -81,7 +81,7 @@
 <style scoped src="../static/css/CustomAdd.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
-import { store, actions } from "../store/store.js";
+import { actions } from "../store/store.js";
 
 export default {
   name: "CustomAdd",
@@ -119,9 +119,6 @@ export default {
       }
       return flag;
     },
-    token() {
-      return store.token;
-    },
     start_time() {
       let time = String(this.hour) + ":" + String(this.minute) + ":00";
       return time;
@@ -155,7 +152,6 @@ export default {
     },
     postCustom() {
       actions.postCustom(
-        this.token,
         this.title,
         this.start_time,
         this.end_time,

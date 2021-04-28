@@ -55,7 +55,7 @@
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
 import Datepicker from "vuejs-datepicker";
 
@@ -88,9 +88,6 @@ export default {
       }
       let inputTitleWidth = width + "px";
       return inputTitleWidth;
-    },
-    token() {
-      return store.token;
     },
     deadline_time() {
       let year = this.newDate.getFullYear();
@@ -127,8 +124,7 @@ export default {
         this.newTitle,
         this.deadline_time,
         null,
-        null,
-        this.token
+        null
       );
       this.$emit("childEvent");
     },

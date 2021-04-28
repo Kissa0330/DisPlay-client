@@ -1,49 +1,47 @@
 /* eslint-disable */
 import Vue from "vue";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const store = Vue.observable({
   customs: {},
   todos: {},
   token: {},
+  refresh_token: {},
   todoHandler: true,
 });
-
 const actions = {
-  getTodo(token) {
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    const url = "http://127.0.0.1:8000/api/todo/";
-    axios.get(url, config).then((response) => {
-      // arrange todos data
-      let data;
-      for (let i = 0; i < response.data.length; i++) {
-        data = response.data;
-        const splitDate = data[i].d_date.split("-");
-        const month = Number(splitDate[1]);
-        const day = Number(splitDate[2]);
-
-        data[i].displayDate = month + "/" + day;
-      }
-      store.todos = data;
-      store.todoHandler = !store.todoHandler;
-    });
-  },
-  postTodo(data, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+  getTodo() {
+    const url = "http://localhost:8000/api/todo/";
     axios
-      .post(url, data, config)
+      .get(url)
+      .then((response) => {
+        // arrange todos data
+        let data;
+        for (let i = 0; i < response.data.length; i++) {
+          data = response.data;
+          const splitDate = data[i].d_date.split("-");
+          const month = Number(splitDate[1]);
+          const day = Number(splitDate[2]);
+
+          data[i].displayDate = month + "/" + day;
+        }
+        store.todos = data;
+        store.todoHandler = !store.todoHandler;
+        console.log(data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  },
+  postTodo(data) {
+    const url = "http://localhost:8000/api/todo/";
+    axios
+      .post(url, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -57,19 +55,16 @@ const actions = {
         }
         store.todos = data;
         store.todoHandler = !store.todoHandler;
+        console.log(response);
       });
   },
-  putTodo(setTime, id, title, deadline_time, start_time, end_time, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
+  putTodo(setTime, id, title, deadline_time, start_time, end_time) {
+    const url = "http://localhost:8000/api/todo/";
     const puturl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     let data;
     if (setTime) {
-      console.log("setTime")
+      console.log("setTime");
       data = {
         id: id,
         author: 1,
@@ -79,7 +74,7 @@ const actions = {
         end_time: end_time,
       };
     } else {
-      console.log("not setTime")
+      console.log("not setTime");
       data = {
         id: id,
         author: 1,
@@ -89,10 +84,10 @@ const actions = {
     }
 
     axios
-      .put(puturl, data, config)
+      .put(puturl, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -108,19 +103,15 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  deleteTodo(id, token) {
-    const url = "http://127.0.0.1:8000/api/todo/";
+  deleteTodo(id) {
+    const url = "http://localhost:8000/api/todo/";
     const delurl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     axios
-      .delete(delurl, config)
+      .delete(delurl)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         let data;
@@ -136,27 +127,23 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  getCustoms(token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    axios.get(url, config).then((response) => {
-      store.customs = response.data;
-      console.log("Customs is already update");
-    });
-  },
-  initialCustomSetting(token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+  getCustoms() {
+    const url = "http://localhost:8000/api/customs/";
     axios
-      .get(url, config)
+      .get(url)
+      .then((response) => {
+        store.customs = response.data;
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  initialCustomSetting() {
+    const url = "http://localhost:8000/api/customs/";
+
+    axios
+      .get(url)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -209,7 +196,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return axios.get(url, config);
+              return axios.get(url);
             })
             .then((response) => {
               console.log(response.data);
@@ -223,18 +210,14 @@ const actions = {
               end_time: sampleCustoms[i].end_time,
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
-            return axios.post(url, data, config);
+            return axios.post(url, data);
           }
         }
       });
   },
-  postCustom(token, title, start_time, end_time, flag) {
-    const url = "http://127.0.0.1:8000/api/customs/";
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+  postCustom(title, start_time, end_time, flag) {
+    const url = "http://localhost:8000/api/customs/";
+
     const data = {
       author: "1",
       title: title,
@@ -243,24 +226,20 @@ const actions = {
       repeat_flag: flag,
     };
     axios
-      .post(url, data, config)
+      .post(url, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
       });
   },
-  putCustom(token, title, flag, start_time, end_time, id) {
-    const url = "http://127.0.0.1:8000/api/customs/";
+  putCustom(title, flag, start_time, end_time, id) {
+    const url = "http://localhost:8000/api/customs/";
     const puturl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     const data = {
       author: "1",
       title: title,
@@ -269,29 +248,25 @@ const actions = {
       repeat_flag: flag,
     };
     axios
-      .put(puturl, data, config)
+      .put(puturl, data)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
       });
   },
-  deleteCustom(id, token) {
-    const url = "http://127.0.0.1:8000/api/customs/";
+  deleteCustom(id) {
+    const url = "http://localhost:8000/api/customs/";
     const deleteurl = url + id;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
+
     axios
-      .delete(deleteurl, config)
+      .delete(deleteurl)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return axios.get(url);
       })
       .then((response) => {
         console.log(response.data);
@@ -301,36 +276,59 @@ const actions = {
   updateCustoms(customs) {
     store.customs = customs;
   },
-  postAuth(username, password, _this) {
-    let data = {
-      username: username,
-      password: password,
-    };
-    const url = "http://127.0.0.1:8000/auth/";
-    axios
-      .post(url, data)
-      .then((response) => {
-        document.cookie = "token = " + response.data.token + ";max-age = 86000";
-        store.token = "jwt " + response.data.token;
-      })
-      .then(function () {
-        _this.$router.push("/");
-      })
-      .catch(function (error) {
-        _this.err = true;
-        console.log(error);
-      });
-  },
+
   updateToken() {
     //TODO domainオプションとhttpsオプションを追加する
-    if (document.cookie) {
-      const tokenValue = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token"))
-        .split("=")[1];
-      store.token = "jwt " + tokenValue;
-    }
-    console.log("token is already updated");
+    const tokenValue = Cookies.get("access_token");
+    store.token = tokenValue;
+    const refresh_tokenValue = Cookies.get("refresh_token");
+    store.refresh_token = refresh_tokenValue;
+    console.log("tokens are already updated");
+  },
+  signIn(response, _this) {
+    const data = {
+      access_token: response.qc.access_token,
+      id_token: response.qc.id_token,
+    };
+    console.log(data);
+    const url = "http://localhost:8000/social-login/google/";
+    axios
+      .post(url, data)
+      .then((res) => {
+        Cookies.set("access_token", res.data.access_token, {
+          expires: 1,
+        });
+        Cookies.set("refresh_token", res.data.refresh_token, {
+          expires: 7,
+        });
+        store.token = res.data.access_token;
+        store.refresh_token = res.data.refresh_token;
+        console.log(res);
+      })
+      .then(() => {
+        _this.$router.push("/");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  },
+  refreshAccessToken(refresh_token) {
+    const url = "http://localhost:8000/accounts/token/refresh/";
+    const data = {
+      refresh: refresh_token,
+    };
+    axios
+      .post(url, data)
+      .then((res) => {
+        Cookies.set("access_token", res.data.access_token, {
+          expires: 1,
+        });
+        store.token = res.data.access_token;
+        console.log(res, "token is refreshed");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   },
 };
 
