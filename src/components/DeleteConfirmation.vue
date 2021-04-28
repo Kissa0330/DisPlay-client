@@ -15,25 +15,20 @@
 </template>
 <style src="../static/css/DeleteConfirmation.css" scoped></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 export default {
   name: "deleteConfirmation",
-  data: function () {
-    return {
-      token: store.token,
-    };
-  },
-  props: ["id","typeCheck"],
+  props: ["id", "typeCheck"],
   methods: {
     sendDelConViewChange() {
       this.$emit("childEvent");
     },
     deleteRequest(id) {
-      if(this.typeCheck === "custom"){
-      actions.deleteCustom(id, this.token);
-      this.$emit("childEvent");
-      }else if(this.typeCheck === "todo"){
-        actions.deleteTodo(id, this.token);
+      if (this.typeCheck === "custom") {
+        actions.deleteCustom(id);
+        this.$emit("childEvent");
+      } else if (this.typeCheck === "todo") {
+        actions.deleteTodo(id);
         this.$emit("childEvent");
       }
     },

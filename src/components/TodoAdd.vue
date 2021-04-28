@@ -46,7 +46,7 @@
 </template>
 <style scoped src="../static/css/TodoAdd.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 import Datepicker from "vuejs-datepicker";
 
 export default {
@@ -71,9 +71,6 @@ export default {
       }
       let inputTitleWidth = width + "px";
       return inputTitleWidth;
-    },
-    token() {
-      return store.token;
     },
   },
   methods: {

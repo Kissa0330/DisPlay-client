@@ -90,7 +90,7 @@
 <style scoped src="../static/css/CustomEdit.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
-import { store, actions } from "../store/store.js";
+import { actions } from "../store/store.js";
 
 export default {
   name: "customEdit",
@@ -128,9 +128,6 @@ export default {
       }
       return flag;
     },
-    token() {
-      return store.token;
-    },
     start_time() {
       let time = String(this.hour) + ":" + String(this.minute) + ":00";
       return time;
@@ -165,7 +162,6 @@ export default {
     },
     putCustom() {
       actions.putCustom(
-        this.token,
         this.title,
         this.repeatFlag,
         this.start_time,

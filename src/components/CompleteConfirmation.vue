@@ -17,21 +17,16 @@
 </template>
 <style src="../static/css/CompleteConfirmation.css" scoped></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 export default {
   name: "completeConfirmation",
-  data: function () {
-    return {
-      token: store.token,
-    };
-  },
   props: ["id"],
   methods: {
     sendComConViewChange() {
       this.$emit("childEvent");
     },
     deleteRequest(id) {
-      actions.deleteTodo(id, this.token);
+      actions.deleteTodo(id);
       this.$emit("childEvent");
     },
   },

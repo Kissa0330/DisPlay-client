@@ -48,12 +48,9 @@ export default {
     customs() {
       return store.customs;
     },
-    token() {
-      return store.token;
-    },
   },
   mounted() {
-    actions.getCustoms(this.token);
+    actions.getCustoms();
     depiction.svg();
     depiction.createGradient("#FFFFFF", "#F8F8F8", "baseGradient");
     depiction.base();

@@ -37,7 +37,7 @@
 </template>
 <style scoped src="../static/css/Signin.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 
 export default {
   name: "Signin",
@@ -47,14 +47,6 @@ export default {
       Password: "",
       err: false,
     };
-  },
-  computed: {
-    token() {
-      return store.token;
-    },
-    refresh_token() {
-      return store.refresh_token;
-    },
   },
   created() {
     actions.updateToken();
