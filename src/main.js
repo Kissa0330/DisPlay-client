@@ -8,29 +8,13 @@ import VueSession from "vue-session";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import GAuth from "vue-google-oauth2";
-import Cookies from "js-cookie";
+
 axios.defaults.withCredentials = true;
 const gauthOption = {
   clientId:
     "267786724892-54th8p722dn7can40ntt7654ol1s4i6h.apps.googleusercontent.com",
   scope: "profile email",
   prompt: "select_account",
-};
-export const GetDefaultHeader = () => {
-  const csrfToken = Cookies.get("csrftoken");
-  return {
-    headers: {
-      "X-CSRFToken": csrfToken,
-    },
-  };
-};
-export const PostDefaultHeader = () => {
-  const csrfToken = Cookies.get("csrftoken");
-  return {
-    headers: {
-      "X-CSRFToken": csrfToken,
-    },
-  };
 };
 Vue.use(GAuth, gauthOption);
 Vue.use(Vuetify);

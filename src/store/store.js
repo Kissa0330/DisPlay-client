@@ -35,7 +35,6 @@ const actions = {
   },
   postTodo(data) {
     const url = "http://localhost:8000/api/todo/";
-
     axios
       .post(url, data)
       .then((response) => {
@@ -56,7 +55,7 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  putTodo(setTime, id, title, deadline_time, start_time, end_time ) {
+  putTodo(setTime, id, title, deadline_time, start_time, end_time) {
     const url = "http://localhost:8000/api/todo/";
     const puturl = url + id;
 
@@ -101,7 +100,7 @@ const actions = {
         store.todoHandler = !store.todoHandler;
       });
   },
-  deleteTodo(id ) {
+  deleteTodo(id) {
     const url = "http://localhost:8000/api/todo/";
     const delurl = url + id;
 
@@ -256,7 +255,7 @@ const actions = {
         store.customs = response.data;
       });
   },
-  deleteCustom(id ) {
+  deleteCustom(id) {
     const url = "http://localhost:8000/api/customs/";
     const deleteurl = url + id;
 
@@ -322,7 +321,7 @@ const actions = {
           expires: 1,
         });
         store.token = res.data.access_token;
-        console.log(res,"token is refreshed");
+        console.log(res, "token is refreshed");
       })
       .catch((error) => {
         console.log(error.response.data);
