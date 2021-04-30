@@ -76,6 +76,7 @@ const custom = function (number, startTime, endTime, name, gradientId, id) {
   const startHeight = calStartTime * 22 + 28;
   const startTextHeight = height < 22 ? startHeight + 8.5 : startHeight + 13;
 
+ 
   d3.select("#CustomTable:nth-child(" + number + ")")
     .select("g")
     .append("rect")

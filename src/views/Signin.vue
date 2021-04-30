@@ -1,37 +1,12 @@
 <template>
   <div>
     <h1 class="DisPlayTitle">DisPlay</h1>
-    <div class="signinForm" :class="{ err: err }">
+    <div class="signinForm">
       <h1 class="signinTitle">Sign in</h1>
-      <h4 class="errText" v-if="err">
-        You may mistake Username or Password.<br />
-        <a class="resetLink">Reset Password Link</a>
-      </h4>
-      <input
-        class="usernameInputArea"
-        :class="{ err: err }"
-        type="text"
-        v-model="Username"
-        placeholder="Username"
-        id="name"
-      />
-      <label for="name">
-        <div class="inputLine" />
-      </label>
-      <input
-        class="passwordInputArea"
-        type="password"
-        v-model="Password"
-        placeholder="Password"
-        id="password"
-      />
-      <label for="password">
-        <div class="inputLine" />
-      </label>
-      <button class="LandscapeButton Login" @click="handleClickSignIn">
-        Login
+      <button class="LandscapeButton google" @click="handleClickSignIn">
+        <img class="googleImg" src="../assets/img/Google.svg" alt="Google">
+        Sign in with google
       </button>
-      <h4 class="signinCaption">Don't have account? <a>Sign up now</a></h4>
     </div>
   </div>
 </template>
@@ -44,8 +19,7 @@ export default {
   data: function () {
     return {
       Username: "",
-      Password: "",
-      err: false,
+      Password: ""
     };
   },
   created() {

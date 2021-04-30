@@ -41,7 +41,7 @@ export default {
   data: function () {
     return {
       customEditView: false,
-      selectedCustom:"",
+      selectedCustom: "",
     };
   },
   computed: {
@@ -62,8 +62,8 @@ export default {
       for (i = 0; i < this.customs.length; i++) {
         for (let j = 0; j < this.customs[i].repeat_flag.length; j++) {
           if (this.customs[i].repeat_flag[j]) {
-            let number = this.customs[i].title.charCodeAt(0);
-            let code = number.toString().split("").pop();
+            let textNum = this.customs[i].title.charCodeAt(0);
+            let code = textNum.toString().split("").pop();
             let startTime = this.customs[i].start_time.split(":");
             startTime.pop();
             let endTime = this.customs[i].end_time.split(":");
@@ -75,9 +75,10 @@ export default {
               gradients[code].color1,
               "customGradient" + code
             );
-            let id = i;
+            let number = j + 1;
+            let id = i + "r" + number;
             depiction.custom(
-              j + 1,
+              number,
               startTime,
               endTime,
               this.customs[i].title,
@@ -85,7 +86,7 @@ export default {
               id
             );
             document.getElementById(id).onclick = function () {
-              let clickedNumber = this.id;
+              let clickedNumber = this.id.split("r")[0];
               console.log(id)
               _this.selectedCustom = _this.customs[clickedNumber];
               _this.customEditView = true;
