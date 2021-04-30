@@ -35,9 +35,7 @@
         <h3>Todolist</h3>
       </div>
       <div class="MenuLeft">
-        <button class="LandscapeButton" @click="todoAddView = true">
-          <div class="buttonText">Add</div>
-        </button>
+        <button class="LandscapeButton" @click="todoAddView = true">Add</button>
       </div>
     </div>
     <div class="TaskList">
@@ -112,7 +110,6 @@ export default {
     todos() {
       return store.todos;
     },
-
   },
   mounted() {
     actions.getTodo();

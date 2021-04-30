@@ -58,7 +58,7 @@ button {
   color: #9f9f9f;
   font-weight: 300;
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
-    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9), inset 1px 1.5px 3px transparent,
+    -1.5px -1.5px 3px rgba(239, 250, 253, 0.6), inset 1px 1.5px 3px transparent,
     inset -1px -1.5px 3px transparent;
   transition: box-shadow 0.5s;
 }
@@ -74,6 +74,16 @@ button:active {
   color: #ffffff;
   font-size: 11px;
   font-weight: 400;
+}
+.LandscapeButton.google{
+  width: 251px;
+  height: 71px;
+  font-size: 14px;
+}
+.googleImg{
+  margin: 0 11px -4.5px 0px;
+  width: 20.5px;
+  height: 20px;
 }
 button:active.Login {
   box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
