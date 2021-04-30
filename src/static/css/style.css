@@ -133,3 +133,29 @@ input.datepicker{
   height: auto;
   width: 60px;
 }
+
+
+.page_animation-enter {
+  opacity: 0;
+}
+
+.page_animation-enter-to {
+  opacity: 1;
+}
+
+.page_animation-enter-active {
+  transition: all 400ms;
+}
+
+.page_animation-leave {
+  opacity: 1;
+}
+
+.page_animation-leave-to {
+  opacity: 0;
+
+}
+
+.page_animation-leave-active {
+  transition: all 200ms;
+}
