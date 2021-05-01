@@ -2,9 +2,8 @@
 body {
   text-align: center;
   width: 375px;
+  height: 812px;
   margin: 0 auto 0 auto;
-}
-.v-application--wrap {
   background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
   font-family: "Roboto", sans-serif;
   color: #2c2c2c;
@@ -13,27 +12,32 @@ h1 {
   font-size: 22px;
   letter-spacing: 0.2em;
   font-weight: 400;
+  margin: 0;
 }
 h2 {
   font-weight: 300;
   font-size: 20px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 h3 {
   font-weight: 300;
   font-size: 17px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 h4 {
   font-weight: 300;
   font-size: 13px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 p {
   font-weight: 300;
   font-size: 8px;
   letter-spacing: 0.15em;
   color: #646464;
+  margin: 0;
 }
 a{
   color: #6AB2FA !important;
@@ -113,6 +117,12 @@ button:active.Logout {
 .PlayImg {
   margin: 0 0 0 2.5px;
 }
+button{
+  border: none;
+}
+input{
+  border: none;
+}
 button:focus {
 	outline:0;
 }
@@ -144,7 +154,7 @@ input.datepicker{
 }
 
 .page_animation-enter-active {
-  transition: all 400ms;
+  transition: all 1000ms;
 }
 
 .page_animation-leave {
