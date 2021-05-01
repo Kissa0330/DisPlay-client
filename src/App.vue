@@ -1,9 +1,7 @@
 <template>
-  <v-app>
     <transition name="page_animation" mode="out-in">
       <router-view></router-view>
     </transition>
-  </v-app>
 </template>
 
 <script>
