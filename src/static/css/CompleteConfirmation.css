@@ -45,7 +45,7 @@ h2.confirmationText {
 }
 
 /* completeConfirmationのアニメーション */
-.completeConfirmation-enter {
+.completeConfirmation-enter-from {
   opacity: 0;
   top: 300px;
 }
@@ -59,7 +59,7 @@ h2.confirmationText {
   transition: all 400ms ease-in-out;
 }
 
-.completeConfirmation-leave {
+.completeConfirmation-leave-from {
   opacity: 1;
   top: 180px;
 }

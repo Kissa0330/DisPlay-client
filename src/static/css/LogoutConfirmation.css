@@ -45,7 +45,7 @@ h2.confirmationText {
 }
 
 /* logoutConfirmationのアニメーション */
-.logoutConfirmation-enter {
+.logoutConfirmation-enter-from {
   opacity: 0;
   top: 300px;
 }
@@ -59,7 +59,7 @@ h2.confirmationText {
   transition: all 400ms ease-in-out;
 }
 
-.logoutConfirmation-leave {
+.logoutConfirmation-leave-from {
   opacity: 1;
   top: 180px;
 }

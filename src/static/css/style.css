@@ -145,7 +145,7 @@ input.datepicker{
 }
 
 
-.page_animation-enter {
+.page_animation-enter-from {
   opacity: 0;
 }
 
@@ -157,7 +157,7 @@ input.datepicker{
   transition: all 1000ms;
 }
 
-.page_animation-leave {
+.page_animation-leave-from {
   opacity: 1;
 }
 
