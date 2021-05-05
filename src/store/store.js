@@ -1,9 +1,9 @@
 /* eslint-disable */
-import Vue from "vue";
+import { reactive } from 'vue'
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const store = Vue.observable({
+const store = reactive({
   customs: {},
   todos: {},
   token: {},
