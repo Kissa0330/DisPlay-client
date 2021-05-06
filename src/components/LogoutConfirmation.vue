@@ -25,6 +25,8 @@ export default {
     },
     deleteToken() {
       Cookies.remove("access_token");
+      Cookies.remove("refresh_token");
+      console.log("deleted");
       location.reload();
     },
   },

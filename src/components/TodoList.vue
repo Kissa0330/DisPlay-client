@@ -84,7 +84,6 @@
 
 <script>
 /* eslint-disable */
-import axios from "axios";
 import TodoAdd from "./TodoAdd";
 import TodoPut from "./TodoPut";
 import TodoEdit from "./TodoEdit";
