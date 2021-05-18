@@ -18,18 +18,7 @@
         <img src="../assets/img/stick.svg" class="putStick" alt="stick" />
         <div class="field">
           <div class="timePicker">
-            <vue-clock-picker
-              mode="24"
-              :defaultHour="hour"
-              :defaultMinute="minute"
-              :onTimeChange="timeChangeHandler"
-            />
-            <vue-clock-picker
-              mode="24"
-              :defaultHour="hour2"
-              :defaultMinute="minute2"
-              :onTimeChange="timeChangeHandler2"
-            />
+
           </div>
         </div>
       </div>
@@ -38,13 +27,11 @@
 </template>
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
-import VueClockPicker from "vue-clock-picker";
 import { store, actions } from "../store/store";
 
 export default {
   name: "TodoPut",
   components: {
-    VueClockPicker,
   },
   data() {
     return {

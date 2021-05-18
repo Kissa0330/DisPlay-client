@@ -29,18 +29,7 @@
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <div class="timePicker">
-          <vue-clock-picker
-            mode="24"
-            :defaultHour="hour"
-            :defaultMinute="minute"
-            :onTimeChange="timeChangeHandler"
-          />
-          <vue-clock-picker
-            mode="24"
-            :defaultHour="hour2"
-            :defaultMinute="minute2"
-            :onTimeChange="timeChangeHandler2"
-          />
+
         </div>
       </div>
     </div>
@@ -80,13 +69,11 @@
 </template>
 <style scoped src="../static/css/CustomAdd.css"></style>
 <script>
-import VueClockPicker from "vue-clock-picker";
 import { actions } from "../store/store.js";
 
 export default {
   name: "CustomAdd",
   components: {
-    VueClockPicker,
   },
   data: function () {
     return {

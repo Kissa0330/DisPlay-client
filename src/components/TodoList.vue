@@ -5,20 +5,20 @@
     </transition>
     <transition>
       <TodoPut
-        :id="this.id"
-        :title="this.title"
-        :date="this.d_date"
-        :time="this.d_time"
+        :id="id"
+        :title="title"
+        :date="d_date"
+        :time="d_time"
         v-if="todoPutView"
         @childEvent="todoPutView = false"
       />
     </transition>
     <transition>
       <TodoEdit
-        :id="this.id"
-        :title="this.title"
-        :date="this.d_date"
-        :time="this.d_time"
+        :id="id"
+        :title="title"
+        :date="d_date"
+        :time="d_time"
         v-if="todoEditView"
         @childEvent="todoEditView = false"
       />
@@ -27,7 +27,7 @@
       <CompleteConfirmation
         @childEvent="comConView = false"
         v-if="comConView"
-        :id="this.id"
+        :id="id"
       />
     </transition>
     <div class="TodoMenu">

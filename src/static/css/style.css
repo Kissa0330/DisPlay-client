@@ -109,6 +109,9 @@ button:active.Logout {
     inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
 }
+.v3dp__datepicker button{
+  box-shadow: none;
+}
 .CircleButton {
   background: linear-gradient(15deg, #fdfdfd, #f7f7f7);
   width: 29px;
@@ -135,8 +138,7 @@ img.Pen{
   width: 9px;
   height: 16px;
 }
-
-input.datepicker{
+.v3dp__datepicker input{
   font-family: "Roboto", sans-serif;
   text-align: left;
   font-weight: 300;
@@ -144,6 +146,8 @@ input.datepicker{
   font-size: 17px;
   height: auto;
   width: 60px;
+  padding:0;
+  margin: top 2px; ;
 }
 
 

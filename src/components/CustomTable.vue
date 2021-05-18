@@ -87,7 +87,7 @@ export default {
             );
             document.getElementById(id).onclick = function () {
               let clickedNumber = this.id.split("r")[0];
-              console.log(id)
+              console.log(id);
               _this.selectedCustom = _this.customs[clickedNumber];
               _this.customEditView = true;
             };

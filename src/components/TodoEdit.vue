@@ -34,9 +34,7 @@
         <div class="datepickerWrap">
           <Datepicker
             v-model="newDate"
-            :format="DatePickerFormat"
-            :typeable="true"
-            :input-class="inputClass"
+            inputFormat="M/d"
           />
         </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
@@ -57,7 +55,7 @@
 <script>
 import { actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
-import Datepicker from "vuejs-datepicker";
+import Datepicker from 'vue3-datepicker'
 
 export default {
   name: "TodoEdit",
