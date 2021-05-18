@@ -15,7 +15,7 @@
     <CustomTable />
     <div class="logoutSection">
       <h3 class="logoutTitle">Logout</h3>
-      <button class="Logout LandscapeButton" @click="this.logoutConView = true">
+      <button class="Logout LandscapeButton" @click="logoutConView = true">
         Logout
       </button>
       <transition name="logoutConfirmation">

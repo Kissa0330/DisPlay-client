@@ -65,17 +65,12 @@ export default {
   },
   data: function () {
     let date = this.date.split("-");
-    let month = Number(date[1]);
-    let day = Number(date[2]);
+    let newDate = new Date(date[0],date[1],date[2]);
     return {
       newTitle: this.title,
-      month: month,
-      day: day,
       delConView: false,
       type: "todo",
-      newDate: month + "/" + day,
-      DatePickerFormat: "M/d",
-      inputClass: "datepicker",
+      newDate: newDate,
     };
   },
   computed: {
@@ -89,7 +84,7 @@ export default {
     },
     deadline_time() {
       let year = this.newDate.getFullYear();
-      let month = this.newDate.getMonth() + 1;
+      let month = this.newDate.getMonth();
       let day = this.newDate.getDate();
       return year + "-" + month + "-" + day + "T" + this.time + "+09:00";
     },
