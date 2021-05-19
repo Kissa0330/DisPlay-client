@@ -69,7 +69,6 @@ export default {
       delConView: false,
       type: "todo",
       newDate: newDate,
-      dates: date,
     };
   },
   computed: {
@@ -83,7 +82,7 @@ export default {
     },
     deadline_time() {
       let year = this.newDate.getFullYear();
-      let month = this.newDate.getMonth();
+      let month = this.newDate.getMonth() + 1;
       let day = this.newDate.getDate();
       return year + "-" + month + "-" + day + "T" + this.time + "+09:00";
     },
