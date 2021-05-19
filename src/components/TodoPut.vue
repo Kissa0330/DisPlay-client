@@ -18,7 +18,7 @@
         <img src="../assets/img/stick.svg" class="putStick" alt="stick" />
         <div class="field">
           <div class="timePicker">
-
+            <VueTimepicker></VueTimepicker>
           </div>
         </div>
       </div>
@@ -28,10 +28,12 @@
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
 import { store, actions } from "../store/store";
+import VueTimepicker from 'vue3-timepicker/src/VueTimepicker.vue'
 
 export default {
   name: "TodoPut",
   components: {
+    VueTimepicker
   },
   data() {
     return {

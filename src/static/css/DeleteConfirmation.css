@@ -10,6 +10,7 @@
   left: calc(50% - 267px / 2);
 }
 h2.confirmationText {
+  font-size: 18px;
   margin: 33px 0 0 0;
   line-height: 30px;
 }
