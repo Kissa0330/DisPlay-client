@@ -44,7 +44,7 @@ p {
 }
 a{
   color: #6AB2FA !important;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 2.4px;
 }
 a.router-link-active{
