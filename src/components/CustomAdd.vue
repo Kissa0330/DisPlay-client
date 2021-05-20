@@ -95,7 +95,7 @@ export default {
   data: function () {
     let HH = new Date().getHours();
     let HH2 = "";
-    let mm = new Date().getMinutes();
+    let mm = "00";
 
     if (HH == 9) {
       HH2 = Number(HH) + 1 + "";
@@ -106,11 +106,6 @@ export default {
     } else {
       HH2 = Number(HH) + 1 + "";
       HH = HH + "";
-    }
-    if (mm < 10) {
-      mm = "0" + mm;
-    } else {
-      mm = mm + "";
     }
     return {
       dayOfTheWeeks: [
