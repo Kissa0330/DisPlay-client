@@ -29,6 +29,16 @@
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <div class="timePicker">
+          <VueTimepicker
+            hide-clear-button
+            format="HH:mm"
+            v-model="timepicker1"
+          ></VueTimepicker>
+          <VueTimepicker
+            hide-clear-button
+            format="HH:mm"
+            v-model="timepicker2"
+          ></VueTimepicker>
         </div>
       </div>
     </div>
@@ -77,12 +87,25 @@
 <style scoped src="../static/css/CustomEdit.css"></style>
 <script>
 import { actions } from "../store/store.js";
+import VueTimepicker from "vue3-timepicker/src/VueTimepicker.vue";
 
 export default {
   name: "customEdit",
-  components: {
-  },
+  components: { VueTimepicker },
   data: function () {
+    let time = [
+      this.custom.start_time.split(":")[0],
+      this.custom.end_time.split(":")[0],
+      this.custom.start_time.split(":")[1],
+      this.custom.end_time.split(":")[1],
+    ];
+    for (let i; i < time.length; i++) {
+      if (time[i] < 10) {
+        time[i] = "0" + time[i];
+      } else {
+        time[i] = time[i] + "";
+      }
+    }
     return {
       dayOfTheWeeks: [
         { name: "Su", id: "1", isActive: false },
@@ -98,6 +121,14 @@ export default {
       minute: Number(this.custom.start_time.split(":")[1]),
       hour2: Number(this.custom.end_time.split(":")[0]),
       minute2: Number(this.custom.end_time.split(":")[1]),
+      timepicker1: {
+        HH: time[0],
+        mm: time[3],
+      },
+      timepicker2: {
+        HH: time[1],
+        mm: time[2],
+      },
       isActiveChange: false,
     };
   },
@@ -114,11 +145,11 @@ export default {
       return flag;
     },
     start_time() {
-      let time = String(this.hour) + ":" + String(this.minute) + ":00";
+      let time = String(this.timepicker1.HH) + ":" + String(this.timepicker1.mm) + ":00";
       return time;
     },
     end_time() {
-      let time = String(this.hour2) + ":" + String(this.minute2) + ":00";
+      let time = String(this.timepicker2.HH) + ":" + String(this.timepicker2.mm) + ":00";
       return time;
     },
   },
@@ -136,14 +167,6 @@ export default {
       for (let i = 0; i < this.dayOfTheWeeks.length; i++) {
         this.dayOfTheWeeks[i].isActive = false;
       }
-    },
-    timeChangeHandler(e) {
-      this.hour = e.hour;
-      this.minute = e.minute;
-    },
-    timeChangeHandler2(e) {
-      this.hour2 = e.hour;
-      this.minute2 = e.minute;
     },
     putCustom() {
       actions.putCustom(

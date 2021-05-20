@@ -18,7 +18,16 @@
         <img src="../assets/img/stick.svg" class="putStick" alt="stick" />
         <div class="field">
           <div class="timePicker">
-            <VueTimepicker></VueTimepicker>
+            <VueTimepicker
+              hide-clear-button
+              format="HH:mm"
+              v-model="timepicker1"
+            ></VueTimepicker>
+            <VueTimepicker
+              hide-clear-button
+              format="HH:mm"
+              v-model="timepicker2"
+            ></VueTimepicker>
           </div>
         </div>
       </div>
@@ -28,19 +37,43 @@
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
 import { store, actions } from "../store/store";
-import VueTimepicker from 'vue3-timepicker/src/VueTimepicker.vue'
+import VueTimepicker from "vue3-timepicker/src/VueTimepicker.vue";
 
 export default {
   name: "TodoPut",
   components: {
-    VueTimepicker
+    VueTimepicker,
   },
   data() {
+    let HH = new Date().getHours();
+    let HH2 = "";
+    let mm = new Date().getMinutes();
+
+    if (HH == 9) {
+      HH2 = Number(HH) + 1 + "";
+      HH = "0" + HH;
+    } else if (HH < 10) {
+      HH2 = "0" + (Number(HH) + 1);
+      HH = "0" + HH;
+    } else {
+      HH2 = Number(HH) + 1 + "";
+      HH = HH + "";
+    }
+    if (mm < 10) {
+      mm = "0" + mm;
+    } else {
+      mm = mm + "";
+    }
+
     return {
-      hour: new Date().getHours(),
-      minute: new Date().getMinutes(),
-      hour2: new Date().getHours() + 1,
-      minute2: new Date().getMinutes(),
+      timepicker1: {
+        HH: HH,
+        mm: mm,
+      },
+      timepicker2: {
+        HH: HH2,
+        mm: mm,
+      },
     };
   },
   computed: {
@@ -56,9 +89,9 @@ export default {
         "-" +
         date.getDate() +
         "T" +
-        this.hour +
+        this.timepicker1.HH +
         ":" +
-        this.minute +
+        this.timepicker1.mm +
         ":00+09:00"
       );
     },
@@ -71,9 +104,9 @@ export default {
         "-" +
         date.getDate() +
         "T" +
-        this.hour2 +
+        this.timepicker2.HH +
         ":" +
-        this.minute2 +
+        this.timepicker2.mm +
         ":00+09:00"
       );
     },
@@ -95,8 +128,8 @@ export default {
   methods: {
     todoPut() {
       if (
-        this.hour + this.minute * 0.0166 <=
-        this.hour2 + this.minute2 * 0.0166
+        this.timepicker1.HH + this.timepicker1.mm * 0.0166 <=
+        this.timepicker2.HH + this.timepicker2.mm * 0.0166
       ) {
         for (let i = 0; i < store.customs.length; ++i) {
           let date = new Date();
@@ -106,8 +139,8 @@ export default {
             if (
               !(
                 store.customs[i].calculateStartTime <=
-                  this.hour2 + this.minute2 * 0.0166 &&
-                this.hour + this.minute * 0.0166 <=
+                  this.timepicker2.HH + this.timepicker2.mm * 0.0166 &&
+                this.timepicker1.HH + this.timepicker1.mm * 0.0166 <=
                   store.customs[i].calculateEndTime
               )
             ) {
@@ -118,7 +151,7 @@ export default {
                   this.title,
                   this.deadline_time,
                   this.start_time,
-                  this.end_time,
+                  this.end_time
                 );
                 this.$emit("childEvent");
               }
@@ -135,14 +168,6 @@ export default {
     },
     sendTodoPutView() {
       this.$emit("childEvent");
-    },
-    timeChangeHandler(e) {
-      this.hour = e.hour;
-      this.minute = e.minute;
-    },
-    timeChangeHandler2(e) {
-      this.hour2 = e.hour;
-      this.minute2 = e.minute;
     },
   },
 };
