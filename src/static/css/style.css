@@ -150,8 +150,26 @@ img.Pen{
   padding:0;
   margin: top 2px; ;
 }
-
-
+body .vue__time-picker input.vue__time-picker-input{
+  border: none;
+  color: #2c2c2c;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  background-color: transparent;
+  font-size: 23px;
+  width: 80px;
+  font-weight: 400;
+  margin: 0 0 0 5px;
+  }
+  body .vue__time-picker{
+    width: 80px;
+  }
+p.centerText{
+  font-size: 18px;
+  font-weight: 400;
+  margin: 15px 13px 0 4px;
+  color: #2c2c2c;
+}
 .page_animation-enter-from {
   opacity: 0;
 }

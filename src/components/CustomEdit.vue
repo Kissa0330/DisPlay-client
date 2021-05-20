@@ -34,6 +34,7 @@
             format="HH:mm"
             v-model="timepicker1"
           ></VueTimepicker>
+          <p class="centerText">to</p>
           <VueTimepicker
             hide-clear-button
             format="HH:mm"
@@ -145,11 +146,13 @@ export default {
       return flag;
     },
     start_time() {
-      let time = String(this.timepicker1.HH) + ":" + String(this.timepicker1.mm) + ":00";
+      let time =
+        String(this.timepicker1.HH) + ":" + String(this.timepicker1.mm) + ":00";
       return time;
     },
     end_time() {
-      let time = String(this.timepicker2.HH) + ":" + String(this.timepicker2.mm) + ":00";
+      let time =
+        String(this.timepicker2.HH) + ":" + String(this.timepicker2.mm) + ":00";
       return time;
     },
   },

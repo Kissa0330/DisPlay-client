@@ -33,10 +33,9 @@ img.putStick{
   width: 87px;
 }
 .timePicker {
-  margin: 20px 0 0 0;
+  margin: 13px 0 0 0;
   width: 280px;
   display: flex;
-  justify-content: space-between;
 }
 .field{
   margin: 0 0 0 28px;
