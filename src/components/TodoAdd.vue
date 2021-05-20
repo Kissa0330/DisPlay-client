@@ -32,12 +32,7 @@
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <div class="datepickerWrap">
-        <Datepicker
-          v-model="date"
-          :format="DatePickerFormat"
-          :typeable="true"
-          :input-class="inputClass"
-        />
+          <Datepicker v-model="date" inputFormat="M/d" />
         </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -47,7 +42,7 @@
 <style scoped src="../static/css/TodoAdd.css"></style>
 <script>
 import { actions } from "../store/store";
-import Datepicker from "vuejs-datepicker";
+import Datepicker from "vue3-datepicker";
 
 export default {
   name: "TodoAdd",
@@ -59,8 +54,7 @@ export default {
     return {
       date: date,
       title: "",
-      DatePickerFormat: "M/d",
-      inputClass:"datepicker"
+      inputClass: "datepicker",
     };
   },
   computed: {

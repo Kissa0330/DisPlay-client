@@ -32,12 +32,7 @@
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <div class="datepickerWrap">
-          <Datepicker
-            v-model="newDate"
-            :format="DatePickerFormat"
-            :typeable="true"
-            :input-class="inputClass"
-          />
+          <Datepicker v-model="newDate" inputFormat="M/d" />
         </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -57,7 +52,7 @@
 <script>
 import { actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
-import Datepicker from "vuejs-datepicker";
+import Datepicker from "vue3-datepicker";
 
 export default {
   name: "TodoEdit",
@@ -67,17 +62,13 @@ export default {
   },
   data: function () {
     let date = this.date.split("-");
-    let month = Number(date[1]);
-    let day = Number(date[2]);
+    let newDate = new Date(date[0], date[1]-1, date[2]);
+
     return {
       newTitle: this.title,
-      month: month,
-      day: day,
       delConView: false,
       type: "todo",
-      newDate: month + "/" + day,
-      DatePickerFormat: "M/d",
-      inputClass: "datepicker",
+      newDate: newDate,
     };
   },
   computed: {

@@ -3,7 +3,7 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a @click="polycyViewChange">プライバシーポリシー</a
+        情報は<a class="polycyLink" @click="polycyViewChange">プライバシーポリシー</a
         >に則って管理されます
       </p>
     </header>

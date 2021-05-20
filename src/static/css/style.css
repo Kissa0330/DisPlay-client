@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
 body {
   text-align: center;
   width: 375px;
-  height: 812px;
   margin: 0 auto 0 auto;
+  min-height: 812px;
+  height: auto;
   background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
   font-family: "Roboto", sans-serif;
   color: #2c2c2c;
 }
+
 h1 {
   font-size: 22px;
   letter-spacing: 0.2em;
@@ -41,7 +44,7 @@ p {
 }
 a{
   color: #6AB2FA !important;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 2.4px;
 }
 a.router-link-active{
@@ -107,6 +110,9 @@ button:active.Logout {
     inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
 }
+.v3dp__datepicker button{
+  box-shadow: none;
+}
 .CircleButton {
   background: linear-gradient(15deg, #fdfdfd, #f7f7f7);
   width: 29px;
@@ -133,8 +139,7 @@ img.Pen{
   width: 9px;
   height: 16px;
 }
-
-input.datepicker{
+.v3dp__datepicker input{
   font-family: "Roboto", sans-serif;
   text-align: left;
   font-weight: 300;
@@ -142,10 +147,30 @@ input.datepicker{
   font-size: 17px;
   height: auto;
   width: 60px;
+  padding:0;
+  margin: top 2px; ;
 }
-
-
-.page_animation-enter {
+body .vue__time-picker input.vue__time-picker-input{
+  border: none;
+  color: #2c2c2c;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  background-color: transparent;
+  font-size: 23px;
+  width: 80px;
+  font-weight: 400;
+  margin: 0 0 0 5px;
+  }
+  body .vue__time-picker{
+    width: 80px;
+  }
+p.centerText{
+  font-size: 18px;
+  font-weight: 400;
+  margin: 15px 13px 0 4px;
+  color: #2c2c2c;
+}
+.page_animation-enter-from {
   opacity: 0;
 }
 
@@ -157,7 +182,7 @@ input.datepicker{
   transition: all 1000ms;
 }
 
-.page_animation-leave {
+.page_animation-leave-from {
   opacity: 1;
 }
 

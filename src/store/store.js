@@ -1,9 +1,9 @@
 /* eslint-disable */
-import Vue from "vue";
+import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const store = Vue.observable({
+const store = reactive({
   customs: {},
   todos: {},
   token: {},
@@ -56,6 +56,9 @@ const actions = {
         store.todos = data;
         store.todoHandler = !store.todoHandler;
         console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time) {
@@ -101,6 +104,9 @@ const actions = {
         }
         store.todos = data;
         store.todoHandler = !store.todoHandler;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   deleteTodo(id) {
@@ -125,6 +131,9 @@ const actions = {
         }
         store.todos = data;
         store.todoHandler = !store.todoHandler;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   getCustoms() {
@@ -201,6 +210,9 @@ const actions = {
             .then((response) => {
               console.log(response.data);
               store.customs = response.data;
+            })
+            .catch((error) => {
+              console.log(error.response);
             });
           function postSampleCustom(i) {
             let data = {
@@ -234,6 +246,9 @@ const actions = {
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   putCustom(title, flag, start_time, end_time, id) {
@@ -256,6 +271,9 @@ const actions = {
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   deleteCustom(id) {
@@ -271,6 +289,9 @@ const actions = {
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   updateCustoms(customs) {

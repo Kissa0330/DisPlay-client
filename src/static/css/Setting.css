@@ -1,3 +1,8 @@
+.setting{
+  min-height: 812px;
+  height: auto;
+  position: relative;
+}
 .setting p{
   font-size: 10px;
   margin: 0;
@@ -7,7 +12,7 @@
   letter-spacing: 0.2em;
 }
 .headerTitle{
-  margin: 50px 0 0 0;
+  padding: 50px 0 0 0;
 }
 .background{
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
@@ -15,8 +20,14 @@
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
     width: 329px;
     min-height: 670px;
+    height: auto;
     border-radius: 16px 16px 0 0;
+    bottom: 0px;
     margin: 30px auto 0 auto;
+    right: 0;
+    left: 0;
+    display: block;
+    position: absolute;
 }
 p.headerDescription{
   margin: 20px 0 0 0;
@@ -27,6 +38,9 @@ p.headerDescription{
 }
 p.customDescription{
   margin: 3px 0 0 0;
+}
+.polycyLink{
+  text-decoration: underline;
 }
 .customList{
   margin: 6px 0 0 0;

@@ -15,7 +15,9 @@
     <CustomTable />
     <div class="logoutSection">
       <h3 class="logoutTitle">Logout</h3>
-      <button class="Logout LandscapeButton" @click="logoutConViewChange">Logout</button>
+      <button class="Logout LandscapeButton" @click="logoutConView = true">
+        Logout
+      </button>
       <transition name="logoutConfirmation">
         <LogoutConfirmation
           v-if="logoutConView"
@@ -36,11 +38,6 @@ export default {
     return {
       logoutConView: false,
     };
-  },
-  methods: {
-    logoutConViewChange() {
-      this.logoutConView = true;
-    },
   },
 };
 </script>

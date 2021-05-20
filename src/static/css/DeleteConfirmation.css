@@ -10,6 +10,7 @@
   left: calc(50% - 267px / 2);
 }
 h2.confirmationText {
+  font-size: 18px;
   margin: 33px 0 0 0;
   line-height: 30px;
 }
@@ -45,7 +46,7 @@ h2.confirmationText {
 }
 
 /* deleteConfirmationのアニメーション */
-.deleteConfirmation-enter {
+.deleteConfirmation-enter-from {
   opacity: 0;
   top: 300px;
 }
@@ -59,7 +60,7 @@ h2.confirmationText {
   transition: all 400ms ease-in-out;
 }
 
-.deleteConfirmation-leave {
+.deleteConfirmation-leave-from {
   opacity: 1;
   top: 180px;
 }
