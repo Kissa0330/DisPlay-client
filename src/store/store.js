@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { reactive } from 'vue'
+import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -234,6 +234,9 @@ const actions = {
       .then((response) => {
         console.log(response.data);
         store.customs = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   },
   putCustom(title, flag, start_time, end_time, id) {
