@@ -14,52 +14,16 @@ h1.signinTitle {
   left: 0;
   right: 0;
   width: 353px;
-  height: 340px;
+  height: 234px;
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
   border-radius: 16px;
-  margin: 115px auto 0 auto;
+  margin: 94px auto 0 auto;
 }
-.signinForm.err{
-  margin-top: 80px;
-  height: 390px;
-}
-.errText{
-  margin: 20px 0 0 29px;
-  text-align: left;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  color: #FA7070;
-}
-.errText .resetLink{
-  font-size: 12px;
-}
-input {
-  font-size: 15px;
-  width: 300px;
-  position: relative;
-  letter-spacing: 0.13em;
-}
-.usernameInputArea {
-  margin: 40px 0 0 0;
-}
-.usernameInputArea.err{
-  margin: 25px 0 0 0;
-}
-.inputLine {
-  width: 300px;
-  height: 1px;
-  background-color: #676767;
-  margin: 0 auto 0 auto;
-}
-.passwordInputArea {
-  margin: 30px 0 0 0;
-}
-.LandscapeButton.Login {
+.LandscapeButton.google {
   display: block;
-  right: auto;
-  margin: 28.5px auto 0 24px;
+  margin: 35px auto 0 auto;
 }
 .signinCaption{
   text-align: left;

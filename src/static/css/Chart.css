@@ -2,7 +2,7 @@
   margin-top: 40px;
 }
 /* ScheduleDetailのアニメーション */
-.v-enter {
+.v-enter-from {
   opacity: 0;
   top: 300px;
 }
@@ -16,7 +16,7 @@
   transition: all 400ms;
 }
 
-.v-leave {
+.v-leave-from {
   opacity: 1;
   top: 80px;
 }

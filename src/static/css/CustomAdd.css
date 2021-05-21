@@ -19,8 +19,9 @@
 .headerLeft {
   margin: -5px 0 0 0;
 }
-input.titleInputArea{
+input.titleInputArea {
   letter-spacing: 0.15em;
+  font-size: 16px;
 }
 h3.captionText {
   font-family: "Roboto", sans-serif;
@@ -58,9 +59,8 @@ img.X {
   margin: 10px 0 0 1px;
   text-align: left;
 }
-.timePicker{
+.timePicker {
   display: flex;
-  justify-content: space-between;
   margin: 10px 30px 0 0;
 }
 .dayOfTheWeeks {
@@ -83,7 +83,7 @@ img.X {
   cursor: pointer;
 }
 .dayOfTheWeek.active {
-  background-color: #6AB2FA;
+  background-color: #6ab2fa;
 }
 .dayOfTheWeekText {
   margin: 0 0 1px 2px;
@@ -124,4 +124,32 @@ button.Login {
   margin: 30px 30px 0 auto;
   height: 32px;
   font-size: 12px;
+}
+/* CustomAddのアニメーション */
+.customAdd-enter-from {
+  opacity: 0;
+  top: 300px;
+}
+
+.customAdd-enter-to {
+  opacity: 1;
+  top: 90px;
+}
+
+.customAdd-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.customAdd-leave-from {
+  opacity: 1;
+  top: 90px;
+}
+
+.customAdd-leave-to {
+  opacity: 0;
+  top: 300px;
+}
+
+.customAdd-leave-active {
+  transition: all 500ms ease-in-out;
 }

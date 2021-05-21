@@ -3,7 +3,7 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a @click="polycyViewChange">プライバシーポリシー</a
+        情報は<a class="polycyLink" @click="polycyViewChange">プライバシーポリシー</a
         >に則って管理されます
       </p>
     </header>
@@ -45,7 +45,7 @@
         @childEvent="customAddView = false"
       ></CustomAdd>
     </transition>
-    <transition name="customAdd">
+    <transition name="customEdit">
       <CustomEdit
         v-if="customEditView"
         @childEvent="customEditView = false"
@@ -95,9 +95,6 @@ export default {
     };
   },
   computed: {
-    token() {
-      return store.token;
-    },
     customs() {
       for (let i = 0; i < store.customs.length; i++) {
         let repeatFlagSplit = store.customs[i].repeat_flag.split("");
@@ -149,59 +146,7 @@ export default {
     },
   },
   mounted() {
-    const _this = this;
-    function addSampleCustom() {
-      console.log("addSampleCustom is runnning");
-      if (!store.customs.length) {
-        const sampleCustoms = [
-          {
-            title: "朝食",
-            start_time: "07:00:00",
-            end_time: "07:30:00",
-            repeatFlag: "1111111",
-          },
-          {
-            title: "昼食",
-            start_time: "12:00:00",
-            end_time: "13:00:00",
-            repeatFlag: "1111111",
-          },
-          {
-            title: "夕食",
-            start_time: "19:00:00",
-            end_time: "20:00:00",
-            repeatFlag: "1111111",
-          },
-          {
-            title: "睡眠",
-            start_time: "23:00:00",
-            end_time: "07:00:00",
-            repeatFlag: "1111111",
-          },
-          {
-            title: "入浴",
-            start_time: "22:00:00",
-            end_time: "23:30:00",
-            repeatFlag: "1111111",
-          },
-        ];
-        for (let i = 0; i < sampleCustoms.length; i++) {
-          actions.postCustom(
-            _this.token,
-            sampleCustoms[i].title,
-            sampleCustoms[i].start_time,
-            sampleCustoms[i].end_time,
-            sampleCustoms[i].repeatFlag
-          );
-          console.log(i + "番のタスクを設定しました");
-        }
-        console.log("初期値を設定しました");
-        setTimeout(actions.getCustoms(_this.token), 50);
-      } else {
-        console.log("初期値は設定されませんでした");
-      }
-    }
-    actions.initialCustomSetting(this.token);
+    actions.initialCustomSetting();
   },
   methods: {
     polycyViewChange() {

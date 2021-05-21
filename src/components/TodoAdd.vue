@@ -31,7 +31,9 @@
       <h3 class="captionText">Deadline</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <Datepicker :format="DatePickerFormat" :value="defaultDate" :typeable="true" />
+        <div class="datepickerWrap">
+          <Datepicker v-model="date" inputFormat="M/d" />
+        </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -39,8 +41,8 @@
 </template>
 <style scoped src="../static/css/TodoAdd.css"></style>
 <script>
-import { store, actions } from "../store/store";
-import Datepicker from "vuejs-datepicker";
+import { actions } from "../store/store";
+import Datepicker from "vue3-datepicker";
 
 export default {
   name: "TodoAdd",
@@ -49,13 +51,10 @@ export default {
   },
   data: function () {
     let date = new Date();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
     return {
       date: date,
       title: "",
-      defaultDate: month + "/" + day,
-      DatePickerFormat: "M/d",
+      inputClass: "datepicker",
     };
   },
   computed: {
@@ -67,20 +66,19 @@ export default {
       let inputTitleWidth = width + "px";
       return inputTitleWidth;
     },
-    token() {
-      return store.token;
-    },
   },
   methods: {
     sendTodoAddView() {
       this.$emit("childEvent");
     },
     postTodo() {
+      let month = this.date.getMonth() + 1;
+      let day = this.date.getDate();
+      console.log(month + "" + day);
       let data = {
         author: 1,
         title: this.title,
-        deadline_time:
-          "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
+        deadline_time: "2020-" + month + "-" + day + "T11:15:00+09:00",
       };
       actions.postTodo(data, this.token);
       this.$emit("childEvent");

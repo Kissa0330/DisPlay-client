@@ -1,4 +1,4 @@
-.deleteConfirmation {
+.logoutConfirmation {
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
@@ -10,7 +10,6 @@
   left: calc(50% - 267px / 2);
 }
 h2.confirmationText {
-  font-size: 18px;
   margin: 33px 0 0 0;
   line-height: 30px;
 }
@@ -45,31 +44,31 @@ h2.confirmationText {
   margin: 17px 0 0 0;
 }
 
-/* deleteConfirmationのアニメーション */
-.deleteConfirmation-enter-from {
+/* logoutConfirmationのアニメーション */
+.logoutConfirmation-enter-from {
   opacity: 0;
   top: 300px;
 }
 
-.deleteConfirmation-enter-to {
+.logoutConfirmation-enter-to {
   opacity: 1;
   top: 180px;
 }
 
-.deleteConfirmation-enter-active {
+.logoutConfirmation-enter-active {
   transition: all 400ms ease-in-out;
 }
 
-.deleteConfirmation-leave-from {
+.logoutConfirmation-leave-from {
   opacity: 1;
   top: 180px;
 }
 
-.deleteConfirmation-leave-to {
+.logoutConfirmation-leave-to {
   opacity: 0;
   top: 300px
 }
 
-.deleteConfirmation-leave-active {
+.logoutConfirmation-leave-active {
   transition: all 400ms ease-in-out;
 }

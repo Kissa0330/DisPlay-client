@@ -1,4 +1,4 @@
-.deleteConfirmation {
+.completeConfirmation {
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
@@ -45,31 +45,31 @@ h2.confirmationText {
   margin: 17px 0 0 0;
 }
 
-/* deleteConfirmationのアニメーション */
-.deleteConfirmation-enter-from {
+/* completeConfirmationのアニメーション */
+.completeConfirmation-enter-from {
   opacity: 0;
   top: 300px;
 }
 
-.deleteConfirmation-enter-to {
+.completeConfirmation-enter-to {
   opacity: 1;
   top: 180px;
 }
 
-.deleteConfirmation-enter-active {
+.completeConfirmation-enter-active {
   transition: all 400ms ease-in-out;
 }
 
-.deleteConfirmation-leave-from {
+.completeConfirmation-leave-from {
   opacity: 1;
   top: 180px;
 }
 
-.deleteConfirmation-leave-to {
+.completeConfirmation-leave-to {
   opacity: 0;
   top: 300px
 }
 
-.deleteConfirmation-leave-active {
+.completeConfirmation-leave-active {
   transition: all 400ms ease-in-out;
 }

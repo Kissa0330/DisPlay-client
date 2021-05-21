@@ -29,18 +29,17 @@
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <div class="timePicker">
-          <vue-clock-picker
-            mode="24"
-            :defaultHour="hour"
-            :defaultMinute="minute"
-            :onTimeChange="timeChangeHandler"
-          />
-          <vue-clock-picker
-            mode="24"
-            :defaultHour="hour2"
-            :defaultMinute="minute2"
-            :onTimeChange="timeChangeHandler2"
-          />
+          <VueTimepicker
+            hide-clear-button
+            format="HH:mm"
+            v-model="timepicker1"
+          ></VueTimepicker>
+          <p class="centerText">to</p>
+          <VueTimepicker
+            hide-clear-button
+            format="HH:mm"
+            v-model="timepicker2"
+          ></VueTimepicker>
         </div>
       </div>
     </div>
@@ -75,20 +74,40 @@
         </div>
       </div>
     </div>
-    <button class="LandscapeButton Login" @click="postCustom();sendCustomAddView()">Add</button>
+    <button
+      class="LandscapeButton Login"
+      @click="
+        postCustom();
+        sendCustomAddView();
+      "
+    >
+      Add
+    </button>
   </div>
 </template>
 <style scoped src="../static/css/CustomAdd.css"></style>
 <script>
-import VueClockPicker from "vue-clock-picker";
-import { store, actions } from "../store/store.js";
+import { actions } from "../store/store.js";
+import VueTimepicker from "vue3-timepicker/src/VueTimepicker.vue";
 
 export default {
   name: "CustomAdd",
-  components: {
-    VueClockPicker,
-  },
+  components: { VueTimepicker },
   data: function () {
+    let HH = new Date().getHours();
+    let HH2 = "";
+    let mm = "00";
+
+    if (HH == 9) {
+      HH2 = Number(HH) + 1 + "";
+      HH = "0" + HH;
+    } else if (HH < 10) {
+      HH2 = "0" + (Number(HH) + 1);
+      HH = "0" + HH;
+    } else {
+      HH2 = Number(HH) + 1 + "";
+      HH = HH + "";
+    }
     return {
       dayOfTheWeeks: [
         { name: "Su", id: "1", isActive: true },
@@ -100,10 +119,14 @@ export default {
         { name: "Sa", id: "7", isActive: true },
       ],
       title: "",
-      hour: new Date().getHours(),
-      minute: new Date().getMinutes(),
-      hour2: new Date().getHours() + 1,
-      minute2: new Date().getMinutes(),
+      timepicker1: {
+        HH: HH,
+        mm: mm,
+      },
+      timepicker2: {
+        HH: HH2,
+        mm: mm,
+      },
       isActiveChange: false,
     };
   },
@@ -119,15 +142,14 @@ export default {
       }
       return flag;
     },
-    token() {
-      return store.token;
-    },
     start_time() {
-      let time = String(this.hour) + ":" + String(this.minute) + ":00";
+      let time =
+        String(this.timepicker1.HH) + ":" + String(this.timepicker1.mm) + ":00";
       return time;
     },
     end_time() {
-      let time = String(this.hour2) + ":" + String(this.minute2) + ":00";
+      let time =
+        String(this.timepicker2.HH) + ":" + String(this.timepicker2.mm) + ":00";
       return time;
     },
   },
@@ -146,16 +168,15 @@ export default {
       }
     },
     timeChangeHandler(e) {
-      this.hour = e.hour;
-      this.minute = e.minute;
+      this.timepicker1.hh = e.hour;
+      this.timepicker1.mm = e.minute;
     },
     timeChangeHandler2(e) {
-      this.hour2 = e.hour;
-      this.minute2 = e.minute;
+      this.timepicker2.hh = e.hour;
+      this.timepicker2.mm = e.minute;
     },
     postCustom() {
       actions.postCustom(
-        this.token,
         this.title,
         this.start_time,
         this.end_time,

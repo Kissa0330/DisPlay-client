@@ -1,44 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
 body {
   text-align: center;
   width: 375px;
   margin: 0 auto 0 auto;
-}
-.v-application--wrap {
+  min-height: 812px;
+  height: auto;
   background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
   font-family: "Roboto", sans-serif;
   color: #2c2c2c;
 }
+
 h1 {
   font-size: 22px;
   letter-spacing: 0.2em;
   font-weight: 400;
+  margin: 0;
 }
 h2 {
   font-weight: 300;
   font-size: 20px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 h3 {
   font-weight: 300;
   font-size: 17px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 h4 {
   font-weight: 300;
   font-size: 13px;
   letter-spacing: 0.15em;
+  margin: 0;
 }
 p {
   font-weight: 300;
   font-size: 8px;
   letter-spacing: 0.15em;
   color: #646464;
+  margin: 0;
 }
 a{
   color: #6AB2FA !important;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 2.4px;
+}
+a.router-link-active{
+  text-decoration: none;
 }
 .LandscapeButton {
   width: 55px;
@@ -55,7 +65,7 @@ button {
   color: #9f9f9f;
   font-weight: 300;
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
-    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9), inset 1px 1.5px 3px transparent,
+    -1.5px -1.5px 3px rgba(239, 250, 253, 0.6), inset 1px 1.5px 3px transparent,
     inset -1px -1.5px 3px transparent;
   transition: box-shadow 0.5s;
 }
@@ -71,6 +81,16 @@ button:active {
   color: #ffffff;
   font-size: 11px;
   font-weight: 400;
+}
+.LandscapeButton.google{
+  width: 251px;
+  height: 71px;
+  font-size: 14px;
+}
+.googleImg{
+  margin: 0 11px -4.5px 0px;
+  width: 20.5px;
+  height: 20px;
 }
 button:active.Login {
   box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
@@ -90,6 +110,9 @@ button:active.Logout {
     inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
 }
+.v3dp__datepicker button{
+  box-shadow: none;
+}
 .CircleButton {
   background: linear-gradient(15deg, #fdfdfd, #f7f7f7);
   width: 29px;
@@ -100,6 +123,12 @@ button:active.Logout {
 .PlayImg {
   margin: 0 0 0 2.5px;
 }
+button{
+  border: none;
+}
+input{
+  border: none;
+}
 button:focus {
 	outline:0;
 }
@@ -109,4 +138,59 @@ input:focus {
 img.Pen{
   width: 9px;
   height: 16px;
+}
+.v3dp__datepicker input{
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  font-size: 17px;
+  height: auto;
+  width: 60px;
+  padding:0;
+  margin: top 2px; ;
+}
+body .vue__time-picker input.vue__time-picker-input{
+  border: none;
+  color: #2c2c2c;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  background-color: transparent;
+  font-size: 23px;
+  width: 80px;
+  font-weight: 400;
+  margin: 0 0 0 5px;
+  }
+  body .vue__time-picker{
+    width: 80px;
+  }
+p.centerText{
+  font-size: 18px;
+  font-weight: 400;
+  margin: 15px 13px 0 4px;
+  color: #2c2c2c;
+}
+.page_animation-enter-from {
+  opacity: 0;
+}
+
+.page_animation-enter-to {
+  opacity: 1;
+}
+
+.page_animation-enter-active {
+  transition: all 1000ms;
+}
+
+.page_animation-leave-from {
+  opacity: 1;
+}
+
+.page_animation-leave-to {
+  opacity: 0;
+
+}
+
+.page_animation-leave-active {
+  transition: all 200ms;
 }

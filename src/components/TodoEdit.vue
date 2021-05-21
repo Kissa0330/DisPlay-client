@@ -31,21 +31,9 @@
       <h3 class="captionText">Deadline</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <input
-          type="number"
-          min="1"
-          max="12"
-          class="dateInputArea"
-          v-model="month"
-        />
-        <h2 class="dateText">/</h2>
-        <input
-          type="number"
-          min="1"
-          max="31"
-          class="dateInputArea"
-          v-model="day"
-        />
+        <div class="datepickerWrap">
+          <Datepicker v-model="newDate" inputFormat="M/d" />
+        </div>
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -62,24 +50,25 @@
 </template>
 <style scoped src="../static/css/TodoEdit.css"></style>
 <script>
-import { store, actions } from "../store/store";
+import { actions } from "../store/store";
 import DeleteConfirmation from "./DeleteConfirmation";
+import Datepicker from "vue3-datepicker";
 
 export default {
   name: "TodoEdit",
   components: {
     DeleteConfirmation,
+    Datepicker,
   },
   data: function () {
     let date = this.date.split("-");
-    let month = Number(date[1]);
-    let day = Number(date[2]);
+    let newDate = new Date(date[0], date[1]-1, date[2]);
+
     return {
       newTitle: this.title,
-      month: month,
-      day: day,
       delConView: false,
       type: "todo",
+      newDate: newDate,
     };
   },
   computed: {
@@ -91,12 +80,11 @@ export default {
       let inputTitleWidth = width + "px";
       return inputTitleWidth;
     },
-    token() {
-      return store.token;
-    },
     deadline_time() {
-      let date = this.date.split("-");
-      return date[0] + "-" + this.month + "-" + this.day + "T" + this.time + "+09:00";
+      let year = this.newDate.getFullYear();
+      let month = this.newDate.getMonth() + 1;
+      let day = this.newDate.getDate();
+      return year + "-" + month + "-" + day + "T" + this.time + "+09:00";
     },
   },
   props: {
@@ -127,8 +115,7 @@ export default {
         this.newTitle,
         this.deadline_time,
         null,
-        null,
-        this.token
+        null
       );
       this.$emit("childEvent");
     },

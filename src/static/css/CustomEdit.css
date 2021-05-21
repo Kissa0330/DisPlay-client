@@ -21,6 +21,7 @@
 }
 input.titleInputArea{
   letter-spacing: 0.15em;
+  font-size: 20px;
 }
 h3.captionText {
   font-family: "Roboto", sans-serif;
@@ -60,7 +61,6 @@ img.X {
 }
 .timePicker{
   display: flex;
-  justify-content: space-between;
   margin: 10px 30px 0 0;
 }
 .dayOfTheWeeks {
@@ -124,4 +124,32 @@ button.Login {
   margin: 30px 30px 0 auto;
   height: 32px;
   font-size: 12px;
+}
+/* CustomEditのアニメーション */
+.customEdit-enter-from {
+  opacity: 0;
+  top: 300px;
+}
+
+.customEdit-enter-to {
+  opacity: 1;
+  top: 90px;
+}
+
+.customEdit-enter-active {
+  transition: all 400ms ease-in-out;
+}
+
+.customEdit-leave-from {
+  opacity: 1;
+  top: 90px;
+}
+
+.customEdit-leave-to {
+  opacity: 0;
+  top: 300px
+}
+
+.customEdit-leave-active {
+  transition: all 500ms ease-in-out;
 }
