@@ -8,6 +8,10 @@
     "lint": "vue-cli-service lint",
     "start": "npm run serve"
   },
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "dependencies": {
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.13.12",
     "@vue/cli-shared-utils": "^4.5.12",
