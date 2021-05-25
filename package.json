@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "npm run build"
   },
   "dependencies": {
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.13.12",
