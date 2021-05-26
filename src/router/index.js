@@ -33,10 +33,8 @@ router.beforeEach((to, from, next) => {
   let tokenValue;
   tokenValue = Cookies.get("access_token");
   let isTokenValue = Boolean(tokenValue);
-  if (isTokenValue) {
     store.token = tokenValue;
     console.log("accesstoken is updated");
-  }
   // access_tokenがない場合はrefreshする
   let refresh_tokenValue;
   refresh_tokenValue = Cookies.get("refresh_token");
