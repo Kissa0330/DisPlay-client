@@ -12,7 +12,7 @@ const store = reactive({
 });
 const actions = {
   getTodo() {
-    const url = "http://localhost:8000/api/todo/";
+    const url = " http://127.0.0.1:8000/api/todo/";
     axios
       .get(url)
       .then((response) => {
@@ -70,7 +70,7 @@ const actions = {
       console.log("setTime");
       data = {
         id: id,
-        author: 1,
+
         title: title,
         deadline_time: deadline_time,
         start_time: start_time,
@@ -80,7 +80,7 @@ const actions = {
       console.log("not setTime");
       data = {
         id: id,
-        author: 1,
+
         title: title,
         deadline_time: deadline_time,
       };
@@ -216,7 +216,6 @@ const actions = {
             });
           function postSampleCustom(i) {
             let data = {
-              author: "1",
               title: sampleCustoms[i].title,
               start_time: sampleCustoms[i].start_time,
               end_time: sampleCustoms[i].end_time,
@@ -231,7 +230,6 @@ const actions = {
     const url = "http://localhost:8000/api/customs/";
 
     const data = {
-      author: "1",
       title: title,
       start_time: start_time,
       end_time: end_time,
@@ -256,7 +254,6 @@ const actions = {
     const puturl = url + id;
 
     const data = {
-      author: "1",
       title: title,
       start_time: start_time,
       end_time: end_time,
