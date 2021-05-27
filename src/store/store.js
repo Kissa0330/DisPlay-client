@@ -3,7 +3,6 @@ import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
 const store = reactive({
   customs: {},
   todos: {},
@@ -11,14 +10,10 @@ const store = reactive({
   refresh_token: {},
   todoHandler: true,
 });
+
 const actions = {
   getTodo() {
     const url = "http://localhost:8000/api/todo/";
-    const config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
     axios
       .get(url, config)
       .then((response) => {
@@ -333,6 +328,9 @@ const actions = {
         console.log(res);
       })
       .then(() => {
+        axios.defaults.headers.common = {
+          Authorization: "Bearer " + store.token,
+        };
         _this.$router.push("/");
       })
       .catch((error) => {
@@ -352,6 +350,11 @@ const actions = {
         });
         store.token = res.data.access_token;
         console.log(res, "token is refreshed");
+      })
+      .then(() => {
+        axios.defaults.headers.common = {
+          Authorization: "Bearer " + store.token,
+        };
       })
       .catch((error) => {
         console.log(error.response.data);
