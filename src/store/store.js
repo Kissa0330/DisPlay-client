@@ -3,6 +3,7 @@ import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
 const store = reactive({
   customs: {},
   todos: {},
@@ -150,7 +151,7 @@ const actions = {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
       });
   },
   initialCustomSetting() {
