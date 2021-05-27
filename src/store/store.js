@@ -3,9 +3,6 @@ import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const instance = axios.create({
-  withCredentials: true,
-});
 const store = reactive({
   customs: {},
   todos: {},
@@ -16,8 +13,13 @@ const store = reactive({
 const actions = {
   getTodo() {
     const url = "http://localhost:8000/api/todo/";
-    instance
-      .get(url)
+    const config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
+    axios
+      .get(url, config)
       .then((response) => {
         // arrange todos data
         let data;
