@@ -10,9 +10,13 @@ const store = reactive({
   refresh_token: {},
   todoHandler: true,
 });
-
 const actions = {
   getTodo() {
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     const url = "http://localhost:8000/api/todo/";
     axios
       .get(url, config)
@@ -38,11 +42,16 @@ const actions = {
   },
   postTodo(data) {
     const url = "http://localhost:8000/api/todo/";
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .post(url, data)
+      .post(url, data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         let data;
@@ -86,12 +95,16 @@ const actions = {
         deadline_time: deadline_time,
       };
     }
-
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .put(puturl, data)
+      .put(puturl, data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         let data;
@@ -113,12 +126,16 @@ const actions = {
   deleteTodo(id) {
     const url = "http://localhost:8000/api/todo/";
     const delurl = url + id;
-
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
       .delete(delurl)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         let data;
@@ -139,8 +156,13 @@ const actions = {
   },
   getCustoms() {
     const url = "http://localhost:8000/api/customs/";
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         store.customs = response.data;
         console.log(response);
@@ -151,9 +173,13 @@ const actions = {
   },
   initialCustomSetting() {
     const url = "http://localhost:8000/api/customs/";
-
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -206,7 +232,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return axios.get(url);
+              return axios.get(url, config);
             })
             .then((response) => {
               console.log(response.data);
@@ -223,7 +249,7 @@ const actions = {
               end_time: sampleCustoms[i].end_time,
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
-            return axios.post(url, data);
+            return axios.post(url, data, config);
           }
         }
       });
@@ -238,11 +264,16 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .post(url, data)
+      .post(url, data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         console.log(response.data);
@@ -263,11 +294,16 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .put(puturl, data)
+      .put(puturl, data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         console.log(response.data);
@@ -280,12 +316,16 @@ const actions = {
   deleteCustom(id) {
     const url = "http://localhost:8000/api/customs/";
     const deleteurl = url + id;
-
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
     axios
-      .delete(deleteurl)
+      .delete(deleteurl, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url);
+        return axios.get(url, config);
       })
       .then((response) => {
         console.log(response.data);
@@ -328,9 +368,6 @@ const actions = {
         console.log(res);
       })
       .then(() => {
-        axios.defaults.headers.common = {
-          Authorization: "Bearer " + store.token,
-        };
         _this.$router.push("/");
       })
       .catch((error) => {
@@ -350,11 +387,6 @@ const actions = {
         });
         store.token = res.data.access_token;
         console.log(res, "token is refreshed");
-      })
-      .then(() => {
-        axios.defaults.headers.common = {
-          Authorization: "Bearer " + store.token,
-        };
       })
       .catch((error) => {
         console.log(error.response.data);
