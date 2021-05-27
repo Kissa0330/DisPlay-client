@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.headers.common = {
-  Authorization: "Bearer" + Cookies.get("access_token"),
+  Authorization: "Bearer " + Cookies.get("access_token"),
 };
 const gAuthOptions = {
   clientId:
