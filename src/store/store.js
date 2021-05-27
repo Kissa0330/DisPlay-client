@@ -3,6 +3,9 @@ import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const instance = axios.create({
+  withCredentials: true,
+})
 const store = reactive({
   customs: {},
   todos: {},
@@ -12,8 +15,8 @@ const store = reactive({
 });
 const actions = {
   getTodo() {
-    const url = " http://127.0.0.1:8000/api/todo/";
-    axios
+    const url = "http://localhost:8000/api/todo/";
+    instance
       .get(url)
       .then((response) => {
         // arrange todos data
@@ -70,7 +73,7 @@ const actions = {
       console.log("setTime");
       data = {
         id: id,
-
+        author: 1,
         title: title,
         deadline_time: deadline_time,
         start_time: start_time,
@@ -80,7 +83,7 @@ const actions = {
       console.log("not setTime");
       data = {
         id: id,
-
+        author: 1,
         title: title,
         deadline_time: deadline_time,
       };
@@ -216,6 +219,7 @@ const actions = {
             });
           function postSampleCustom(i) {
             let data = {
+              author: "1",
               title: sampleCustoms[i].title,
               start_time: sampleCustoms[i].start_time,
               end_time: sampleCustoms[i].end_time,
@@ -230,6 +234,7 @@ const actions = {
     const url = "http://localhost:8000/api/customs/";
 
     const data = {
+      author: "1",
       title: title,
       start_time: start_time,
       end_time: end_time,
@@ -254,6 +259,7 @@ const actions = {
     const puturl = url + id;
 
     const data = {
+      author: "1",
       title: title,
       start_time: start_time,
       end_time: end_time,
