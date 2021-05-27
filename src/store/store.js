@@ -35,7 +35,7 @@ const actions = {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response.data.detail);
       });
   },
   postTodo(data) {
