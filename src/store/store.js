@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const instance = axios.create({
   withCredentials: true,
-})
+});
 const store = reactive({
   customs: {},
   todos: {},
@@ -16,8 +16,13 @@ const store = reactive({
 const actions = {
   getTodo() {
     const url = "http://localhost:8000/api/todo/";
+    const config = {
+      headers: {
+        access_token: store.token,
+      },
+    };
     instance
-      .get(url)
+      .get(url,config)
       .then((response) => {
         // arrange todos data
         let data;
