@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-axios.defaults.headers.common["Authorization"] = Cookies.get("access_token");
+axios.defaults.headers.common["Authorization"] = "Bearer" + Cookies.get("access_token");
 const gAuthOptions = {
   clientId:
     "267786724892-54th8p722dn7can40ntt7654ol1s4i6h.apps.googleusercontent.com",
