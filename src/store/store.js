@@ -16,13 +16,8 @@ const store = reactive({
 const actions = {
   getTodo() {
     const url = "http://localhost:8000/api/todo/";
-    const config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
     instance
-      .get(url, config)
+      .get(url)
       .then((response) => {
         // arrange todos data
         let data;
