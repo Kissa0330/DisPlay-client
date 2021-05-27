@@ -18,11 +18,11 @@ const actions = {
     const url = "http://localhost:8000/api/todo/";
     const config = {
       headers: {
-        access_token: store.token,
+        Authorization: "Bearer " + store.token,
       },
     };
     instance
-      .get(url,config)
+      .get(url, config)
       .then((response) => {
         // arrange todos data
         let data;
