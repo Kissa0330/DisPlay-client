@@ -39,14 +39,14 @@ router.beforeEach((to, from, next) => {
   let refresh_tokenValue;
   refresh_tokenValue = Cookies.get("refresh_token");
   let isRefresh_tokenValue = Boolean(refresh_tokenValue);
-  if (isRefresh_tokenValue) {
+
     store.refresh_token = refresh_tokenValue;
     console.log("refreshtoken is updated",store.refresh_token);
-  }
+    console.log(isTokenValue,tokenValue);
   if (to.name !== "Signin" && !isTokenValue) {
     actions.refreshAccessToken(refresh_tokenValue);
   }
-  if (to.name !== "Signin" && !refresh_tokenValue) next({ name: "Signin" });
+  if (to.name !== "Signin" && !isRefresh_tokenValue) next({ name: "Signin" });
   else next();
 });
 
