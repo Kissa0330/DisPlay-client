@@ -49,11 +49,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .post("todo/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get("todo/", config);
+        return instance.post("todo/", config);
       })
       .then((response) => {
         let data;
@@ -99,11 +99,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .put("todo/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get("/todo/", config);
+        return instance.post("/todo/", config);
       })
       .then((response) => {
         let data;
@@ -128,11 +128,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .delete("todo/" + id + "/")
       .then((response) => {
         console.log(response);
-        return axios.get("todo/", config);
+        return instance.post("todo/", config);
       })
       .then((response) => {
         let data;
@@ -157,7 +157,7 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .get("customs/", config)
       .then((response) => {
         store.customs = response.data;
@@ -173,7 +173,7 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .get("customs/", config)
       .then((response) => {
         store.customs = response.data;
@@ -227,7 +227,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return axios.get("customs/", config);
+              return instance.post("customs/", config);
             })
             .then((response) => {
               console.log(response.data);
@@ -244,7 +244,7 @@ const actions = {
               end_time: sampleCustoms[i].end_time,
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
-            return axios.post("customs/", data, config);
+            return instance.post("customs/", data, config);
           }
         }
       });
@@ -262,11 +262,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .post("customs/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get("customs", config);
+        return instance.post("customs", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -289,11 +289,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .put("customs/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get("customs/", config);
+        return instance.post("customs/", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -309,11 +309,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
+    instance
       .delete("customs/" + id + "/", config)
       .then((response) => {
         console.log(response);
-        return axios.get("customs/", config);
+        return instance.post("customs/", config);
       })
       .then((response) => {
         console.log(response.data);
