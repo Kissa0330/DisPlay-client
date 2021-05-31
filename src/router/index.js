@@ -33,15 +33,15 @@ router.beforeEach((to, from, next) => {
   let tokenValue;
   tokenValue = Cookies.get("access_token");
   let isTokenValue = Boolean(tokenValue);
-    store.token = tokenValue;
-    console.log("accesstoken is updated");
+  store.token = tokenValue;
+  console.log("accesstoken is updated", store.token);
   // access_tokenがない場合はrefreshする
   let refresh_tokenValue;
   refresh_tokenValue = Cookies.get("refresh_token");
   let isRefresh_tokenValue = Boolean(refresh_tokenValue);
   if (isRefresh_tokenValue) {
     store.refresh_token = refresh_tokenValue;
-    console.log("refreshtoken is updated");
+    console.log("refreshtoken is updated",store.refresh_token);
   }
   if (to.name !== "Signin" && !isTokenValue) {
     actions.refreshAccessToken(refresh_tokenValue);
