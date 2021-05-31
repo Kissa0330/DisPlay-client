@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
 
   actions.updateToken();
 
-  if (to.name !== "Signin" && !isTokenValue) {
+  if (to.name !== "Signin" && !isTokenValue && isRefresh_tokenValue) {
     actions.refreshAccessToken(refresh_tokenValue);
   }
   if (to.name !== "Signin" && !isRefresh_tokenValue) next({ name: "Signin" });
