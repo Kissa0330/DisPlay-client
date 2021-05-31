@@ -10,6 +10,10 @@ const store = reactive({
   refresh_token: {},
   todoHandler: true,
 });
+const instance = axios.create({
+  baseURL: "http://localhost:8000/api/",
+  timeout: 1000,
+});
 const actions = {
   getTodo() {
     let config = {
@@ -17,9 +21,8 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    const url = "http://localhost:8000/api/todo/";
-    axios
-      .get(url, config)
+    instance
+      .get("todo/", config)
       .then((response) => {
         // arrange todos data
         let data;
@@ -41,17 +44,16 @@ const actions = {
       });
   },
   postTodo(data) {
-    const url = "http://localhost:8000/api/todo/";
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .post(url, data, config)
+    instance
+      .post("todo/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("todo/", config);
       })
       .then((response) => {
         let data;
@@ -72,9 +74,6 @@ const actions = {
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time) {
-    const url = "http://localhost:8000/api/todo/";
-    const puturl = url + id;
-
     let data;
     if (setTime) {
       console.log("setTime");
@@ -100,11 +99,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .put(puturl, data, config)
+    instance
+      .put("todo/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("/todo/", config);
       })
       .then((response) => {
         let data;
@@ -124,18 +123,16 @@ const actions = {
       });
   },
   deleteTodo(id) {
-    const url = "http://localhost:8000/api/todo/";
-    const delurl = url + id;
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .delete(delurl)
+    instance
+      .delete("todo/" + id + "/")
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("todo/", config);
       })
       .then((response) => {
         let data;
@@ -155,14 +152,13 @@ const actions = {
       });
   },
   getCustoms() {
-    const url = "http://localhost:8000/api/customs/";
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .get(url, config)
+    instance
+      .get("customs/", config)
       .then((response) => {
         store.customs = response.data;
         console.log(response);
@@ -172,14 +168,13 @@ const actions = {
       });
   },
   initialCustomSetting() {
-    const url = "http://localhost:8000/api/customs/";
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .get(url, config)
+    instance
+      .get("customs/", config)
       .then((response) => {
         store.customs = response.data;
         console.log("Customs is already update");
@@ -232,7 +227,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return axios.get(url, config);
+              return instance.post("customs/", config);
             })
             .then((response) => {
               console.log(response.data);
@@ -249,14 +244,12 @@ const actions = {
               end_time: sampleCustoms[i].end_time,
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
-            return axios.post(url, data, config);
+            return instance.post("customs/", data, config);
           }
         }
       });
   },
   postCustom(title, start_time, end_time, flag) {
-    const url = "http://localhost:8000/api/customs/";
-
     const data = {
       author: "1",
       title: title,
@@ -269,11 +262,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .post(url, data, config)
+    instance
+      .post("customs/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("customs", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -284,9 +277,6 @@ const actions = {
       });
   },
   putCustom(title, flag, start_time, end_time, id) {
-    const url = "http://localhost:8000/api/customs/";
-    const puturl = url + id;
-
     const data = {
       author: "1",
       title: title,
@@ -299,11 +289,11 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .put(puturl, data, config)
+    instance
+      .put("customs/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("customs/", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -314,18 +304,16 @@ const actions = {
       });
   },
   deleteCustom(id) {
-    const url = "http://localhost:8000/api/customs/";
-    const deleteurl = url + id;
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    axios
-      .delete(deleteurl, config)
+    instance
+      .delete("customs/" + id + "/", config)
       .then((response) => {
         console.log(response);
-        return axios.get(url, config);
+        return instance.post("customs/", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -358,7 +346,7 @@ const actions = {
       .post(url, data)
       .then((res) => {
         Cookies.set("access_token", res.data.access_token, {
-          expires: 1,
+          expires: 0.0034,
         });
         Cookies.set("refresh_token", res.data.refresh_token, {
           expires: 7,
@@ -382,11 +370,14 @@ const actions = {
     axios
       .post(url, data)
       .then((res) => {
-        Cookies.set("access_token", res.data.access_token, {
-          expires: 1,
+        Cookies.set("access_token", res.data.access, {
+          expires: 0.0034,
         });
-        store.token = res.data.access_token;
-        console.log(res, "token is refreshed");
+        store.token = res.data.access;
+        console.log("token is refreshed", res);
+      })
+      .then(() => {
+        location.reload();
       })
       .catch((error) => {
         console.log(error.response.data);
