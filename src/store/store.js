@@ -310,7 +310,7 @@ const actions = {
       },
     };
     axios
-      .delete("customs/"+id+"/", config)
+      .delete("customs/" + id + "/", config)
       .then((response) => {
         console.log(response);
         return axios.get("customs/", config);
@@ -346,7 +346,7 @@ const actions = {
       .post(url, data)
       .then((res) => {
         Cookies.set("access_token", res.data.access_token, {
-          expires: 1,
+          expires: 0.0034,
         });
         Cookies.set("refresh_token", res.data.refresh_token, {
           expires: 7,
@@ -370,11 +370,14 @@ const actions = {
     axios
       .post(url, data)
       .then((res) => {
-        Cookies.set("access_token", res.data.access_token, {
-          expires: 1,
+        Cookies.set("access_token", res.data.access, {
+          expires: 0.0034,
         });
-        store.token = res.data.access_token;
-        console.log(res, "token is refreshed");
+        store.token = res.data.access;
+        console.log("token is refreshed", res);
+      })
+      .then(() => {
+        location.reload();
       })
       .catch((error) => {
         console.log(error.response.data);
