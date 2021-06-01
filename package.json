@@ -13,6 +13,7 @@
     "npm": "6.14.13"
   },
   "dependencies": {
+    "register-service-worker": "^1.6.2",
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.13.12",
     "@vue/cli-shared-utils": "^4.5.12",
     "@vue/compiler-sfc": "^3.0.11",
@@ -42,6 +43,7 @@
     "vue3-timepicker": "https://github.com/Kissa0330/vue3-timepicker.git"
   },
   "devDependencies": {
+    "@vue/cli-plugin-pwa": "^3.7.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
