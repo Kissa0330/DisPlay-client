@@ -52,6 +52,9 @@ export default {
     actions.getCustoms();
     changeFavicon();
   },
+  updated(){
+    changeFavicon();
+  },
   watch: {
     customs: {
       handler() {
