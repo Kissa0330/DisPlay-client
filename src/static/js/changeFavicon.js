@@ -3,12 +3,11 @@ const changeFavicon = function () {
   let svgData = new XMLSerializer().serializeToString(svg);
 
   let image;
-  // const images = [
-  //   { "android-chrome-192x192": 192 },
-  //   { "android-chrome-512x512": 512 },
-  // ];
-  // const imagesSizes = Object.values(images);
-  // console.log(imagesSizes);
+  const images = {
+    "android-chrome-192x192": 192,
+    "android-chrome-512x512": 512,
+  };
+  const imagesSizes = Object.values(images);
   image = new Image();
 
   image.src =
@@ -18,17 +17,14 @@ const changeFavicon = function () {
     addLink(image.src, "icon");
   };
 
-  // for (let i = 0; i < images.length; i++) {
-  //   console.log(i);
-  //   // todo JSONの上書き処理を書き込む
-  // }
-  changeSize(image, 192,192)
-
-
-
-
-
-
+  console.log(imagesSizes.length)
+  for (let i = 0; i < imagesSizes.length; i++) {
+    let imgSize = imagesSizes[i];
+    console.log(i);
+    changeSize(image, imgSize, imgSize);
+    
+    // todo JSONの上書き処理を書き込む
+  }
   let docHead = document.getElementsByTagName("head")[0];
 
   function addLink(iconURL, relValue) {
@@ -56,6 +52,7 @@ const changeFavicon = function () {
     canvas.width = width;
     canvas.height = height;
     let ctx = canvas.getContext("2d");
+    console.log(canvas);
     ctx.drawImage(img, 0, 0, width, height);
     const imgData = canvas.toDataURL("image/png");
     console.log(imgData);
