@@ -38,14 +38,14 @@ const changeFavicon = function () {
     let links = docHead.getElementsByTagName("link");
     let comparisonSize = size + "×" + size
     for (let i = 0; i < links.length; i++) {
-      console.log(links.length)
+      // console.log(links.length)
       let link = links[i];
-      console.log(i,link.href)
+      // console.log(i,link.href)
       if (
         link.rel == relValue &&
         link.sizes == comparisonSize
       ) {
-        console.log(relValue,link.rel,link.sizes,comparisonSize)
+        // console.log(relValue,link.rel,link.sizes,comparisonSize)
         console.log("faviconをupdateしました");
         docHead.removeChild(link);
       }
