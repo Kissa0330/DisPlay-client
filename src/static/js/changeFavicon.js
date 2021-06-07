@@ -1,54 +1,72 @@
 const changeFavicon = function () {
   let svg = document.querySelector("svg");
-
   let svgData = new XMLSerializer().serializeToString(svg);
 
-  let canvas = document.createElement("canvas");
+  let image;
+  const images = {
+    "android-chrome-192x192": 192,
+    "android-chrome-512x512": 512,
+  };
+  const imagesSizes = Object.values(images);
+  image = new Image();
 
-  canvas.width = svg.width.baseVal.value;
-  canvas.height = svg.height.baseVal.value;
-
-  let ctx = canvas.getContext("2d");
-
-  let image = new Image();
-  // console.log(svgData);
-
-  // svgDataをURIデータに変換後base64データに変換し、imageのsrcの属性値に設定
   image.src =
     "data:image/svg+xml;charset=utf-8;base64," +
     btoa(unescape(encodeURIComponent(svgData)));
+  image.onload = function () {
+    addLink(image.src, "icon", 307);
+    for (let i = 0; i < imagesSizes.length; i++) {
+      let imgSize = imagesSizes[i];
+      console.log(i,imgSize+"pxのfaviconを更新中");
+      changeFavicons(image, imgSize);
+    }
+  };
 
   let docHead = document.getElementsByTagName("head")[0];
 
-  function change(iconURL) {
-    addLink(iconURL, "icon");
-  }
-
-  function addLink(iconURL, relValue) {
+  function addLink(iconURL, relValue, size) {
     let link = document.createElement("link");
     link.type = "image/png";
     link.rel = relValue;
     link.href = iconURL;
-    removeLinkIfExists(relValue);
+    link.sizes = size + "×" + size;
+    removeLinkIfExists(relValue, size);
     docHead.appendChild(link);
   }
 
-  function removeLinkIfExists(relValue) {
+  function removeLinkIfExists(relValue, size) {
     let links = docHead.getElementsByTagName("link");
+    let comparisonSize = size + "×" + size
     for (let i = 0; i < links.length; i++) {
+      console.log(links.length)
       let link = links[i];
-      if (link.type == "image/png" && link.rel == relValue) {
+      console.log(i,link.href)
+      if (
+        link.rel == relValue &&
+        link.sizes == comparisonSize
+      ) {
+        console.log(relValue,link.rel,link.sizes,comparisonSize)
+        console.log("faviconをupdateしました");
         docHead.removeChild(link);
-        return;
       }
     }
   }
 
-  image.onload = function () {
-    ctx.drawImage(image, 0, 0); //空要素の作成
-    change(image.src);
-    
-  };
-};
+  function changeSize(img, width, height) {
+    let canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height);
+    const imgData = canvas.toDataURL("image/png");
+    return imgData;
+  }
 
+  function changeFavicons(img, size) {
+    const width = size;
+    const height = size;
+    const imgData = changeSize(img, width, height);
+    addLink(imgData, "icon", size);
+  }
+};
 export { changeFavicon };

@@ -1,0 +1,7 @@
+{
+  "name": "DisPlay-習慣管理ツール",
+  "short_name": "DisPlay",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fc"
+}

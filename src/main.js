@@ -4,6 +4,7 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import GAuth from "vue3-google-oauth2";
+import "./registerServiceWorker.ts";
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
