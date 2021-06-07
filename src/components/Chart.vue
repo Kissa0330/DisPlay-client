@@ -50,6 +50,7 @@ export default {
     depiction.createGroove();
     depiction.createClock();
     actions.getCustoms();
+    changeFavicon();
   },
   watch: {
     customs: {

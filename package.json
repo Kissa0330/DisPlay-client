@@ -13,7 +13,6 @@
     "npm": "6.14.13"
   },
   "dependencies": {
-    "register-service-worker": "^1.6.2",
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.13.12",
     "@vue/cli-shared-utils": "^4.5.12",
     "@vue/compiler-sfc": "^3.0.11",
@@ -25,6 +24,7 @@
     "d3": "^6.2.0",
     "eslint-plugin-vue": "^7.9.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "http-parser-js": "^0.5.3",
     "internmap": "^1.0.1",
     "js-cookie": "^2.2.1",
@@ -32,6 +32,7 @@
     "ora": "^3.4.0",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.0.0",
+    "register-service-worker": "^1.6.2",
     "sweetalert2": "^10.3.5",
     "vue": "^3.0.11",
     "vue-axios": "^3.2.4",
