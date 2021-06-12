@@ -74,7 +74,7 @@ export default {
     postTodo() {
       let month = this.date.getMonth() + 1;
       let day = this.date.getDate();
-      console.log(month + "" + day);
+      // console.log(month + "" + day);
       let data = {
         author: 1,
         title: this.title,
