@@ -34,12 +34,12 @@ const changeFavicon = function () {
       }
     };
     async function changeFavicons(baseimg, img, size) {
-      console.log("I am async changeFavicons");
+      // console.log("I am async changeFavicons");
       const width = size;
       const height = size;
       const imgData = await changeSize(baseimg, img, width, height);
-      console.log("I am await changesizes");
-      console.log(imgData);
+      // console.log("I am await changesizes");
+      // console.log(imgData);
       addLink(imgData, "icon", size);
     }
   };
@@ -64,7 +64,7 @@ const changeFavicon = function () {
       // console.log(i,link.href)
       if (link.rel == relValue && link.sizes == comparisonSize) {
         // console.log(relValue,link.rel,link.sizes,comparisonSize)
-        console.log("faviconをupdateしました");
+        // console.log("faviconをupdateしました");
         docHead.removeChild(link);
       }
     }
@@ -73,9 +73,9 @@ const changeFavicon = function () {
   async function changeSize(baseimg, img, width, height) {
     console.log("I am async changeSize");
     let canvas = document.createElement("canvas");
-    document.body.appendChild(canvas);
-    canvas.width = width * 0.7;
-    canvas.height = height * 0.7;
+    // document.body.appendChild(canvas);
+    canvas.width = width * 0.8;
+    canvas.height = height * 0.8;
     let ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     let image = new Image();
@@ -84,13 +84,13 @@ const changeFavicon = function () {
     // console.log(image.src);
     // console.log(canvas.toDataURL("image/png"))
     let baseCanvas = document.createElement("canvas");
-    document.body.appendChild(baseCanvas);
+    // document.body.appendChild(baseCanvas);
     baseCanvas.width = width;
     baseCanvas.height = height;
     let baseCtx = baseCanvas.getContext("2d");
     baseCtx.drawImage(baseimg, 0, 0, baseCanvas.width, baseCanvas.height);
     const imgData = await concatCanvas(baseCanvas, image);
-    console.log("I am await concatCanvas");
+    // console.log("I am await concatCanvas");
     return imgData;
   }
 
@@ -100,11 +100,11 @@ const changeFavicon = function () {
     // console.log(baseCanvas.toDataURL("image/png"))
     // console.log(img, 0, 0, baseCanvas.width, baseCanvas.height);
     const res = await loadImage(img.src);
-    console.log("I am img.onload");
-    ctx.drawImage(res, 0, 0, baseCanvas.width, baseCanvas.height);
+    // console.log("I am img.onload");
+    ctx.drawImage(res, baseCanvas.width * 0.1, baseCanvas.height * 0.1, baseCanvas.width * 0.8, baseCanvas.height * 0.8);
     let imgData = baseCanvas.toDataURL("image/png");
     // console.log(imgData);
-    console.log("return");
+    // console.log("return");
     return imgData;
   }
 
