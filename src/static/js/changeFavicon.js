@@ -1,4 +1,5 @@
 import iconBase from "./iconBase.json";
+import { changeManifest } from "./changeManifest";
 const changeFavicon = function () {
   let svg = document.querySelector("svg");
   let svgData = new XMLSerializer().serializeToString(svg);
@@ -7,6 +8,7 @@ const changeFavicon = function () {
     "android-chrome-512x512": 512,
     icon: 307,
   };
+  let manifestIcons = [];
   const imagesSizes = Object.values(images);
   let baseImage = new Image();
   baseImage.src = Object.values(iconBase);
@@ -15,23 +17,18 @@ const changeFavicon = function () {
   image.src =
     "data:image/svg+xml;charset=utf-8;base64," +
     btoa(unescape(encodeURIComponent(svgData)));
+
   // 実行部分
-  // image.onload = function () {
-  //   console.log(baseImage.src)
-  //   for (let i = 0; i < imagesSizes.length; i++) {
-  //     const imgSize = imagesSizes[i];
-  //     console.log(i, imgSize + "pxのfaviconを更新中");
-  //     changeFavicons(baseImage, image, imgSize);
-  //   }
-  // };
   baseImage.onload = () => {
     // console.log("test");
     image.onload = () => {
       for (let i = 0; i < imagesSizes.length; i++) {
         const imgSize = imagesSizes[i];
         console.log(i, imgSize + "pxのfaviconを更新中");
-        changeFavicons(baseImage, image, imgSize);
+        changeFavicons(baseImage, image, imgSize, i);
       }
+      // console.log(manifestIcons)
+      changeManifest(manifestIcons)
     };
     async function changeFavicons(baseimg, img, size) {
       // console.log("I am async changeFavicons");
@@ -40,7 +37,18 @@ const changeFavicon = function () {
       const imgData = await changeSize(baseimg, img, width, height);
       // console.log("I am await changesizes");
       // console.log(imgData);
-      addLink(imgData, "icon", size);
+      if (size == 307) {
+        // console.log("favicon");
+        addLink(imgData, "icon", size);
+      } else {
+        const obj = {
+          src: imgData,
+          size: size + "×" + size,
+          type: "image/png"
+        };
+        manifestIcons.push(obj);
+        // console.log(manifestIcons);
+      }
     }
   };
   const docHead = document.getElementsByTagName("head")[0];
@@ -71,7 +79,7 @@ const changeFavicon = function () {
   }
 
   async function changeSize(baseimg, img, width, height) {
-    console.log("I am async changeSize");
+    // console.log("I am async changeSize");
     let canvas = document.createElement("canvas");
     // document.body.appendChild(canvas);
     canvas.width = width * 0.8;
@@ -101,7 +109,13 @@ const changeFavicon = function () {
     // console.log(img, 0, 0, baseCanvas.width, baseCanvas.height);
     const res = await loadImage(img.src);
     // console.log("I am img.onload");
-    ctx.drawImage(res, baseCanvas.width * 0.1, baseCanvas.height * 0.1, baseCanvas.width * 0.8, baseCanvas.height * 0.8);
+    ctx.drawImage(
+      res,
+      baseCanvas.width * 0.1,
+      baseCanvas.height * 0.1,
+      baseCanvas.width * 0.8,
+      baseCanvas.height * 0.8
+    );
     let imgData = baseCanvas.toDataURL("image/png");
     // console.log(imgData);
     // console.log("return");
