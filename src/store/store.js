@@ -11,7 +11,7 @@ const store = reactive({
   todoHandler: true,
 });
 const instance = axios.create({
-  baseURL: "http://localhost:8000/api/",
+  baseURL: "https://sp-display-server.herokuapp.com/api/",
   timeout: 1000,
 });
 const actions = {
@@ -70,7 +70,7 @@ const actions = {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error.response.data);
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time) {
@@ -341,7 +341,7 @@ const actions = {
       id_token: response.qc.id_token,
     };
     console.log(data);
-    const url = "http://localhost:8000/social-login/google/";
+    const url = "https://sp-display-server.herokuapp.com/social-login/google/";
     axios
       .post(url, data)
       .then((res) => {
@@ -363,7 +363,7 @@ const actions = {
       });
   },
   refreshAccessToken(refresh_token) {
-    const url = "http://localhost:8000/accounts/token/refresh/";
+    const url = "https://sp-display-server.herokuapp.com/accounts/token/refresh/";
     const data = {
       refresh: refresh_token,
     };
