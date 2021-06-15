@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const store = reactive({
+  icons:{},
   customs: {},
   todos: {},
   token: {},
@@ -40,7 +41,7 @@ const actions = {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response);
       });
   },
   postTodo(data) {
@@ -53,7 +54,7 @@ const actions = {
       .post("todo/", data, config)
       .then((response) => {
         console.log(response);
-        return instance.post("todo/", config);
+        return instance.get("todo/", config);
       })
       .then((response) => {
         let data;
@@ -103,7 +104,7 @@ const actions = {
       .put("todo/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return instance.post("/todo/", config);
+        return instance.get("/todo/", config);
       })
       .then((response) => {
         let data;
@@ -132,7 +133,7 @@ const actions = {
       .delete("todo/" + id + "/")
       .then((response) => {
         console.log(response);
-        return instance.post("todo/", config);
+        return instance.get("todo/", config);
       })
       .then((response) => {
         let data;
@@ -227,7 +228,7 @@ const actions = {
           }
           myPromise
             .then(function () {
-              return instance.post("customs/", config);
+              return instance.get("customs/", config);
             })
             .then((response) => {
               console.log(response.data);
@@ -266,7 +267,7 @@ const actions = {
       .post("customs/", data, config)
       .then((response) => {
         console.log(response);
-        return instance.post("customs", config);
+        return instance.get("customs", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -293,7 +294,7 @@ const actions = {
       .put("customs/" + id + "/", data, config)
       .then((response) => {
         console.log(response);
-        return instance.post("customs/", config);
+        return instance.get("customs/", config);
       })
       .then((response) => {
         console.log(response.data);
@@ -313,7 +314,7 @@ const actions = {
       .delete("customs/" + id + "/", config)
       .then((response) => {
         console.log(response);
-        return instance.post("customs/", config);
+        return instance.get("customs/", config);
       })
       .then((response) => {
         console.log(response.data);

@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import { changeManifest } from "./static/js/changeManifest";
 export default {
   name: "App",
+  created(){
+    changeManifest();
+  }
 };
 </script>
 <style src="./static/css/style.css"></style>

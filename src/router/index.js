@@ -1,10 +1,12 @@
+/* eslint-disable */
 import { createRouter, createWebHistory } from "vue-router";
 import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
 import login from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
 import Cookies from "js-cookie";
-import { actions } from "../store/store";
+import { store, actions } from "../store/store";
+// import { changeManifest } from "../static/js/changeManifest";
 
 const routes = [
   {
