@@ -1,5 +1,6 @@
 import iconBase from "./iconBase.json";
-import { changeManifest } from "./changeManifest";
+import { store } from "../../store/store";
+import {changeManifest} from "./changeManifest"
 const changeFavicon = function () {
   let svg = document.querySelector("svg");
   let svgData = new XMLSerializer().serializeToString(svg);
@@ -27,15 +28,13 @@ const changeFavicon = function () {
         console.log(i, imgSize + "pxのfaviconを更新中");
         changeFavicons(baseImage, image, imgSize, i);
       }
-      // console.log(manifestIcons)
-      changeManifest(manifestIcons)
     };
     async function changeFavicons(baseimg, img, size) {
       // console.log("I am async changeFavicons");
       const width = size;
       const height = size;
       const imgData = await changeSize(baseimg, img, width, height);
-      // console.log("I am await changesizes");
+      console.log("I am await changesizes");
       // console.log(imgData);
       if (size == 307) {
         // console.log("favicon");
@@ -47,7 +46,10 @@ const changeFavicon = function () {
           type: "image/png"
         };
         manifestIcons.push(obj);
-        // console.log(manifestIcons);
+        console.log("mani is " + manifestIcons)
+        store.icons = manifestIcons
+        changeManifest();
+        console.log(store.icons)
       }
     }
   };

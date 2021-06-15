@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const store = reactive({
+  icons:{},
   customs: {},
   todos: {},
   token: {},
@@ -40,7 +41,7 @@ const actions = {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response);
       });
   },
   postTodo(data) {
