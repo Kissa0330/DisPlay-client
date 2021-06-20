@@ -101,7 +101,7 @@ const actions = {
       },
     };
     instance
-      .put("todo/" + id + "/", data, config)
+      .put("todo/" + id, data, config)
       .then((response) => {
         console.log(response);
         return instance.get("/todo/", config);
@@ -130,7 +130,7 @@ const actions = {
       },
     };
     instance
-      .delete("todo/" + id + "/")
+      .delete("todo/" + id,config)
       .then((response) => {
         console.log(response);
         return instance.get("todo/", config);
@@ -291,7 +291,7 @@ const actions = {
       },
     };
     instance
-      .put("customs/" + id + "/", data, config)
+      .put("customs/" + id, data, config)
       .then((response) => {
         console.log(response);
         return instance.get("customs/", config);
@@ -311,7 +311,7 @@ const actions = {
       },
     };
     instance
-      .delete("customs/" + id + "/", config)
+      .delete("customs/" + id, config)
       .then((response) => {
         console.log(response);
         return instance.get("customs/", config);
