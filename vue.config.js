@@ -10,5 +10,8 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     manifestCrossorigin: 'use-credentials',
+    workboxOptions:{
+      swSrc: "src/registerServiceWorker.ts"
+  }
   },
 };
