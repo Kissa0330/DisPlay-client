@@ -1,0 +1,21 @@
+{
+    "name": "DisPlay-週間管理ツール",
+    "short_name": "DisPlay",
+    "background_color": "#f4f6fc",
+    "theme_color":"#f4f6fc",
+    "display": "standalone",
+    "start_url": "http://localhost:8081/",
+    "icons":[
+		{
+		  "src": "image/icons/android-chrome-192x192.png",
+		  "sizes": "192x192",
+		  "type": "image/png"
+		},
+		{
+		  "src": "image/icons/android-chrome-512x512.png",
+		  "sizes": "512x512",
+		  "type": "image/png"
+		}
+	  ],
+    "manifestCrossrigin":"use-credentials"
+  }

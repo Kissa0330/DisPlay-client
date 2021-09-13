@@ -1,6 +1,6 @@
 import iconBase from "./iconBase.json";
 import { store } from "../../store/store";
-import {changeManifest} from "./changeManifest"
+import { changeManifest } from "./changeManifest";
 const changeFavicon = function () {
   let svg = document.querySelector("svg");
   let svgData = new XMLSerializer().serializeToString(svg);
@@ -39,17 +39,18 @@ const changeFavicon = function () {
       if (size == 307) {
         // console.log("favicon");
         addLink(imgData, "icon", size);
+        // console.log(imgData);
       } else {
         const obj = {
           src: imgData,
           size: size + "×" + size,
-          type: "image/png"
+          type: "image/png",
         };
         manifestIcons.push(obj);
-        console.log("mani is " + manifestIcons)
-        store.icons = manifestIcons
+        console.table(manifestIcons);
+        store.icons = manifestIcons;
         changeManifest();
-        console.log(store.icons)
+        console.log(store.icons);
       }
     }
   };
@@ -66,16 +67,19 @@ const changeFavicon = function () {
   }
 
   function removeLinkIfExists(relValue, size) {
+    console.log("remove check...")
     const links = docHead.getElementsByTagName("link");
     const comparisonSize = size + "×" + size;
     for (let i = 0; i < links.length; i++) {
       // console.log(links.length)
       const link = links[i];
+      // console.log(link.sizes)
       // console.log(i,link.href)
       if (link.rel == relValue && link.sizes == comparisonSize) {
         // console.log(relValue,link.rel,link.sizes,comparisonSize)
         // console.log("faviconをupdateしました");
         docHead.removeChild(link);
+        console.log(size + "のlinkを取り除きました");
       }
     }
   }
