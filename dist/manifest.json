@@ -4,7 +4,7 @@
     "background_color": "#f4f6fc",
     "theme_color":"#f4f6fc",
     "display": "standalone",
-    "start_url": "http://localhost:8081/",
+    "start_url": "https://display-client.herokuapp.com/",
     "icons":[
 		{
 		  "src": "image/icons/android-chrome-192x192.png",

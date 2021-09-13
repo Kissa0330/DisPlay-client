@@ -18,12 +18,12 @@ const changeManifest = function () {
     console.log("store.icons is not exist");
     icons = [
       {
-        src: "http://localhost:8081/image/icons/android-chrome-192x192.png",
+        src: "https://display-client.herokuapp.com/image/icons/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "http://localhost:8081/image/icons/android-chrome-512x512.png",
+        src: "https://display-client.herokuapp.com/image/icons/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },
@@ -51,7 +51,7 @@ const changeManifest = function () {
     background_color: "#f4f6fc",
     theme_color:"#f4f6fc",
     display: "standalone",
-    start_url: "http://localhost:8081/",
+    start_url: "https://display-client.herokuapp.com/",
     icons,
     manifestCrossrigin:"use-credentials"
   };
