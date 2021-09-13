@@ -10,6 +10,9 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     manifestCrossorigin: 'use-credentials',
+    iconPaths: {
+      appleTouchIcon: 'imgs/icons/apple-touch-icon.png',
+    },
     workboxOptions:{
       swSrc: "src/registerServiceWorker.ts"
   }
