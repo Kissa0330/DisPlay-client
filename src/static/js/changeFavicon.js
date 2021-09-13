@@ -46,9 +46,8 @@ const changeFavicon = function () {
           size: size + "×" + size,
           type: "image/png",
         };
-        removeLinkIfExists("icon", size);
         manifestIcons.push(obj);
-        console.log("manifest icons is", manifestIcons);
+        console.table(manifestIcons);
         store.icons = manifestIcons;
         changeManifest();
         console.log(store.icons);

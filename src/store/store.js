@@ -338,8 +338,8 @@ const actions = {
   },
   signIn(response, _this) {
     const data = {
-      access_token: response.qc.access_token,
-      id_token: response.qc.id_token,
+      access_token: response.Zb.access_token,
+      id_token: response.Zb.id_token,
     };
     console.log(data);
     const url = "https://sp-display-server.herokuapp.com/social-login/google/";

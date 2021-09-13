@@ -1,19 +1,29 @@
 import { store } from "../../store/store";
+function overWriteHref(relValue, href) {
+  console.log("remove check...")
+  const links = document.getElementsByTagName("head")[0].getElementsByTagName("link");
+  for (let i = 0; i < links.length; i++) {
+    const link = links[i];
+    if (link.rel == relValue) { 
+      link.href = href;
+    }
+  }
+}
+let manifest;
 const changeManifest = function () {
   console.log("changing manifest...");
   let icons;
   // console.log(Boolean(store.icons.length))
-  document.querySelector("#my-manifest").setAttribute("href", "/manifest.json");
   if (!store.icons.length) {
     console.log("store.icons is not exist");
     icons = [
       {
-        src: "http://localhost:8081/defaultIcons/android-chrome-192x192.png",
+        src: "http://localhost:8081/image/icons/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "http://localhost:8081/defaultIcons/android-chrome-512x512.png",
+        src: "http://localhost:8081/image/icons/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },
@@ -35,20 +45,22 @@ const changeManifest = function () {
     }
     icons = store.icons;
   }
-  let manifest = {
+  manifest = {
     name: "DisPlay-週間管理ツール",
     short_name: "DisPlay",
     background_color: "#f4f6fc",
+    theme_color:"#f4f6fc",
     display: "standalone",
     start_url: "http://localhost:8081/",
     icons,
+    manifestCrossrigin:"use-credentials"
   };
-  console.log(manifest);
+  console.table(manifest);
   const stringManifest = JSON.stringify(manifest);
   const blob = new Blob([stringManifest], { type: "application/json" });
   const manifestURL = URL.createObjectURL(blob);
   console.log("manifestURL is " + manifestURL)
-  document.querySelector("#my-manifest").setAttribute("href", manifestURL);
+  overWriteHref("manifest", manifestURL);
 
   function toBlob(base64) {
     const bin = atob(base64.replace(/^.*,/, ""));
@@ -63,4 +75,4 @@ const changeManifest = function () {
     return iconURL;
   }
 };
-export { changeManifest };
+export { changeManifest, manifest };
