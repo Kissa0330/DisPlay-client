@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { changeManifest } from "./static/js/changeManifest";
+// import { changeManifest } from "./static/js/changeManifest";
 export default {
   name: "App",
   created(){
-    changeManifest();
+    // changeManifest();
   }
 };
 </script>

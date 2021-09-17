@@ -1,6 +1,6 @@
 import iconBase from "./iconBase.json";
 import { store } from "../../store/store";
-import { changeManifest } from "./changeManifest";
+// import { changeManifest } from "./changeManifest";
 const changeFavicon = function () {
   let svg = document.querySelector("svg");
   let svgData = new XMLSerializer().serializeToString(svg);
@@ -49,7 +49,7 @@ const changeFavicon = function () {
         manifestIcons.push(obj);
         console.table(manifestIcons);
         store.icons = manifestIcons;
-        changeManifest();
+        // changeManifest();
         console.log(store.icons);
       }
     }
