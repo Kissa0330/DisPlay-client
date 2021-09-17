@@ -1,10 +1,12 @@
 import { store } from "../../store/store";
 function overWriteHref(relValue, href) {
-  console.log("remove check...")
-  const links = document.getElementsByTagName("head")[0].getElementsByTagName("link");
+  console.log("remove check...");
+  const links = document
+    .getElementsByTagName("head")[0]
+    .getElementsByTagName("link");
   for (let i = 0; i < links.length; i++) {
     const link = links[i];
-    if (link.rel == relValue) { 
+    if (link.rel == relValue) {
       link.href = href;
     }
   }
@@ -39,7 +41,9 @@ const changeManifest = function () {
       } else {
         const imageURL = toBlob(element.src);
         element.src = imageURL;
-        console.log("element.src is changed. New element.src is " + element.src);
+        console.log(
+          "element.src is changed. New element.src is " + element.src
+        );
         console.log("element.src execute toBlob function");
       }
     }
@@ -49,17 +53,18 @@ const changeManifest = function () {
     name: "DisPlay-週間管理ツール",
     short_name: "DisPlay",
     background_color: "#f4f6fc",
-    theme_color:"#f4f6fc",
+    theme_color: "#f4f6fc",
     display: "standalone",
     start_url: "https://display-client.herokuapp.com/",
     icons,
-    manifestCrossrigin:"use-credentials"
+    manifestCrossrigin: "use-credentials",
+    gcm_sender_id: "319496590898",
   };
   console.table(manifest);
   const stringManifest = JSON.stringify(manifest);
   const blob = new Blob([stringManifest], { type: "application/json" });
   const manifestURL = URL.createObjectURL(blob);
-  console.log("manifestURL is " + manifestURL)
+  console.log("manifestURL is " + manifestURL);
   overWriteHref("manifest", manifestURL);
 
   function toBlob(base64) {
