@@ -34,7 +34,7 @@ const changeManifest = function () {
       // console.log(i);
       let element = store.icons[i];
       // console.log(Boolean(element.src.match(/http:/)));
-      if (element.src.match(/http:/)) {
+      if (element.src.match(/https:/)) {
         console.log("element.src already execute toBlob function");
       } else {
         const imageURL = toBlob(element.src);
