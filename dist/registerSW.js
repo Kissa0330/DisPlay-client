@@ -1,5 +1,7 @@
-importScripts("/precache-manifest.89d27f471fb563ffd3eefe502407e8a8.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.c83bab69bc01d2e3e27396af7d2ea822.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
+let key = process.env.NODE_ENV;
+console.log(key);
 if (process.env.NODE_ENV === "production") {
   navigator.serviceWorker
     .register(`${process.env.BASE_URL}registerSW.js`)
@@ -14,18 +16,18 @@ if (process.env.NODE_ENV === "production") {
       console.log(`subscription is: ${mySubscription}`);
     })
     .catch(console.error.bind(console));
+  self.addEventListener("push", (event) => {
+    console.info("push", event);
+
+    const message = event.data ? event.data.text() : "予定が始まる時間です！";
+
+    event.waitUntil(
+      self.registration.showNotification("Push Notification Title", {
+        body: message,
+        icon: "https://display-client.herokuapp.com/image/android-chrome-512x512.png",
+        tag: "reminder",
+      })
+    );
+  });
 }
-self.addEventListener("push", (event) => {
-  console.info("push", event);
-
-  const message = event.data ? event.data.text() : "予定が始まる時間です！";
-
-  event.waitUntil(
-    self.registration.showNotification("Push Notification Title", {
-      body: message,
-      icon: "https://display-client.herokuapp.com/image/android-chrome-512x512.png",
-      tag: "reminder",
-    })
-  );
-});
 
