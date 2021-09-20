@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.2c325ef1f777e6f3a46e6bbf8df62850.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.83932a488827755564bd6ab919af346b.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 document.addEventListener(
   "DOMContentLoaded",
