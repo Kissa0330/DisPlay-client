@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.101f7a7ac930d8e4e2f3bab245914fb1.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.1f18f60cd408d95dc4c08cef47070294.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
@@ -22,7 +22,7 @@ if ('serviceWorker' in navigator) {
     event.waitUntil(
       self.registration.showNotification("Push Notification Title", {
         body: message,
-        icon: "https://display-client.herokuapp.com/image/android-chrome-512x512.png",
+        icon: "https://display-client.herokuapp.com/img/android-chrome-512x512.png",
         tag: "reminder",
       })
     );

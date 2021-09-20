@@ -11,7 +11,7 @@ module.exports = {
     appleMobileWebAppStatusBarStyle: "black",
     manifestCrossorigin: "use-credentials",
     iconPaths: {
-      appleTouchIcon: "imgs/icons/apple-touch-icon.png",
+      appleTouchIcon: "img/icons/apple-touch-icon.png",
     },
     workboxOptions: {
       swSrc: "./src/registerSW.js",

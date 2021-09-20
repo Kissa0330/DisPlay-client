@@ -20,7 +20,7 @@ if ('serviceWorker' in navigator) {
     event.waitUntil(
       self.registration.showNotification("Push Notification Title", {
         body: message,
-        icon: "https://display-client.herokuapp.com/image/android-chrome-512x512.png",
+        icon: "https://display-client.herokuapp.com/img/android-chrome-512x512.png",
         tag: "reminder",
       })
     );

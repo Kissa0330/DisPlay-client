@@ -20,12 +20,12 @@ const changeManifest = function () {
     console.log("store.icons is not exist");
     icons = [
       {
-        src: "https://display-client.herokuapp.com/image/icons/android-chrome-192x192.png",
+        src: "https://display-client.herokuapp.com/img/icons/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "https://display-client.herokuapp.com/image/icons/android-chrome-512x512.png",
+        src: "https://display-client.herokuapp.com/img/icons/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },
