@@ -6,7 +6,7 @@ module.exports = {
     workboxPluginMode: "InjectManifest",
     name: "DisPlay-週間管理ツール",
     themeColor: "#f4f6fc",
-    msTileColor: "#000000",
+    msTileColor: "#000001",
     appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "black",
     manifestCrossorigin: "use-credentials",
