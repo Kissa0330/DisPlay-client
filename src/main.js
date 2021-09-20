@@ -6,6 +6,8 @@ import VueAxios from "vue-axios";
 import GAuth from "vue3-google-oauth2";
 import "./registerSW.js";
 
+let key = process.env;
+console.table(key);
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";

@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.c83bab69bc01d2e3e27396af7d2ea822.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.a66d05921eb2c76bb2f41c2a65371283.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 let key = process.env.NODE_ENV;
 console.log(key);
