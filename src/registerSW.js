@@ -3,7 +3,7 @@ document.addEventListener(
   () => {
     if (process.env.NODE_ENV === "production") {
       navigator.serviceWorker
-        .register(`${process.env.BASE_URL}service-worker.js`)
+        .register(`${process.env.BASE_URL}registerSW.js`)
         .catch(console.error.bind(console));
       navigator.serviceWorker.ready
         .then((registration) => {

@@ -1,11 +1,11 @@
-importScripts("/precache-manifest.941df3807313fb27fb15d15e37a87a55.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.c1e220ace58d60a95a4ea2e50e495cb9.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
     if (process.env.NODE_ENV === "production") {
       navigator.serviceWorker
-        .register(`${process.env.BASE_URL}service-worker.js`)
+        .register(`${process.env.BASE_URL}registerSW.js`)
         .catch(console.error.bind(console));
       navigator.serviceWorker.ready
         .then((registration) => {
