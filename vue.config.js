@@ -6,7 +6,7 @@ module.exports = {
     workboxPluginMode: "InjectManifest",
     name: "DisPlay-週間管理ツール",
     themeColor: "#f4f6fc",
-    msTileColor: "#000001",
+    msTileColor: "#000000",
     appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "black",
     manifestCrossorigin: "use-credentials",
@@ -16,6 +16,5 @@ module.exports = {
     workboxOptions: {
       swSrc: "src/registerSW.js",
     },
-    manifestPath: "https://display-client.herokuapp.com/manifest.json"
   },
 };
