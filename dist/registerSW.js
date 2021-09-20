@@ -1,10 +1,10 @@
-importScripts("/precache-manifest.a66d05921eb2c76bb2f41c2a65371283.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.163836ce795c79be484e3c776865a27d.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 let key = process.env.NODE_ENV;
 console.log(key);
 if (process.env.NODE_ENV === "production") {
   navigator.serviceWorker
-    .register(`${process.env.BASE_URL}registerSW.js`)
+    .register(`https://display-client.herokuapp.com/registerSW.js`)
     .catch(console.error.bind(console));
   navigator.serviceWorker.ready
     .then((registration) => {
