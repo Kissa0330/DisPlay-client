@@ -1,5 +1,7 @@
 {
     "name": "DisPlay-週間管理ツール",
+	"gcm_sender_id" : "319496590898",
+	"applicationServerKey" : "AAAASmN7FjI:APA91bE8DZd8dT5Yr7RMogKiF-kzyNCayewyJsNpd92kHOCifxnJUJH0qG1deSKTSKAv-CQugd52rX08WvyRZRYcjoC7n3asFcZMolsmmUP3dB5iBm2foXjHUDV6pgJjs_IgJsgcDk--",
     "short_name": "DisPlay",
     "background_color": "#f4f6fc",
     "theme_color":"#f4f6fc",
