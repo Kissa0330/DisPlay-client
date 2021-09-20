@@ -1,6 +1,4 @@
-let key = process.env.NODE_ENV;
-console.log(key);
-if (process.env.NODE_ENV === "production") {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register(`https://display-client.herokuapp.com/registerSW.js`)
     .catch(console.error.bind(console));

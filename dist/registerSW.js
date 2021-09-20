@@ -1,8 +1,6 @@
-importScripts("/precache-manifest.163836ce795c79be484e3c776865a27d.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.e64c362c2588e66f85d1c7ed4bbef200.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-let key = process.env.NODE_ENV;
-console.log(key);
-if (process.env.NODE_ENV === "production") {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register(`https://display-client.herokuapp.com/registerSW.js`)
     .catch(console.error.bind(console));
