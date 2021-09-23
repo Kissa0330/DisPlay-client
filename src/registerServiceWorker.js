@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import { register } from "register-service-worker";
+import { urlB64ToUint8Array, updateSubscriptionOnServer } from "./swModule";
 
 let isSubscribed = false;
+const applicationServerPublicKey = "pushサーバーから公開鍵を取得する";
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
@@ -11,17 +13,34 @@ if (process.env.NODE_ENV === "production") {
       );
     },
     registered(swReg) {
-      console.log("Service worker has been registered.");
       console.log("Service Worker is registered", swReg);
       swReg.pushManager.getSubscription().then(function (subscription) {
         isSubscribed = !(subscription === null);
-  
-        // updateSubscriptionOnServer(subscription); 
-  
+
+        updateSubscriptionOnServer(subscription);
+
         if (isSubscribed) {
           console.log("User is subscribed.");
         } else {
           console.log("User is NOT subscribed.");
+          const applicationServerKey = urlB64ToUint8Array(
+            applicationServerPublicKey
+          );
+          swReg.pushManager
+            .subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: applicationServerKey,
+            })
+            .then(function (subscription) {
+              console.log("User is subscribed:", subscription);
+
+              updateSubscriptionOnServer(subscription);
+
+              isSubscribed = true;
+            })
+            .catch(function (err) {
+              console.log("Failed to subscribe the user: ", err);
+            });
         }
       });
     },
@@ -42,5 +61,5 @@ if (process.env.NODE_ENV === "production") {
     error(error) {
       console.error("Error during service worker registration:", error);
     },
-  })
+  });
 }
