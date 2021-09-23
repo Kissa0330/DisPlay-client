@@ -10,8 +10,20 @@ if (process.env.NODE_ENV === "production") {
           "For more details, visit https://goo.gl/AFskqB"
       );
     },
-    registered() {
+    registered(swReg) {
       console.log("Service worker has been registered.");
+      console.log("Service Worker is registered", swReg);
+      swReg.pushManager.getSubscription().then(function (subscription) {
+        isSubscribed = !(subscription === null);
+  
+        // updateSubscriptionOnServer(subscription); 
+  
+        if (isSubscribed) {
+          console.log("User is subscribed.");
+        } else {
+          console.log("User is NOT subscribed.");
+        }
+      });
     },
     cached() {
       console.log("Content has been cached for offline use.");
@@ -30,18 +42,5 @@ if (process.env.NODE_ENV === "production") {
     error(error) {
       console.error("Error during service worker registration:", error);
     },
-  }).then(function (swReg) {
-    console.log("Service Worker is registered", swReg);
-    swReg.pushManager.getSubscription().then(function (subscription) {
-      isSubscribed = !(subscription === null);
-
-      // updateSubscriptionOnServer(subscription); 
-
-      if (isSubscribed) {
-        console.log("User is subscribed.");
-      } else {
-        console.log("User is NOT subscribed.");
-      }
-    });
-  });
+  })
 }
