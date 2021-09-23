@@ -14,7 +14,7 @@ module.exports = {
       appleTouchIcon: "img/icons/apple-touch-icon.png",
     },
     workboxOptions: {
-      swSrc: "./src/registerSW.js",
+      swSrc: "src/service-worker.js",
     },
   },
 };
