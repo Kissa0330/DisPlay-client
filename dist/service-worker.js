@@ -1,13 +1,13 @@
-importScripts("/precache-manifest.b94ee54eaf490bbbd08eed2e9505a5bf.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.dbecf3e09effda28977af61da6f6e7ce.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 /* eslint-env browser, serviceworker, es6 */
 self.addEventListener("push", function (event) {
   console.log("[Service Worker] Push Received.");
   console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-  const title = "Push Codelab";
+  const title = "準備はできていますか？";
   const options = {
-    body: "Push teeeest",
+    body: "あなたが設定した予定や習慣がそろそろ始まります！",
     icon: "img/icons/android-chrome-512x512.png",
     badge: "img/icons/android-chrome-192x192.png",
   };

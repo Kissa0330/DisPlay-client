@@ -3,9 +3,9 @@ self.addEventListener("push", function (event) {
   console.log("[Service Worker] Push Received.");
   console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-  const title = "Push Codelab";
+  const title = "準備はできていますか？";
   const options = {
-    body: "Push teeeest",
+    body: "あなたが設定した予定や習慣がそろそろ始まります！",
     icon: "img/icons/android-chrome-512x512.png",
     badge: "img/icons/android-chrome-192x192.png",
   };
