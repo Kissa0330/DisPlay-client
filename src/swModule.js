@@ -18,6 +18,7 @@ function updateSubscriptionOnServer(subscription) {
 }
 async function registerNotification() {
   const reg = await navigator.serviceWorker.getRegistration();
+  console.log("creating notification");
   Notification.requestPermission().then((permission) => {
     if (permission !== "granted") {
       // プッシュ通知許可されない場合エラー
@@ -33,7 +34,7 @@ async function registerNotification() {
         timestamp: "2021/09/24 12:25:22",
       })
       .then(() => {
-        console.log("create notification");
+        console.log("created notification");
       });
   });
 }
