@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.9b506a6e15b1ef46f84a1800b5c75c4f.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.b94ee54eaf490bbbd08eed2e9505a5bf.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 /* eslint-env browser, serviceworker, es6 */
 self.addEventListener("push", function (event) {

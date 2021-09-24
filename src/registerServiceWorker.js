@@ -3,7 +3,7 @@ import { register } from "register-service-worker";
 import { urlB64ToUint8Array, updateSubscriptionOnServer } from "./swModule";
 
 let isSubscribed = false;
-const applicationServerPublicKey = "pushサーバーから公開鍵を取得する";
+const applicationServerPublicKey = "BL-xXV1DPVYJlGjARPuxZ2UHejlCof0egV0BfRcMYFcP1qXhOGExz7V29x5ptgILY0oavnQZ5yroPk2Fq1ppook";
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
