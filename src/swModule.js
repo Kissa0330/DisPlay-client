@@ -26,11 +26,15 @@ async function registerNotification() {
     }
 
     // プッシュ通知の登録
-    reg.showNotification("Test", {
-      tag: "test",
-      body: "This is test notification.",
-	  timestamp: "2021/09/24 12:25:22"
-    });
+    reg
+      .showNotification("Test", {
+        tag: "test",
+        body: "This is test notification.",
+        timestamp: "2021/09/24 12:25:22",
+      })
+      .then(() => {
+        console.log("create notification");
+      });
   });
 }
 export { urlB64ToUint8Array, updateSubscriptionOnServer, registerNotification };
