@@ -13,7 +13,6 @@ const store = reactive({
 });
 const instance = axios.create({
   baseURL: "https://sp-display-server.herokuapp.com/api/",
-  timeout: 1000,
 });
 const actions = {
   getTodo() {
@@ -338,8 +337,8 @@ const actions = {
   },
   signIn(response, _this) {
     const data = {
-      access_token: response.Zb.access_token,
-      id_token: response.Zb.id_token,
+      access_token: response.$b.access_token,
+      id_token: response.$b.id_token,
     };
     console.log(data);
     const url = "https://sp-display-server.herokuapp.com/social-login/google/";
