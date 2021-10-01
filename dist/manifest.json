@@ -1,5 +1,7 @@
 {
     "name": "DisPlay-週間管理ツール",
+	"gcm_sender_id" : "319496590898",
+	"applicationServerKey" : "AAAASmN7FjI:APA91bE8DZd8dT5Yr7RMogKiF-kzyNCayewyJsNpd92kHOCifxnJUJH0qG1deSKTSKAv-CQugd52rX08WvyRZRYcjoC7n3asFcZMolsmmUP3dB5iBm2foXjHUDV6pgJjs_IgJsgcDk--",
     "short_name": "DisPlay",
     "background_color": "#f4f6fc",
     "theme_color":"#f4f6fc",
@@ -7,12 +9,12 @@
     "start_url": "https://display-client.herokuapp.com/",
     "icons":[
 		{
-		  "src": "image/icons/android-chrome-192x192.png",
+		  "src": "img/icons/android-chrome-192x192.png",
 		  "sizes": "192x192",
 		  "type": "image/png"
 		},
 		{
-		  "src": "image/icons/android-chrome-512x512.png",
+		  "src": "img/icons/android-chrome-512x512.png",
 		  "sizes": "512x512",
 		  "type": "image/png"
 		}
