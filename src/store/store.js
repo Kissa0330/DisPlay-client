@@ -356,6 +356,7 @@ const actions = {
         console.log(res);
       })
       .then(() => {
+        // is first visited を検知する
         _this.$router.push("/");
       })
       .catch((error) => {
