@@ -3,13 +3,13 @@
 }
 .menu {
   width: 353px;
-  height: 375px;
+  height: 395px;
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 3px 3px 6px rgba(3, 3, 6, 0.25),
     -1.5px -1.5px 6px rgba(248, 253, 255, 0.9);
   border-radius: 16px;
   position: fixed;
-  top: 187px;
+  top: 170px;
   left: calc(50% - 351px / 2);
 }
 h1.menutitle {
@@ -19,6 +19,7 @@ h1.menutitle {
 }
 h3.menuStr {
   margin: 0 auto 46px auto;
+  line-height: 29px;
 }
 h4.menuTimeStr {
   font-size: 14px;

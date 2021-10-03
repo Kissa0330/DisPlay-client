@@ -4,7 +4,7 @@ import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
 import login from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
-import initial from "../views/initial.vue";
+import initial from "../views/Initial.vue";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
 // import { changeManifest } from "../static/js/changeManifest";

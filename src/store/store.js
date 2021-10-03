@@ -10,6 +10,7 @@ const store = reactive({
   token: {},
   refresh_token: {},
   todoHandler: true,
+  isFirstVisit: false,
 });
 const instance = axios.create({
   baseURL: "https://sp-display-server.herokuapp.com/api/",
