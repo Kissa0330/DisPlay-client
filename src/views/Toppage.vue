@@ -9,7 +9,6 @@
 import Header from '../components/Header';
 import Chart from '../components/Chart';
 import TodoList from '../components/TodoList';
-import { registerNotification } from '../swModule';
 
 export default {
   name: 'Toppage',
@@ -17,9 +16,6 @@ export default {
     Header,
     Chart,
     TodoList,
-  },
-  created(){
-    registerNotification();
   }
 };
 </script>

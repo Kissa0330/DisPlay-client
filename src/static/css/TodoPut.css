@@ -53,10 +53,6 @@ img.putStick{
   letter-spacing: 0.15em;
   font-size: 15px;
 }
-.v-enter-from {
-  opacity: 0;
-  top: 270px;
-}
 
 .v-enter-to {
   opacity: 1;

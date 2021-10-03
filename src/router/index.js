@@ -4,6 +4,7 @@ import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
 import login from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
+import initial from "../views/initial.vue";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
 // import { changeManifest } from "../static/js/changeManifest";
@@ -25,6 +26,7 @@ const routes = [
     component: login,
   },
   { path: "/setting", name: "Setting", component: setting },
+  { path: "/initial", name: "Initial", component: initial },
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -34,7 +36,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   let tokenValue = Cookies.get("access_token");
   let isTokenValue = Boolean(tokenValue);
-  // access_tokenがない場合はrefreshする
 
   let refresh_tokenValue = Cookies.get("refresh_token");
   let isRefresh_tokenValue = Boolean(refresh_tokenValue);
