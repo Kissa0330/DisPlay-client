@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const store = reactive({
-  icons:{},
+  icons: {},
   customs: {},
   todos: {},
   token: {},
@@ -129,7 +129,7 @@ const actions = {
       },
     };
     instance
-      .delete("todo/" + id,config)
+      .delete("todo/" + id, config)
       .then((response) => {
         console.log(response);
         return instance.get("todo/", config);
@@ -356,7 +356,11 @@ const actions = {
         console.log(res);
       })
       .then(() => {
-        // is first visited を検知する
+        console.log("test");
+        //isfirstvisitを取得する
+        // return axios.get(url);
+      })
+      .then(() => {
         _this.$router.push("/");
       })
       .catch((error) => {
@@ -364,7 +368,8 @@ const actions = {
       });
   },
   refreshAccessToken(refresh_token) {
-    const url = "https://sp-display-server.herokuapp.com/accounts/token/refresh/";
+    const url =
+      "https://sp-display-server.herokuapp.com/accounts/token/refresh/";
     const data = {
       refresh: refresh_token,
     };

@@ -23,7 +23,7 @@
               format="HH:mm"
               v-model="timepicker1"
             ></VueTimepicker>
-            <p class="centerText">to</p>
+            <p class="centerText">~</p>
             <VueTimepicker
               hide-clear-button
               format="HH:mm"

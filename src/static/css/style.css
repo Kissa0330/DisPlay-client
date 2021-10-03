@@ -80,12 +80,13 @@ button:active {
   height: 29px;
   color: #ffffff;
   font-size: 11px;
-  font-weight: 400;
+  /* font-weight: 400; */
 }
 .LandscapeButton.google{
   width: 251px;
   height: 71px;
   font-size: 14px;
+  letter-spacing: 0.15em;
 }
 .googleImg{
   margin: 0 11px -4.5px 0px;
@@ -157,17 +158,17 @@ body .vue__time-picker input.vue__time-picker-input{
   padding: 0;
   background-color: transparent;
   font-size: 23px;
-  width: 80px;
+  width: 60px;
   font-weight: 400;
   margin: 0 0 0 5px;
   }
   body .vue__time-picker{
-    width: 80px;
+    width: 60px;
   }
 p.centerText{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
-  margin: 15px 13px 0 4px;
+  margin: 13px -2.5px 0 9px;
   color: #2c2c2c;
 }
 .page_animation-enter-from {

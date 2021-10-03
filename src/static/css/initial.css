@@ -1,0 +1,31 @@
+.Header {
+  margin: 40px auto 0 auto;
+}
+.menu {
+  width: 353px;
+  height: 375px;
+  background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
+  box-shadow: 3px 3px 6px rgba(3, 3, 6, 0.25),
+    -1.5px -1.5px 6px rgba(248, 253, 255, 0.9);
+  border-radius: 16px;
+  position: fixed;
+  top: 187px;
+  left: calc(50% - 351px / 2);
+}
+h1.menutitle {
+  font-size: 25px;
+  margin: 40px auto 49px auto;
+  letter-spacing: 0.25em;
+}
+h3.menuStr {
+  margin: 0 auto 46px auto;
+}
+h4.menuTimeStr {
+  font-size: 14px;
+  margin: 0 auto 18px auto;
+}
+button.LandscapeButton.Login {
+  width: 172px;
+  height: 54px;
+  font-size: 16px;
+}
