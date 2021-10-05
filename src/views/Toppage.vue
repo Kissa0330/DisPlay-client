@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="componentswrapper" v-if="wrapperview">
+    <transition appear name="tutorial">
+      <div class="componentswrapper" v-if="wrapperview" />
+    </transition>
+    <transition appear name="tutorial">
       <Tutorial v-if="tutorialView" />
-    </div>
+    </transition>
     <Header />
     <Chart />
     <TodoList />
@@ -15,10 +18,33 @@
     rgb(225, 232, 240, 0.7),
     rgb(244, 246, 252, 0.7)
   );
+  top:0px;
   position: fixed;
   width: 100vw;
   height: 100vh;
-  z-index: 2000;
+  z-index: 2;
+}
+.bg-enter-from {
+  opacity: 0;
+}
+
+.bg-enter-to {
+  opacity: 1;
+}
+.bg-enter-active {
+  transition: all 400ms;
+}
+
+.bg-leave-from {
+  opacity: 1;
+}
+
+.bg-leave-to {
+  opacity: 0;
+}
+
+.tutorial-leave-active {
+  transition: all 400ms;
 }
 </style>
 <script>
@@ -36,11 +62,16 @@ export default {
     TodoList,
     Tutorial,
   },
-  data: function () {
-    return {
-      tutorialView: store.isFirstVisit,
-      wrapperview: store.isFirstVisit,
-    };
-  }
+  mounted() {
+    console.log(store.isFirstVisit);
+  },
+  computed: {
+    tutorialView() {
+      return store.isFirstVisit;
+    },
+    wrapperview() {
+      return store.isFirstVisit;
+    },
+  },
 };
 </script>

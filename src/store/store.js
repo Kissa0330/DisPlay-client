@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 const store = reactive({
   icons: {},
+  id: "",
   customs: {},
   todos: {},
   token: {},
@@ -327,14 +328,40 @@ const actions = {
   updateCustoms(customs) {
     store.customs = customs;
   },
-
+  getMypage() {
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
+    return instance.get("/mypage", config);
+  },
+  putMypage(data) {
+    let config = {
+      headers: {
+        Authorization: "Bearer " + store.token,
+      },
+    };
+    console.log(data,config,store.token);
+    instance
+      .put("users/" + store.id, data, config)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   updateToken() {
     //TODO domainオプションとhttpsオプションを追加する
-    const tokenValue = Cookies.get("access_token");
-    store.token = tokenValue;
-    const refresh_tokenValue = Cookies.get("refresh_token");
-    store.refresh_token = refresh_tokenValue;
-    console.log("tokens are already updated");
+    return new Promise((resolve) => {
+      const tokenValue = Cookies.get("access_token");
+      store.token = tokenValue;
+      const refresh_tokenValue = Cookies.get("refresh_token");
+      store.refresh_token = refresh_tokenValue;
+      console.log("tokens are already updated");
+      return resolve();
+    });
   },
   signIn(response, _this) {
     const data = {
@@ -355,11 +382,6 @@ const actions = {
         store.token = res.data.access_token;
         store.refresh_token = res.data.refresh_token;
         console.log(res);
-      })
-      .then(() => {
-        console.log("test");
-        //isfirstvisitを取得する
-        // return axios.get(url);
       })
       .then(() => {
         _this.$router.push("/");

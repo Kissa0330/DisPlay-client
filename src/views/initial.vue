@@ -9,7 +9,9 @@
         DisPlayを使用するために<br />習慣のスケジュールを<br />設定しましょう
       </h3>
       <h4 class="menuTimeStr">所要時間:約5分</h4>
-      <button class="Login LandscapeButton">Start</button>
+      <router-link to="/setting">
+        <button class="Login LandscapeButton">Start</button>
+      </router-link>
     </div>
   </div>
 </template>

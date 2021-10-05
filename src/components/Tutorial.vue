@@ -11,11 +11,17 @@
 </template>
 <style src="../static/css/Tutorial.css" scoped></style>
 <script>
+import { store } from "../store/store";
+// import { actions } from "../store/store";
 export default {
   name: "tutorial",
   methods: {
     pushButton() {
-      //isFirstVisitedを更新し、store内のisFirstVisitedも更新する
+      // let data = {
+      //   isFirstVisit: false,
+      // };
+      // actions.putMypage(data);
+      store.isFirstVisit = false;
     },
   },
 };
