@@ -1,3 +1,20 @@
 .Header {
-	margin: 40px auto 0 auto;
-  }
+  margin: 40px auto 0 auto;
+}
+.notfoundpng {
+  margin: 55.5px auto 0 auto;
+}
+.notfoundTitle{
+  margin: 40px 0 0 0;
+  letter-spacing: 0.14em;
+  font-size: 23px;
+}
+.notfoundStr{
+  margin: 35px 0 0 0;
+  font-size: 15px;
+}
+.notfoundLink{
+  margin:10px 0 0 0;
+  font-size: 19px;
+  text-decoration: underline;
+}

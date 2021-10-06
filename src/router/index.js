@@ -28,7 +28,7 @@ const routes = [
   },
   { path: "/setting", name: "Setting", component: setting },
   { path: "/initial", name: "Initial", component: initial },
-  { path: "/notfound", name: "Notfound", component: notfound},
+  { path: "/:catchAll(.*)", name: "Notfound", component: notfound},
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -65,9 +65,9 @@ if (isRefresh_tokenValue) {
       })
       .then(() => {
         console.log(store.isFirstVisit);
-        if (to.name != "Initial" && to.name != "Toppage" && to.name != "Setting" && store.isFirstVisit)
-        next({ name: "Initial" });
-      else next();
+        // if (to.name != "Initial" && to.name != "Toppage" && to.name != "Setting" && store.isFirstVisit)
+        // next({ name: "Initial" });
+      // else next();
       next();
       })
       .catch((e) => {
