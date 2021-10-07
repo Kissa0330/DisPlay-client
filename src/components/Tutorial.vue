@@ -19,7 +19,8 @@ export default {
       let data = {
         isFirstVisit: false,
       };
-      actions.putMypage(data)
+      actions.patchMypage(data);
+      actions.getMypage();
     },
   },
 };

@@ -55,28 +55,11 @@ if (isRefresh_tokenValue) {
       .then(() => {
         return actions.getMypage();
       })
-      .then((res) => {
-        store.id = res.data[0].id;
-        store.isFirstVisit = res.data[0].isFirstVisit;
-        console.log("mypage is", res.data[0]);
-        console.log(
-          "store.id is " + store.id,
-          "\nstore.isFirstVisit is " + store.isFirstVisit
-        );
-      })
-      .then(() => {
-        console.log(store.isFirstVisit);
-        // if (to.name != "Initial" && to.name != "Toppage" && to.name != "Setting" && store.isFirstVisit)
-        // next({ name: "Initial" });
-      // else next();
-      next();
-      })
       .catch((e) => {
         console.log(e);
       });
   }
-  else next();
-  console.log("test");
+  next();
 });
 
 export default router;
