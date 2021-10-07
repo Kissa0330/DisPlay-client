@@ -8,7 +8,7 @@ module.exports = {
     themeColor: "#f4f6fc",
     msTileColor: "#000000",
     appleMobileWebAppCapable: "yes",
-    appleMobileWebAppStatusBarStyle: "black",
+    appleMobileWebAppStatusBarStyle: "black-translucent",
     manifestCrossorigin: "use-credentials",
     iconPaths: {
       appleTouchIcon: "img/icons/apple-touch-icon.png",
