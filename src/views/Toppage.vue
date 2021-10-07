@@ -1,8 +1,11 @@
 <template>
   <div>
-      <div class="componentswrapper" v-if="wrapperview" />
+    <div class="componentswrapper" v-if="wrapperview" />
     <transition appear name="tutorial">
       <Tutorial v-if="tutorialView" />
+    </transition>
+    <transition name="error">
+      <Error v-if="errorView" />
     </transition>
     <Header />
     <Chart />
@@ -16,7 +19,7 @@
     rgb(225, 232, 240, 0.7),
     rgb(244, 246, 252, 0.7)
   );
-  top:0px;
+  top: 0px;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -28,6 +31,7 @@ import Header from "../components/Header";
 import Chart from "../components/Chart";
 import TodoList from "../components/TodoList";
 import Tutorial from "../components/Tutorial";
+import Error from "../components/Error";
 import { store } from "../store/store";
 
 export default {
@@ -37,16 +41,22 @@ export default {
     Chart,
     TodoList,
     Tutorial,
+    Error,
   },
   mounted() {
     console.log(store.isFirstVisit);
   },
   computed: {
     tutorialView() {
-      return store.isFirstVisit;
+      return false;
+      // return store.isFirstVisit;
+    },
+    errorView() {
+      return store.errorFlag;
     },
     wrapperview() {
-      return store.isFirstVisit;
+      return false;
+      // return store.isFirstVisit;
     },
   },
 };

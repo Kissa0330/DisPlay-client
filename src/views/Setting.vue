@@ -1,9 +1,13 @@
 <template>
   <div class="setting">
+    <transition name="error">
+      <Error v-if="errorView" />
+    </transition>
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a class="polycyLink" @click="polycyViewChange">プライバシーポリシー</a
+        情報は<a class="polycyLink" @click="polycyViewChange"
+          >プライバシーポリシー</a
         >に則って管理されます
       </p>
     </header>
@@ -73,6 +77,7 @@ import CustomAdd from "../components/CustomAdd";
 import CustomEdit from "../components/CustomEdit";
 import Polycy from "../components/Polycy";
 import deleteConfirmation from "../components/DeleteConfirmation";
+import Error from "../components/Error.vue";
 import { store, actions } from "../store/store";
 export default {
   name: "Setting",
@@ -81,6 +86,7 @@ export default {
     Polycy,
     deleteConfirmation,
     CustomEdit,
+    Error
   },
   data: function () {
     return {
@@ -143,6 +149,9 @@ export default {
         store.customs[i].times = frequency + displayTime;
       }
       return store.customs;
+    },
+    errorView() {
+      return store.errorFlag;
     },
   },
   mounted() {

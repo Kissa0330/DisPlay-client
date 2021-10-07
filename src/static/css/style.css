@@ -160,7 +160,7 @@ body .vue__time-picker input.vue__time-picker-input{
   font-size: 23px;
   width: 60px;
   font-weight: 400;
-  margin: 0 0 0 5px;
+  margin: 0 0 0 0;
   }
   body .vue__time-picker{
     width: 60px;
@@ -168,7 +168,7 @@ body .vue__time-picker input.vue__time-picker-input{
 p.centerText{
   font-size: 20px;
   font-weight: 400;
-  margin: 13px -2.5px 0 9px;
+  margin: 13px 4px 0 5px;
   color: #2c2c2c;
 }
 .page_animation-enter-from {

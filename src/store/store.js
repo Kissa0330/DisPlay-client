@@ -12,6 +12,7 @@ const store = reactive({
   refresh_token: {},
   todoHandler: true,
   isFirstVisit: false,
+  errorFlag: false,
 });
 const instance = axios.create({
   baseURL: "https://sp-display-server.herokuapp.com/api/",
@@ -73,6 +74,7 @@ const actions = {
       })
       .catch((error) => {
         console.log(error.response.data);
+        store.errorFlag = true;
       });
   },
   putTodo(setTime, id, title, deadline_time, start_time, end_time) {
@@ -122,6 +124,7 @@ const actions = {
       })
       .catch((error) => {
         console.log(error.response);
+        store.errorFlag = true;
       });
   },
   deleteTodo(id) {
@@ -275,6 +278,7 @@ const actions = {
         store.customs = response.data;
       })
       .catch((error) => {
+        store.errorFlag = true;
         console.log(error.response);
       });
   },
@@ -302,6 +306,7 @@ const actions = {
         store.customs = response.data;
       })
       .catch((error) => {
+        store.errorFlag = true;
         console.log(error.response);
       });
   },

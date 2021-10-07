@@ -1,5 +1,8 @@
 <template>
   <div class="optionWrapper">
+    <transition name="error">
+      <Error v-if="errorView" />
+    </transition>
     <header>
       <router-link to="/">
         <img src="../assets/img/arrow.svg" class="arrow" alt="arrow" />
@@ -31,13 +34,20 @@
 <script>
 import CustomTable from "../components/CustomTable";
 import LogoutConfirmation from "../components/LogoutConfirmation.vue";
+import Error from "../components/Error.vue";
+import { store } from "../store/store";
 export default {
   name: "Option",
-  components: { CustomTable, LogoutConfirmation },
+  components: { CustomTable, LogoutConfirmation, Error },
   data: function () {
     return {
       logoutConView: false,
     };
+  },
+  computed: {
+    errorView() {
+      return store.errorFlag;
+    },
   },
 };
 </script>

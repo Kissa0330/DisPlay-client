@@ -36,6 +36,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  store.errorFlag = false;
   let tokenValue = Cookies.get("access_token");
   let isTokenValue = Boolean(tokenValue);
 

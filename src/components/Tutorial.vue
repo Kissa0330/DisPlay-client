@@ -11,17 +11,15 @@
 </template>
 <style src="../static/css/Tutorial.css" scoped></style>
 <script>
-import { store } from "../store/store";
-// import { actions } from "../store/store";
+import { actions } from "../store/store";
 export default {
   name: "tutorial",
   methods: {
     pushButton() {
-      // let data = {
-      //   isFirstVisit: false,
-      // };
-      // actions.putMypage(data);
-      store.isFirstVisit = false;
+      let data = {
+        isFirstVisit: false,
+      };
+      actions.putMypage(data)
     },
   },
 };
