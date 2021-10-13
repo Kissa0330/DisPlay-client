@@ -4,7 +4,7 @@ import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
 import signin from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
-// import initial from "../views/Initial.vue";
+import initial from "../views/Initial.vue";
 import notfound from "../views/notfound";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
@@ -27,7 +27,7 @@ const routes = [
     component: signin,
   },
   { path: "/setting", name: "Setting", component: setting },
-  // { path: "/initial", name: "Initial", component: initial },
+  { path: "/initial", name: "Initial", component: initial },
   { path: "/:catchAll(.*)", name: "Notfound", component: notfound},
 ];
 const router = createRouter({
