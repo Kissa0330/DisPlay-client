@@ -48,15 +48,15 @@ export default {
   },
   computed: {
     tutorialView() {
-      return false;
-      // return store.isFirstVisit;
+      // return false;
+      return store.isFirstVisit;
     },
     errorView() {
       return store.errorFlag;
     },
     wrapperview() {
-      return false;
-      // return store.isFirstVisit;
+      // return false;
+      return store.isFirstVisit;
     },
   },
 };

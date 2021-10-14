@@ -83,7 +83,7 @@ const actions = {
       console.log("setTime");
       data = {
         id: id,
-        author: 1,
+        author: store.id,
         title: title,
         deadline_time: deadline_time,
         start_time: start_time,
@@ -93,7 +93,7 @@ const actions = {
       console.log("not setTime");
       data = {
         id: id,
-        author: 1,
+        author: store.id,
         title: title,
         deadline_time: deadline_time,
       };
@@ -243,7 +243,7 @@ const actions = {
             });
           function postSampleCustom(i) {
             let data = {
-              author: "1",
+              author: store.id,
               title: sampleCustoms[i].title,
               start_time: sampleCustoms[i].start_time,
               end_time: sampleCustoms[i].end_time,
@@ -256,7 +256,7 @@ const actions = {
   },
   postCustom(title, start_time, end_time, flag) {
     const data = {
-      author: "1",
+      author: store.id,
       title: title,
       start_time: start_time,
       end_time: end_time,
@@ -284,7 +284,7 @@ const actions = {
   },
   putCustom(title, flag, start_time, end_time, id) {
     const data = {
-      author: "1",
+      author: store.id,
       title: title,
       start_time: start_time,
       end_time: end_time,
@@ -339,19 +339,31 @@ const actions = {
         Authorization: "Bearer " + store.token,
       },
     };
-    return instance.get("/mypage", config);
+    return instance.get("/mypage", config).then((res) => {
+      store.id = res.data[0].id;
+      store.isFirstVisit = res.data[0].isFirstVisit;
+      console.log("mypage is", res.data[0]);
+      console.log(
+        "store.id is " + store.id,
+        "\nstore.isFirstVisit is " + store.isFirstVisit
+      );
+    });
   },
-  putMypage(data) {
+  patchMypage(data) {
     let config = {
       headers: {
         Authorization: "Bearer " + store.token,
       },
     };
-    console.log(data,config,store.token);
     instance
-      .put("users/" + store.id, data, config)
+      .patch("users/" + store.id, data, config)
       .then((res) => {
-        console.log(res);
+        store.isFirstVisit = res.data[0].isFirstVisit;
+        console.log("mypage is", res.data[0]);
+        console.log(
+          "store.id is " + store.id,
+          "\nstore.isFirstVisit is " + store.isFirstVisit
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -387,12 +399,24 @@ const actions = {
         store.token = res.data.access_token;
         store.refresh_token = res.data.refresh_token;
         console.log(res);
+        let config = {
+          headers: {
+            Authorization: "Bearer " + store.token,
+          },
+        };
+        return instance.get("/mypage", config);
       })
-      .then(() => {
-        _this.$router.push("/");
+      .then((res) => {
+        if (res.data[0].isFirstVisit) {
+          console.log("Welcome!!");
+          _this.$router.push("/initial");
+        } else {
+          console.log("Okoaeri!!");
+          _this.$router.push("/");
+        }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
       });
   },
   refreshAccessToken(refresh_token) {
