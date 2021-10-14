@@ -47,7 +47,6 @@ router.beforeEach((to, from, next) => {
     actions.refreshAccessToken(refresh_tokenValue);
   }
   if (to.name !== "Signin" && !isRefresh_tokenValue) next({ name: "Signin" });
-  store.isFirstVisit = true;
 
 if (isRefresh_tokenValue) {
     actions

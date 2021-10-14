@@ -44,11 +44,12 @@ export default {
     Error,
   },
   mounted() {
-    console.log(store.isFirstVisit);
+    console.log("isFisrstvisit is " + store.isFirstVisit);
   },
   computed: {
     tutorialView() {
       // return false;
+      console.log("isFisrstvisit is " + store.isFirstVisit);
       return store.isFirstVisit;
     },
     errorView() {
