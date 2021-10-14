@@ -5,12 +5,17 @@ const d3 = require("d3");
 const svg = function () {
   let w = 307;
   let h = 307;
+  const chart = document.getElementById("chart");
+  const svglen = chart.getElementsByTagName("svg").length;
+  if(!svglen)
+  {
   d3.select("#chart")
     .append("svg")
     .attr("width", w)
     .attr("height", h)
     .append("g")
     .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+  }
 };
 
 // create gradient
