@@ -15,7 +15,7 @@
     </div>
   </div>
 </template>
-<style scoped src="../static/css/Initial.css"></style>
+<style scoped src="../static/css/initial.css"></style>
 <script>
 export default {
   name: "Initial",

@@ -4,7 +4,7 @@ import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
 import signin from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
-import initial from "../views/Initial.vue";
+import initial from "../views/initial.vue";
 import notfound from "../views/notfound";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
@@ -47,7 +47,6 @@ router.beforeEach((to, from, next) => {
     actions.refreshAccessToken(refresh_tokenValue);
   }
   if (to.name !== "Signin" && !isRefresh_tokenValue) next({ name: "Signin" });
-  store.isFirstVisit = true;
 
 if (isRefresh_tokenValue) {
     actions
