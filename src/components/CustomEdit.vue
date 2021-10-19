@@ -197,6 +197,7 @@ export default {
     },
     putCustom() {
       console.log(this.start_time);
+
       actions.putCustom(
         this.title,
         this.repeatFlag,

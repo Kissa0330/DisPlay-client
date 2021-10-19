@@ -61,9 +61,10 @@ export default {
       let _this = this;
       for (i = 0; i < this.customs.length; i++) {
         const repeatFlagLength = this.customs[i].repeat_flag.length;
-        console.log(this.customs[i]);
         let childnthNumber = 1;
         for (let j = 0; j < repeatFlagLength; j++) {
+          let id = "CT" + i + "r" + childnthNumber;
+          depiction.removecustom(id);
           const repeatFlag = this.customs[i].repeat_flag[j];
           if (repeatFlag == 1) {
             let textNum = this.customs[i].title.charCodeAt(0);
@@ -79,7 +80,6 @@ export default {
               gradients[colorCode].color1,
               "customGradient" + colorCode
             );
-            let id = i + "r" + childnthNumber;
             depiction.custom(
               childnthNumber,
               startTime,
@@ -89,14 +89,14 @@ export default {
               id
             );
             document.getElementById(id).onclick = function () {
-              let clickedNumber = this.id.split("r")[0];
+              let clickedNumber = this.id.split("CT")[1].split("r")[0];
+              console.log(clickedNumber);
               console.log(id);
               _this.selectedCustom = _this.customs[clickedNumber];
               _this.customEditView = true;
             };
-          }
-          else console.log("repeat flag is false")
-          childnthNumber ++;
+          } else console.log("repeat flag is false");
+          childnthNumber++;
         }
       }
     },

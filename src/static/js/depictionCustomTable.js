@@ -66,6 +66,11 @@ const base = function () {
       .attr("y", 20);
   }
 };
+//removecustom
+const removecustom = function (id) {
+  console.log("remove custom " + id);
+  d3.select("#" + id).remove();
+};
 // create custom
 const custom = function (number, startTime, endTime, name, gradientId, id) {
   const depictionStartTime = startTime[0];
@@ -73,11 +78,9 @@ const custom = function (number, startTime, endTime, name, gradientId, id) {
   const calStartTime = Number(startTime[0]) + Number(startTime[1] / 60);
   const calEndTime = Number(endTime[0]) + Number(endTime[1] / 60);
   const height = (calEndTime - calStartTime) * 22;
-  console.log(startTime,endTime, calEndTime, calStartTime,height);
   const startHeight = calStartTime * 22 + 28;
   const startTextHeight = height < 22 ? startHeight + 8.5 : startHeight + 13;
 
- 
   d3.select("#CustomTable:nth-child(" + number + ")")
     .select("g")
     .append("rect")
@@ -126,4 +129,4 @@ const custom = function (number, startTime, endTime, name, gradientId, id) {
   }
 };
 
-export default { svg, base, createGradient, custom };
+export default { svg, base, createGradient, custom, removecustom };
