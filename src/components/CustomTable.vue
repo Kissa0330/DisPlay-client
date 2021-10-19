@@ -12,7 +12,7 @@
     <transition name="customEdit">
       <CustomEdit
         v-if="customEditView"
-        @childEvent="customEditView = false"
+        @childEvent="(customEditView = false), (selectedCustom = '')"
         :custom="selectedCustom"
       ></CustomEdit>
     </transition>
@@ -60,10 +60,14 @@ export default {
       let i;
       let _this = this;
       for (i = 0; i < this.customs.length; i++) {
-        for (let j = 0; j < this.customs[i].repeat_flag.length; j++) {
-          if (this.customs[i].repeat_flag[j]) {
+        const repeatFlagLength = this.customs[i].repeat_flag.length;
+        console.log(this.customs[i]);
+        let childnthNumber = 1;
+        for (let j = 0; j < repeatFlagLength; j++) {
+          const repeatFlag = this.customs[i].repeat_flag[j];
+          if (repeatFlag == 1) {
             let textNum = this.customs[i].title.charCodeAt(0);
-            let code = textNum.toString().split("").pop();
+            let colorCode = textNum.toString().split("").pop();
             let startTime = this.customs[i].start_time.split(":");
             startTime.pop();
             let endTime = this.customs[i].end_time.split(":");
@@ -71,18 +75,17 @@ export default {
             // console.log("Starttime is " + startTime);
             // console.log("End time is " + endTime);
             depiction.createGradient(
-              gradients[code].color,
-              gradients[code].color1,
-              "customGradient" + code
+              gradients[colorCode].color,
+              gradients[colorCode].color1,
+              "customGradient" + colorCode
             );
-            let number = j + 1;
-            let id = i + "r" + number;
+            let id = i + "r" + childnthNumber;
             depiction.custom(
-              number,
+              childnthNumber,
               startTime,
               endTime,
               this.customs[i].title,
-              code,
+              colorCode,
               id
             );
             document.getElementById(id).onclick = function () {
@@ -92,6 +95,8 @@ export default {
               _this.customEditView = true;
             };
           }
+          else console.log("repeat flag is false")
+          childnthNumber ++;
         }
       }
     },

@@ -146,13 +146,37 @@ export default {
       return flag;
     },
     start_time() {
-      let time =
+      let time;
+      const minute1 = this.timepicker1.mm;
+      const minute2 = this.timepicker2.mm;
+      if(this.timepicker1.HH == this.timepicker2.HH)
+      {
+        let minute = minute1 >= minute2 ? minute2 : minute1;
+      time =
+        String(this.timepicker1.HH) + ":" + String(minute) + ":00";
+      }
+      else
+      {
+      time =
         String(this.timepicker1.HH) + ":" + String(this.timepicker1.mm) + ":00";
+      }
       return time;
     },
     end_time() {
-      let time =
-        String(this.timepicker2.HH) + ":" + String(this.timepicker2.mm) + ":00";
+      let time;
+      const minute1 = this.timepicker1.mm;
+      const minute2 = this.timepicker2.mm;
+      if(this.timepicker1.HH == this.timepicker2.HH)
+      {
+        let minute = minute1 >= minute2 ? minute1 : minute2;
+      time =
+        String(this.timepicker2.HH) + ":" + String(minute) + ":00";
+      }
+      else
+      {
+      time =
+        String(this.timepicker2.HH) + ":" + String(minute2) + ":00";
+      }
       return time;
     },
   },
@@ -172,6 +196,7 @@ export default {
       }
     },
     putCustom() {
+      console.log(this.start_time);
       actions.putCustom(
         this.title,
         this.repeatFlag,
