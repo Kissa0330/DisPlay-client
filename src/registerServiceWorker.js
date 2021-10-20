@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
             });
         }
         registerNotification();
-        self.registration.getNotifications().then(function (notifications) {
+        swReg.getNotifications().then(function (notifications) {
           console.log(notifications);
         });
       });
