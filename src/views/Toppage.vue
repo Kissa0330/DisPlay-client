@@ -45,9 +45,6 @@ export default {
   },
   mounted() {
     console.log("isFisrstvisit is " + store.isFirstVisit);
-    self.registration.getNotifications().then(function (notifications) {
-      console.log(notifications);
-    });
   },
   computed: {
     tutorialView() {

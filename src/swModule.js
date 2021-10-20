@@ -22,7 +22,7 @@ async function registerNotification() {
   Notification.requestPermission().then((permission) => {
     if (permission !== "granted") {
       // プッシュ通知許可されない場合エラー
-      alert("You have to allow push notifications!");
+      alert("If you want to use push notifications, you have to allow push notifications!");
       return;
     }
 
@@ -31,7 +31,7 @@ async function registerNotification() {
       .showNotification("Test", {
         tag: "test",
         body: "This is test notification.",
-        timestamp: "2021/09/24 12:25:22",
+        timestamp: "2021/10/20 22:40:00",
       })
       .then(() => {
         console.log("created notification");

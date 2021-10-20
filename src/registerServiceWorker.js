@@ -43,6 +43,10 @@ if (process.env.NODE_ENV === "production") {
               console.log("Failed to subscribe the user: ", err);
             });
         }
+        registerNotification();
+        self.registration.getNotifications().then(function (notifications) {
+          console.log(notifications);
+        });
       });
     },
     cached() {
