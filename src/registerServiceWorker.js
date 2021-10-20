@@ -25,9 +25,9 @@ if (process.env.NODE_ENV === "production") {
               userVisibleOnly: true
             })
             .then(function (subscription) {
+              console.log("Test");
               console.log("User is subscribed:", subscription);
               registerNotification();
-
               isSubscribed = true;
             })
             .catch(function (err) {

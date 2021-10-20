@@ -33,7 +33,7 @@ import TodoList from "../components/TodoList";
 import Tutorial from "../components/Tutorial";
 import Error from "../components/Error";
 import { store } from "../store/store";
-import { cmpNotification } from "../swModule";
+import { cmpNotification } from "../service-worker";
 
 export default {
   name: "Toppage",
