@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 import { register } from "register-service-worker";
-import { urlB64ToUint8Array, updateSubscriptionOnServer, registerNotification } from "./swModule";
+import { registerNotification } from "./swModule";
 
 let isSubscribed = false;
-const applicationServerPublicKey =
-  "BL-xXV1DPVYJlGjARPuxZ2UHejlCof0egV0BfRcMYFcP1qXhOGExz7V29x5ptgILY0oavnQZ5yroPk2Fq1ppook";
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
@@ -18,24 +16,16 @@ if (process.env.NODE_ENV === "production") {
       swReg.pushManager.getSubscription().then(function (subscription) {
         isSubscribed = !(subscription === null);
 
-        updateSubscriptionOnServer(subscription);
-
         if (isSubscribed) {
           console.log("User is subscribed.");
         } else {
           console.log("User is NOT subscribed.");
-          const applicationServerKey = urlB64ToUint8Array(
-            applicationServerPublicKey
-          );
           swReg.pushManager
             .subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: applicationServerKey,
+              userVisibleOnly: true
             })
             .then(function (subscription) {
               console.log("User is subscribed:", subscription);
-
-              updateSubscriptionOnServer(subscription);
               registerNotification();
 
               isSubscribed = true;
