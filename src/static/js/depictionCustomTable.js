@@ -68,7 +68,7 @@ const base = function () {
 };
 //removecustom
 const removecustom = function (id) {
-  console.log("remove custom " + id);
+  // console.log("remove custom " + id);
   d3.select("#" + id).remove();
 };
 // create custom
