@@ -33,7 +33,6 @@ import TodoList from "../components/TodoList";
 import Tutorial from "../components/Tutorial";
 import Error from "../components/Error";
 import { store } from "../store/store";
-import { cmpNotification } from "../service-worker";
 
 export default {
   name: "Toppage",
@@ -46,10 +45,9 @@ export default {
   },
   mounted() {
     console.log("isFisrstvisit is " + store.isFirstVisit);
-    const registration = self.registration;
-    let title = 1;
-    let options = 1;
-    cmpNotification(title, options, registration);
+    self.registration.getNotifications().then(function (notifications) {
+      console.log(notifications);
+    });
   },
   computed: {
     tutorialView() {
