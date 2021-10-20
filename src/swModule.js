@@ -16,7 +16,7 @@ async function registerNotification() {
         timestamp: "2021/10/20 22:30:00",
       })
       .then(() => {
-        console.log("created notification");
+        alert("created notification");
       });
   });
 }

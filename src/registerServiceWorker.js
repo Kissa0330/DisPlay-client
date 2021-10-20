@@ -14,8 +14,8 @@ if (process.env.NODE_ENV === "production") {
     registered(swReg) {
       console.log("Service Worker is registered", swReg);
       swReg.pushManager.getSubscription().then(function (subscription) {
-        isSubscribed = !(subscription === null);
-
+        isSubscribed = !(subscription == null);
+        console.log(subscription);
         if (isSubscribed) {
           console.log("User is subscribed.");
         } else {
