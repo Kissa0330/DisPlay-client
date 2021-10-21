@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === "production") {
         .showNotification("Test", {
           tag: "test",
           body: "This is test notification.",
-          timestamp: 200000,
+          timestamp: 60000,
         })
         .then(() => {
           console.log("created notification");
