@@ -67,7 +67,22 @@ if (process.env.NODE_ENV === "production") {
     updatefound() {
       console.log("New content is downloading.");
     },
-    updated() {
+    updated(swReg) {
+      const now = new Date();
+      let time = now.getTime();
+      time += 60000000;
+      swReg
+      .showNotification("aaaaa", {
+        tag: "aaaaaaaaaaaa",
+        body: "aaaaaaaa",
+        timestamp: time,
+      })
+      .then(() => {
+        console.log("created notification");
+        swReg.getNotifications().then(function (notifications) {
+          console.log(notifications);
+        });
+      });
       console.log("New content is available; please refresh.");
     },
     offline() {
