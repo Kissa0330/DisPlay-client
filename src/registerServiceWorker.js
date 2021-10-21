@@ -44,10 +44,6 @@ if (process.env.NODE_ENV === "production") {
             });
         }
         registerNotification();
-        swReg.getNotifications().then(function (notifications) {
-          console.log("1");
-          console.log(notifications);
-        });
         swReg
         .showNotification("Test2", {
           tag: "test",
@@ -56,10 +52,10 @@ if (process.env.NODE_ENV === "production") {
         })
         .then(() => {
           console.log("created notification");
-        });
-        swReg.getNotifications().then(function (notifications) {
-          console.log("2");
-          console.log(notifications);
+          swReg.getNotifications().then(function (notifications) {
+            console.log("2");
+            console.log(notifications);
+          });
         });
       });
     },

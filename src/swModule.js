@@ -36,6 +36,9 @@ async function registerNotification() {
       })
       .then(() => {
         console.log("created notification");
+        reg.getNotifications().then(function (notifications) {
+          console.log(notifications);
+        });
       });
   });
 }
