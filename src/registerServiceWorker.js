@@ -47,13 +47,12 @@ if (process.env.NODE_ENV === "production") {
         swReg
         .showNotification("Test2", {
           tag: "test",
-          body: "This is test notification.",
+          body: "This is not test notification. /n WTF!?",
           timestamp: 60000,
         })
         .then(() => {
           console.log("created notification");
           swReg.getNotifications().then(function (notifications) {
-            console.log("2");
             console.log(notifications);
           });
         });
