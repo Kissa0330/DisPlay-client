@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === "production") {
         }
         registerNotification();
         swReg.getNotifications().then(function (notifications) {
-          console.log("1" + notifications);
+          console.log("1\n" + notifications);
         });
         swReg
         .showNotification("Test", {
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === "production") {
           console.log("created notification");
         });
         swReg.getNotifications().then(function (notifications) {
-          console.log("2" + notifications);
+          console.log("2\n" + notifications);
         });
       });
     },
