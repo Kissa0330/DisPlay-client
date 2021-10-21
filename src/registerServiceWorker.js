@@ -47,7 +47,6 @@ if (process.env.NODE_ENV === "production") {
         const now = new Date();
         let time = now.getTime();
         time += 60000000;
-        time = time * 2;
         swReg
         .showNotification("aaaaa", {
           tag: "aaaaaaaaaaaa",

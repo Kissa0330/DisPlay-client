@@ -27,7 +27,6 @@ async function registerNotification() {
     }
     const now = new Date();
     let time = now.getTime();
-    time += 60000000;
     // プッシュ通知の登録
     reg
       .showNotification("Test", {
