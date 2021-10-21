@@ -25,13 +25,14 @@ async function registerNotification() {
       alert("If you want to use push notifications, you have to allow push notifications!");
       return;
     }
-
+    const now = new Date();
+    const time = now.getTime();
     // プッシュ通知の登録
     reg
       .showNotification("Test", {
         tag: "test",
         body: "This is test notification.",
-        timestamp: 60001,
+        timestamp: time + 60001,
       })
       .then(() => {
         console.log("created notification");
