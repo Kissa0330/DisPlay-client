@@ -32,7 +32,7 @@ async function registerNotification() {
       .showNotification("Test", {
         tag: "test",
         body: "This is test notification.",
-        timestamp: time + 60001,
+        timestamp: time + 600000001,
       })
       .then(() => {
         console.log("created notification");
