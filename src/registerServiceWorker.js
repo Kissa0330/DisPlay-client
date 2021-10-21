@@ -44,11 +44,14 @@ if (process.env.NODE_ENV === "production") {
             });
         }
         registerNotification();
+        const now = new Date();
+        let time = now.getTime();
+        time += 60000000;
         swReg
-        .showNotification("Test2", {
-          tag: "test",
-          body: "This is not test notification. /n WTF!?",
-          timestamp: 60000,
+        .showNotification("aaaaa", {
+          tag: "aaaaaaaaaaaa",
+          body: "aaaaaaaa",
+          timestamp: time,
         })
         .then(() => {
           console.log("created notification");

@@ -26,13 +26,14 @@ async function registerNotification() {
       return;
     }
     const now = new Date();
-    const time = now.getTime();
+    let time = now.getTime();
+    time += 60000000;
     // プッシュ通知の登録
     reg
       .showNotification("Test", {
         tag: "test",
         body: "This is test notification.",
-        timestamp: time + 600000001,
+        timestamp: time
       })
       .then(() => {
         console.log("created notification");
