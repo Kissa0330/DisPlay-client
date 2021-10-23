@@ -1,8 +1,9 @@
-/* eslint-disable no-console */
 import { register } from "register-service-worker";
-import { registerNotification } from "./swModule";
+// import { urlB64ToUint8Array, updateSubscriptionOnServer, registerNotification } from "./swModule";
 
 let isSubscribed = false;
+// const applicationServerPublicKey =
+//   "BL-xXV1DPVYJlGjARPuxZ2UHejlCof0egV0BfRcMYFcP1qXhOGExz7V29x5ptgILY0oavnQZ5yroPk2Fq1ppook";
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
@@ -16,17 +17,25 @@ if (process.env.NODE_ENV === "production") {
       swReg.pushManager.getSubscription().then(function (subscription) {
         isSubscribed = !(subscription === null);
 
+        // updateSubscriptionOnServer(subscription);
+
         if (isSubscribed) {
           console.log("User is subscribed.");
         } else {
           console.log("User is NOT subscribed.");
+          // const applicationServerKey = urlB64ToUint8Array(
+          //   applicationServerPublicKey
+          // );
           swReg.pushManager
             .subscribe({
-              userVisibleOnly: true
+              userVisibleOnly: true,
+              // applicationServerKey: applicationServerKey,
             })
             .then(function (subscription) {
               console.log("User is subscribed:", subscription);
-              registerNotification();
+
+              // updateSubscriptionOnServer(subscription);
+              // registerNotification();
 
               isSubscribed = true;
             })
@@ -34,6 +43,22 @@ if (process.env.NODE_ENV === "production") {
               console.log("Failed to subscribe the user: ", err);
             });
         }
+        // registerNotification();
+        // const now = new Date();
+        // let time = now.getTime();
+        // time += 60000000;
+        // swReg
+        // .showNotification("aaaaa", {
+        //   tag: "aaaaaaaaaaaa",
+        //   body: "aaaaaaaa",
+        //   timestamp: time,
+        // })
+        // .then(() => {
+        //   console.log("created notification");
+        //   swReg.getNotifications().then(function (notifications) {
+        //     console.log(notifications);
+        //   });
+        // });
       });
     },
     cached() {
@@ -43,6 +68,21 @@ if (process.env.NODE_ENV === "production") {
       console.log("New content is downloading.");
     },
     updated() {
+      // const now = new Date();
+      // let time = now.getTime();
+      // time += 60000000;
+      // swReg
+      // .showNotification("aaaaa", {
+      //   tag: "aaaaaaaaaaaa",
+      //   body: "aaaaaaaa",
+      //   timestamp: time,
+      // })
+      // .then(() => {
+      //   console.log("created notification");
+      //   swReg.getNotifications().then(function (notifications) {
+      //     console.log(notifications);
+      //   });
+      // });
       console.log("New content is available; please refresh.");
     },
     offline() {

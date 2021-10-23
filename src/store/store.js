@@ -381,9 +381,10 @@ const actions = {
     });
   },
   signIn(response, _this) {
+    const tokens = Object.values(response)[1];
     const data = {
-      access_token: response.$b.access_token,
-      id_token: response.$b.id_token,
+      access_token: tokens.access_token,
+      id_token: tokens.id_token,
     };
     console.log(data);
     const url = "https://sp-display-server.herokuapp.com/social-login/google/";
