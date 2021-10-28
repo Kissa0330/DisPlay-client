@@ -6,6 +6,7 @@ import signin from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
 import initial from "../views/initial.vue";
 import notfound from "../views/notfound";
+import lp from "../views/landingpage";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
 // import { changeManifest } from "../static/js/changeManifest";
@@ -28,6 +29,7 @@ const routes = [
   },
   { path: "/setting", name: "Setting", component: setting },
   { path: "/initial", name: "Initial", component: initial },
+  { path: "/lp", name: "LandingPage", component: lp },
   { path: "/:catchAll(.*)", name: "Notfound", component: notfound},
 ];
 const router = createRouter({

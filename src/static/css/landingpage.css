@@ -1,0 +1,5 @@
+@media screen and (min-width: 1040px) {
+	body div{
+        color:pink;
+    }
+}
