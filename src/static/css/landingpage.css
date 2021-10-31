@@ -1,18 +1,18 @@
 .LP {
-  position: fixed;
+  position: absolute;
   left: 0px;
-    width: 100vw;
+  width: 100vw;
+  margin: 0 0 0 auto;
+  background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
 }
 h1 {
-  font-size: 50px;
   letter-spacing: 0.2em;
 }
 h2 {
-  font-size: 35px;
   letter-spacing: 0.2em;
+  text-align: center;
 }
 h3 {
-  font-size: 22.1px;
   letter-spacing: 0.2em;
 }
 header {
@@ -29,9 +29,6 @@ header {
 .userConductor {
   color: white;
   background: linear-gradient(45deg, #65b2ff, #5f9be0);
-  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
-    -1.5px -1.5px 3px rgba(239, 250, 253, 0.6), inset 1px 1.5px 3px transparent,
-    inset -1px -1.5px 3px transparent;
   letter-spacing: 0.1em;
 }
 
@@ -39,28 +36,47 @@ header {
   display: flex;
   justify-content: center;
 }
+
+button.Signin {
+  background-color: #f7f7f8;
+  color: #2c2c2c;
+  letter-spacing: 0.13em;
+}
+.schema {
+  display: flex;
+  justify-content: center;
+}
+button.SigninBottom {
+    background-color: #f7f7f8;
+    color: white;
+    background: linear-gradient(45deg, #65b2ff, #5f9be0);
+    letter-spacing: 0.13em;
+  }
 @media screen and (min-width: 1040px) {
   header {
-    margin: 40px 60px 0 60px;
+    margin: 40px 40px 0 40px;
   }
   .appName {
     font-size: 28px;
-    padding: 13px 101px 10px 101px;
+    padding: 15px 101px 10px 101px;
     border-radius: 58px;
   }
   .userConductor {
     font-size: 20px;
-    padding: 19px 30px 16px 30px;
+    padding: 18px 30px 16px 30px;
     border-radius: 34px;
   }
   h1 {
+    font-size: 50px;
     text-align: left;
   }
   h2 {
-    text-align: left;
+    font-size: 33px;
   }
   h3 {
+    font-size: 22.1px;
     text-align: left;
+    line-height: 43px;
   }
   .samneil {
     margin: 140px 50px 0 50px;
@@ -70,7 +86,45 @@ header {
   }
   h3.samneilString {
     margin: 50px 0 0 0;
-    line-height: 43px;
     text-align: left;
+  }
+  button.Signin {
+    display: block;
+    width: 266px;
+    height: 76px;
+    border-radius: 8px;
+    margin: 50px 0 0 0;
+  }
+  .explainString {
+    margin: 200px 0 0 0;
+    line-height: 60px;
+  }
+  .schema {
+    margin: 140px 0 0 0;
+  }
+  .schema.One .schemaText {
+    margin: 0 0 0 90px;
+  }
+  .schema h1 {
+    margin: 40px 0 0 0;
+  }
+  .schema h3 {
+    margin: 35px 0 0 10px;
+  }
+  .schema.Two .schemaText {
+    margin: 0 0 0 90px;
+  }
+  .schema.Three img {
+    margin: 0 0 0 -50px;
+  }
+  .schema.Three .schemaText {
+    margin: 0 0 0 70px;
+  }
+  button.SigninBottom {
+      margin: 205px 0 180px 0;
+      width: 380px;
+      height: 110px;
+      font-size: 24px;
+      border-radius: 20px;
   }
 }
