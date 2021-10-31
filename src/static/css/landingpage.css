@@ -1,5 +1,76 @@
+.LP {
+  position: fixed;
+  left: 0px;
+    width: 100vw;
+}
+h1 {
+  font-size: 50px;
+  letter-spacing: 0.2em;
+}
+h2 {
+  font-size: 35px;
+  letter-spacing: 0.2em;
+}
+h3 {
+  font-size: 22.1px;
+  letter-spacing: 0.2em;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+.appName {
+  background-color: white;
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    -1.5px -1.5px 3px rgba(239, 250, 253, 0.6), inset 1px 1.5px 3px transparent,
+    inset -1px -1.5px 3px transparent;
+  letter-spacing: 0.2em;
+}
+.userConductor {
+  color: white;
+  background: linear-gradient(45deg, #65b2ff, #5f9be0);
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    -1.5px -1.5px 3px rgba(239, 250, 253, 0.6), inset 1px 1.5px 3px transparent,
+    inset -1px -1.5px 3px transparent;
+  letter-spacing: 0.1em;
+}
+
+.samneil {
+  display: flex;
+  justify-content: center;
+}
 @media screen and (min-width: 1040px) {
-	body div{
-        color:pink;
-    }
+  header {
+    margin: 40px 60px 0 60px;
+  }
+  .appName {
+    font-size: 28px;
+    padding: 13px 101px 10px 101px;
+    border-radius: 58px;
+  }
+  .userConductor {
+    font-size: 20px;
+    padding: 19px 30px 16px 30px;
+    border-radius: 34px;
+  }
+  h1 {
+    text-align: left;
+  }
+  h2 {
+    text-align: left;
+  }
+  h3 {
+    text-align: left;
+  }
+  .samneil {
+    margin: 140px 50px 0 50px;
+  }
+  .samneil img {
+    margin-right: max(6vw, 60px);
+  }
+  h3.samneilString {
+    margin: 50px 0 0 0;
+    line-height: 43px;
+    text-align: left;
+  }
 }
