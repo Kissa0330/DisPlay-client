@@ -2,7 +2,9 @@
   <div class="LP">
     <header>
       <div class="appName">DisPlay</div>
-      <button class="userConductor">サインイン</button>
+      <router-link to="/signin">
+        <button class="userConductor">サインイン</button>
+      </router-link>
     </header>
     <div class="samneil">
       <img src="../assets/img/eating.svg" alt="eating" />
@@ -11,7 +13,9 @@
         <h3 class="samneilString">
           習慣を管理し、空き時間を明確にする<br />あなたの自由な時間が増える
         </h3>
-        <button class="Signin">無料でサインインする</button>
+        <router-link to="/signin">
+          <button class="Signin">無料でサインインする</button>
+        </router-link>
       </div>
     </div>
     <h2 class="explainString">
@@ -47,7 +51,9 @@
         </h3>
       </div>
     </div>
-    <button class="SigninBottom">無料でサインインする</button>
+    <router-link to="/signin">
+      <button class="SigninBottom">無料でサインインする</button>
+    </router-link>
   </div>
 </template>
 <style scoped src="../static/css/landingpage.css"></style>
