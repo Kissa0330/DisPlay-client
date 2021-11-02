@@ -19,7 +19,9 @@
       </div>
     </div>
     <h2 class="explainString">
-      食事・睡眠・入浴…『習慣』の管理をサポートし<br />あなたの自由時間を増やします
+      <span class="br">食事・睡眠・入浴…『習慣』の</span
+      ><span class="br">管理をサポートし</span
+      ><br />あなたの自由時間を増やします
     </h2>
     <div class="schema One">
       <img src="../assets/img/circle.svg" alt="clock" />
@@ -32,7 +34,8 @@
       </div>
     </div>
     <div class="schema Two">
-      <img src="../assets/img/Todolist.svg" alt="Todolist" />
+      <img class="Todo" src="../assets/img/Todolist.svg" alt="Todolist" />
+      <img class="smallTodo" src="../assets/img/smallTodolist.svg" alt="Todolist" />
       <div class="schemaText">
         <h1 class="schemaTitle">タスクを消化</h1>
         <h3 class="schemaString">
@@ -56,7 +59,7 @@
     </router-link>
   </div>
 </template>
-<style scoped src="../static/css/landingpage.css"></style>
+<style src="../static/css/landingpage.css"></style>
 <script>
 export default {
   name: "LandingPage",
