@@ -21,7 +21,7 @@
     <h2 class="explainString">
       <span class="br">食事・睡眠・入浴…『習慣』の</span
       ><span class="br">管理をサポートし</span
-      ><br />あなたの自由時間を増やします
+      ><br /><span class="split">あなたの自由時間を増やします</span>
     </h2>
     <div class="schema One">
       <img src="../assets/img/circle.svg" alt="clock" />

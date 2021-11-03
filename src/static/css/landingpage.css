@@ -8,18 +8,19 @@ body {
   width: 100vw;
   background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
 }
-h1 {
+.LP h1 {
   font-size: 30px;
   letter-spacing: 0.2em;
 }
-h2 {
+.LP h2 {
   font-size: 16px;
   letter-spacing: 0.2em;
   text-align: center;
 }
-h3 {
+.LP h3 {
   font-size: 15px;
   letter-spacing: 0.2em;
+  line-height: 26px;
 }
 header {
   display: flex;
@@ -45,7 +46,7 @@ header {
   border-radius: 58px;
 }
 .samneilTitle {
-  margin: 46px;
+  margin: 46px 0 27px 0;
 }
 .samneil img {
   margin: 60px 0 0 0;
@@ -53,7 +54,7 @@ header {
   height: 155px;
 }
 button.Signin {
-  margin: 37px;
+  margin: 37px 0 70px 0;
   background-color: #f7f7f8;
   color: #2c2c2c;
   letter-spacing: 0.13em;
@@ -64,6 +65,9 @@ button.Signin {
 }
 span.br {
   display: inline-block;
+}
+span.split {
+  line-height: 60px;
 }
 .schema.One img {
   margin: 72px 0 0 0;
@@ -93,6 +97,11 @@ button.SigninBottom {
   color: white;
   background: linear-gradient(45deg, #65b2ff, #5f9be0);
   letter-spacing: 0.13em;
+  width: 253px;
+  height: 72px;
+  font-size: 16px;
+  border-radius: 12px;
+  margin: 90px 0 130px 0;
 }
 @media screen and (min-width: 1040px) {
   header {
@@ -108,14 +117,14 @@ button.SigninBottom {
     padding: 18px 30px 16px 30px;
     border-radius: 34px;
   }
-  h1 {
+  .LP h1 {
     font-size: 50px;
     text-align: left;
   }
-  h2 {
+  .LP h2 {
     font-size: 33px;
   }
-  h3 {
+  .LP h3 {
     font-size: 22.1px;
     text-align: left;
     line-height: 43px;
@@ -125,12 +134,15 @@ button.SigninBottom {
     justify-content: center;
     margin: 140px 50px 0 50px;
   }
+  .samneilTitle {
+    margin: 35px 0 0px 0;
+  }
   .samneil img {
     width: 524px;
     height: 323px;
     margin-right: max(6vw, 60px);
   }
-  h3.samneilString {
+  .LP h3.samneilString {
     margin: 50px 0 0 0;
     text-align: left;
   }
@@ -144,6 +156,9 @@ button.SigninBottom {
   .explainString {
     margin: 200px 0 0 0;
     line-height: 60px;
+  }
+  span.split {
+    line-height: 43px;
   }
   .schema {
     display: flex;
