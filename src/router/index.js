@@ -6,10 +6,10 @@ import signin from "../views/Signin.vue";
 import setting from "../views/Setting.vue";
 import initial from "../views/initial.vue";
 import notfound from "../views/notfound";
+import lp from "../views/landingpage";
 import Cookies from "js-cookie";
 import { store, actions } from "../store/store";
 // import { changeManifest } from "../static/js/changeManifest";
-
 const routes = [
   {
     path: "/",
@@ -28,13 +28,16 @@ const routes = [
   },
   { path: "/setting", name: "Setting", component: setting },
   { path: "/initial", name: "Initial", component: initial },
-  { path: "/:catchAll(.*)", name: "Notfound", component: notfound},
+  { path: "/lp", name: "LandingPage", component: lp },
+  { path: "/:catchAll(.*)", name: "Notfound", component: notfound },
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  },
 });
-
 router.beforeEach((to, from, next) => {
   store.errorFlag = false;
   let tokenValue = Cookies.get("access_token");
@@ -46,9 +49,14 @@ router.beforeEach((to, from, next) => {
   if (to.name !== "Signin" && !isTokenValue && isRefresh_tokenValue) {
     actions.refreshAccessToken(refresh_tokenValue);
   }
-  if (to.name !== "Signin" && !isRefresh_tokenValue) next({ name: "Signin" });
+  if (
+    to.name !== "Signin" &&
+    !isRefresh_tokenValue &&
+    to.name !== "LandingPage"
+  )
+    next({ name: "Signin" });
 
-if (isRefresh_tokenValue) {
+  if (isRefresh_tokenValue) {
     actions
       .updateToken()
       .then(() => {
