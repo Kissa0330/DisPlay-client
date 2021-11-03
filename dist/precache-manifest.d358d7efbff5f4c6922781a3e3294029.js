@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "69983bdf48a9a3549e65",
-    "url": "/css/app.a9eb90a7.css"
+    "revision": "1a750e845445b5eb9c6b",
+    "url": "/css/app.b4132f29.css"
   },
   {
-    "revision": "69983bdf48a9a3549e65",
-    "url": "/js/app.660d96f1.js"
+    "revision": "1a750e845445b5eb9c6b",
+    "url": "/js/app.4c9ec703.js"
   },
   {
     "revision": "d5be11a09dac8d5c70bd",
@@ -36,8 +36,28 @@ self.__precacheManifest = [
     "url": "/img/Play.af3057a4.svg"
   },
   {
+    "revision": "aef6921fd43417f476f2a39437d3a2c3",
+    "url": "/img/smartphone.aef6921f.svg"
+  },
+  {
+    "revision": "fb7368fb35b23fac96667d51d352fcbb",
+    "url": "/img/smallTodolist.fb7368fb.svg"
+  },
+  {
     "revision": "3a1521324647ab8de3392f08da9f9f25",
     "url": "/img/stick.3a152132.svg"
+  },
+  {
+    "revision": "943167f8c5bb1fbde355639e08d4b40b",
+    "url": "/img/Todolist.943167f8.svg"
+  },
+  {
+    "revision": "9ba898482e93da13ded242e9fa2dd548",
+    "url": "/img/eating.9ba89848.svg"
+  },
+  {
+    "revision": "9ec435824bf6e2e41ed0766a6be5f978",
+    "url": "/img/circle.9ec43582.svg"
   },
   {
     "revision": "fa8163b6354d5d4e4ee536a818fbbd54",
@@ -56,7 +76,7 @@ self.__precacheManifest = [
     "url": "/img/Trashcan.0006410c.svg"
   },
   {
-    "revision": "e51011dc0a9f24355c53daa59bfb541b",
+    "revision": "dd83e4c1df28a1d40a1a56eafb378094",
     "url": "/index.html"
   }
 ];
