@@ -49,7 +49,7 @@
       <div class="schemaText">
         <h1 class="schemaTitle">素晴らしい体験</h1>
         <h3 class="schemaString">
-          PWAを使っているからブラウザで<br />インストール可能<br />
+          PWAを使っているからブラウザから<br />アプリのような使い心地<br />
           どんな端末でも快適に使用可能
         </h3>
       </div>
