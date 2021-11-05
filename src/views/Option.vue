@@ -16,8 +16,8 @@
       </router-link>
     </div>
     <CustomTable />
-    <div class="logoutSection">
-      <h3 class="logoutTitle">Logout</h3>
+    <div class="logout Section">
+      <h3 class="logout Title">Logout</h3>
       <button class="Logout LandscapeButton" @click="logoutConView = true">
         Logout
       </button>
@@ -28,20 +28,52 @@
         />
       </transition>
     </div>
+    <div class="Contact Section">
+      <h3 class="terms Title">Contact us</h3>
+      <a href="mailto:displayapp.management@gmail.com" rel="noopener" target="blank">
+        <button class="terms LandscapeButton">
+          Gmail
+        </button>
+      </a>
+    </div>
+    <div class="delete Section">
+      <h3 class="delete Title">Account delete</h3>
+      <button class="Logout LandscapeButton" @click="delConView = true">
+        Delete
+      </button>
+      <transition name="deleteConfirmation">
+        <DeleteConfirmation
+          v-if="delConView"
+          @childEvent="delConView = false"
+          :typeCheck="type"
+        />
+      </transition>
+    </div>
+    <div class="terms Section">
+      <h3 class="terms Title">Terms of service</h3>
+      <a href="https://raika.notion.site/fb89da1abe7b4e5caf091a7e33f82404" rel="noopener" target="blank">
+        <button class="terms LandscapeButton">
+          Browse
+        </button>
+      </a>
+    </div>
   </div>
 </template>
 <style scoped src="../static/css/Option.css"></style>
 <script>
 import CustomTable from "../components/CustomTable";
 import LogoutConfirmation from "../components/LogoutConfirmation.vue";
+import DeleteConfirmation from "../components/DeleteConfirmation.vue";
 import Error from "../components/Error.vue";
 import { store } from "../store/store";
 export default {
   name: "Option",
-  components: { CustomTable, LogoutConfirmation, Error },
+  components: { CustomTable, LogoutConfirmation, Error, DeleteConfirmation },
   data: function () {
     return {
       logoutConView: false,
+      delConView: false,
+      type: "account",
     };
   },
   computed: {

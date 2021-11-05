@@ -5,7 +5,7 @@ body {
   width: 375px;
   margin: 0 auto 0 auto;
   min-height: 812px;
-  height: 100vh;
+  height: max(100vh, 100%);
   background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
   font-family: "Roboto", sans-serif;
   color: #2c2c2c;
