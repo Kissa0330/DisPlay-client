@@ -30,14 +30,26 @@
     </div>
     <div class="Contact Section">
       <h3 class="terms Title">Contact us</h3>
-      <a href="mailto:displayapp.management@gmail.com" rel="noopener" target="blank">
-        <button class="terms LandscapeButton">
-          Gmail
-        </button>
+      <a
+        href="mailto:displayapp.management@gmail.com"
+        rel="noopener"
+        target="blank"
+      >
+        <button class="terms LandscapeButton">Gmail</button>
+      </a>
+    </div>
+    <div class="terms Section">
+      <h3 class="terms Title">Terms of service</h3>
+      <a
+        href="https://raika.notion.site/fb89da1abe7b4e5caf091a7e33f82404"
+        rel="noopener"
+        target="blank"
+      >
+        <button class="terms LandscapeButton">Browse</button>
       </a>
     </div>
     <div class="delete Section">
-      <h3 class="delete Title">Account delete</h3>
+      <h3 class="delete Title">Delete account</h3>
       <button class="Logout LandscapeButton" @click="delConView = true">
         Delete
       </button>
@@ -48,14 +60,6 @@
           :typeCheck="type"
         />
       </transition>
-    </div>
-    <div class="terms Section">
-      <h3 class="terms Title">Terms of service</h3>
-      <a href="https://raika.notion.site/fb89da1abe7b4e5caf091a7e33f82404" rel="noopener" target="blank">
-        <button class="terms LandscapeButton">
-          Browse
-        </button>
-      </a>
     </div>
   </div>
 </template>
