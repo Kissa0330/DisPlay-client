@@ -1,6 +1,6 @@
 .setting{
   min-height: 812px;
-  height: auto;
+  height: 100vh;
   position: relative;
 }
 .setting p{
@@ -24,6 +24,7 @@
     border-radius: 16px 16px 0 0;
     bottom: 0px;
     margin: 30px auto 0 auto;
+    top: 112px;
     right: 0;
     left: 0;
     display: block;

@@ -6,7 +6,7 @@
     <header>
       <h2 class="headerTitle">Setting</h2>
       <p class="headerDescription">
-        情報は<a class="polycyLink" @click="polycyViewChange"
+        情報は<a class="polycyLink" href="https://raika.notion.site/d1e668adaacf47c695ac1aa3c92ffbbe" rel="noopener" target="blank"
           >プライバシーポリシー</a
         >に則って管理されます
       </p>
@@ -158,10 +158,6 @@ export default {
     actions.initialCustomSetting();
   },
   methods: {
-    polycyViewChange() {
-      alert("このページは現在実装されていません");
-      // this.polycyView = !this.polycyView;
-    },
     customEditViewChange(custom) {
       this.selectedCustom = custom;
       console.log(this.selectedCustom);
