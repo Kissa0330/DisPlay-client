@@ -31,6 +31,11 @@ export default {
         actions.deleteTodo(id);
         this.$emit("childEvent");
       }
+      else if(this.typeCheck === "account") {
+        console.log("account will be deleted!")
+        alert("この機能は現在開発中です\nアカウントの削除を今すぐ求める場合displayapp.management@gmail.comまでご連絡ください")
+        this.$emit("childEvent");
+      }
     },
   },
 };

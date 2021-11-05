@@ -1,5 +1,6 @@
 .optionWrapper{
   opacity: 1;
+  height: 100%;
 }
 header {
   margin: 35px 0 0 0;
@@ -29,10 +30,10 @@ button.LandscapeButton.RessetingButton{
   font-size: 8px;
   color: #9f9f9f;
 }
-.logoutSection{
-  margin:35px 0 35px 0 ;
+.Section{
+  margin:35px 0 0 0 ;
 }
-h3.logoutTitle{
+h3.Title{
   font-weight: 400;
   text-align: left;
   margin: 0 0 0 20px;
@@ -42,3 +43,14 @@ h3.logoutTitle{
   margin: 15px auto 0 17px;
 }
 
+.terms.LandscapeButton {
+  display: block;
+  margin: 15px auto 0 17px;
+  width: 103px;
+  height: 24px;
+  border-radius: 8px;
+  font-size: 9px;
+}
+.terms.Section{
+  margin:35px 0 35px 0 ;
+}
