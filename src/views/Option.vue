@@ -12,7 +12,7 @@
     <div class="customOptionHeader">
       <h3 class="customOptionTitle">Custom</h3>
       <router-link to="/setting">
-        <button class="LandscapeButton RessetingButton">Resseting</button>
+        <button class="LandscapeButton ResetingButton">Reseting</button>
       </router-link>
     </div>
     <CustomTable />
