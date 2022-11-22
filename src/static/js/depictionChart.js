@@ -1,4 +1,3 @@
-/* eslint-disable */
 const d3 = require("d3");
 
 // create canvas
@@ -7,14 +6,13 @@ const svg = function () {
   let h = 307;
   const chart = document.getElementById("chart");
   const svglen = chart.getElementsByTagName("svg").length;
-  if(!svglen)
-  {
-  d3.select("#chart")
-    .append("svg")
-    .attr("width", w)
-    .attr("height", h)
-    .append("g")
-    .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+  if (!svglen) {
+    d3.select("#chart")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h)
+      .append("g")
+      .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
   }
 };
 
@@ -114,7 +112,6 @@ const createDropShadow = function () {
 // create groove
 const createGroove = function () {
   let w = 307;
-  let h = 307;
   let outerRadius = w / 2 - 30;
   let innerRadius = outerRadius - 60;
   let arcBackground = d3
@@ -124,8 +121,7 @@ const createGroove = function () {
     .startAngle(0)
     .endAngle(2 * Math.PI);
 
-  let pathBackground = d3
-    .select("g")
+  d3.select("g")
     .append("path")
     .attr("d", arcBackground)
     .style("fill", "url(#lightGradient)")
@@ -134,22 +130,16 @@ const createGroove = function () {
 
 // create outer and center
 const createClock = function () {
-  let circle = d3
-    .select("g")
+  d3.select("g")
     .append("circle")
     .attr("r", "63.5")
     .style("fill", "url(#lightGradient)");
 
-  let centerCircle = d3
-    .select("g")
-    .append("circle")
-    .attr("r", "7.5")
-    .style("fill", "#1f242a");
+  d3.select("g").append("circle").attr("r", "7.5").style("fill", "#1f242a");
 
   let nowTime = new Date();
 
-  let pointer = d3
-    .select("g")
+  d3.select("g")
     .append("rect")
     .attr("width", 6)
     .attr("height", 45)
@@ -167,8 +157,7 @@ const createClock = function () {
     .startAngle(0)
     .endAngle(2 * Math.PI);
 
-  let outerEdgepath = d3
-    .select("g")
+  d3.select("g")
     .append("path")
     .attr("d", outerEdgeBackground)
     .style("fill", "url(#lightGradient)");
@@ -181,7 +170,6 @@ const createTask = function (startTime, endTime, code, id) {
     task.remove;
   }
   let w = 307;
-  let h = 307;
   let outerRadius = w / 2 - 30;
   let innerRadius = outerRadius - 60;
   let arcForeground = d3
@@ -191,8 +179,7 @@ const createTask = function (startTime, endTime, code, id) {
     .startAngle(((2 * Math.PI) / 24) * startTime)
     .endAngle(((2 * Math.PI) / 24) * endTime);
 
-  let pathForeground = d3
-    .select("g")
+  d3.select("g")
     .append("path")
     .style("fill", "url(#taskGradient" + code + ")")
     .style("filter", "url(#dropShadow)")
