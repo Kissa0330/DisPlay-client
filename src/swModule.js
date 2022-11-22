@@ -1,8 +1,7 @@
-/* eslint-disable */
 function urlB64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
-    .replace(/\-/g, "+")
+    .replace(/-/g, "+")
     .replace(/_/g, "/");
 
   const rawData = atob(unescape(encodeURIComponent(base64)));
@@ -15,6 +14,7 @@ function urlB64ToUint8Array(base64String) {
 }
 function updateSubscriptionOnServer(subscription) {
   //todo serverにsubscriptionを登録する
+  console.log(subscription);
 }
 async function registerNotification() {
   const reg = await navigator.serviceWorker.getRegistration();
