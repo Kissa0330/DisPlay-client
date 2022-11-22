@@ -56,9 +56,6 @@
         :custom="selectedCustom"
       ></CustomEdit>
     </transition>
-    <transition>
-      <Polycy v-if="polycyView"> </Polycy>
-    </transition>
     <transition name="deleteConfirmation">
       <deleteConfirmation
         v-if="delConView"
@@ -72,9 +69,9 @@
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
+
 import CustomAdd from "../components/CustomAdd";
 import CustomEdit from "../components/CustomEdit";
-import Polycy from "../components/Polycy";
 import deleteConfirmation from "../components/DeleteConfirmation";
 import Error from "../components/Error.vue";
 import { store, actions } from "../store/store";
@@ -82,7 +79,6 @@ export default {
   name: "Setting",
   components: {
     CustomAdd,
-    Polycy,
     deleteConfirmation,
     CustomEdit,
     Error
@@ -91,7 +87,6 @@ export default {
     return {
       customAddView: false,
       customEditView: false,
-      polycyView: false,
       delConView: false,
       selectedCustom: undefined,
       setID: 0,
