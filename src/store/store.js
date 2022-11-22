@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -241,7 +240,7 @@ const actions = {
             .catch((error) => {
               console.log(error.response);
             });
-          function postSampleCustom(i) {
+          const postSampleCustom = function (i) {
             let data = {
               author: store.id,
               title: sampleCustoms[i].title,

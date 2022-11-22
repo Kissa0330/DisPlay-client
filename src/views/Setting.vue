@@ -72,7 +72,6 @@
 </template>
 <style scoped src="../static/css/Setting.css"></style>
 <script>
-/* eslint-disable */
 import CustomAdd from "../components/CustomAdd";
 import CustomEdit from "../components/CustomEdit";
 import Polycy from "../components/Polycy";
