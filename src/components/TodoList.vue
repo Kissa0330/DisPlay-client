@@ -83,7 +83,6 @@
 <style scoped src="../static/css/TodoList.css"></style>
 
 <script>
-/* eslint-disable */
 import TodoAdd from "./TodoAdd";
 import TodoPut from "./TodoPut";
 import TodoEdit from "./TodoEdit";

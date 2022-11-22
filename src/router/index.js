@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { createRouter, createWebHistory } from "vue-router";
 import toppage from "../views/Toppage.vue";
 import option from "../views/Option.vue";
@@ -35,6 +34,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition)
     return { top: 0 };
   },
 });

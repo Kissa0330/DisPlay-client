@@ -12,8 +12,6 @@
 </template>
 <style scoped src="../static/css/Chart.css"></style>
 <script>
-/* eslint-disable */
-import * as d3 from "d3";
 import depiction from "../static/js/depictionChart";
 import { changeFavicon } from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
@@ -85,14 +83,6 @@ export default {
             if (startTime > endTime) {
               startTime = 0;
             }
-            // console.log(
-            //   "Customs" +
-            //     i +
-            //     " の startTimeは" +
-            //     startTime +
-            //     " endTimeは" +
-            //     endTime
-            // );
             this.customs[i].calculateStartTime = startTime;
             this.customs[i].calculateEndTime = endTime;
             actions.updateCustoms(this.customs);
@@ -136,7 +126,7 @@ export default {
                 .split(":");
               let start_hour = Number(start_hours[0]);
               let start_minute = Number(start_hours[1]);
-              let end_dates = this.todos[i].end_time.split("T")[0].split("-");
+              this.todos[i].end_time.split("T")[0].split("-");
               let end_hours = this.todos[i].end_time.split("T")[1].split(":");
               let end_hour = Number(end_hours[0]);
               let end_minute = Number(end_hours[1]);

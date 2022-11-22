@@ -29,7 +29,6 @@
 }
 </style>
 <script>
-/* eslint-disable */
 import depiction from "../static/js/depictionCustomTable";
 import gradients from "../assets/gradients";
 import CustomEdit from "./CustomEdit";

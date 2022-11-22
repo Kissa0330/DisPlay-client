@@ -52,6 +52,8 @@ img.stick.first {
   font-size: 15px;
 }
 img.X {
+  width: 8.95px;
+  height: 23.5px;
   cursor: pointer;
   margin: 25px 28px 0 0;
 }
