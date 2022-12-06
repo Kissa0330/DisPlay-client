@@ -68,7 +68,7 @@ img.X {
   width: 8.95px;
   height: 23.5px;
   cursor: pointer;
-  margin: 17px 28px 0 0;
+  margin: 25px 28px 0 0;
 }
 
 .field h2 {
@@ -118,6 +118,5 @@ button.LandscapeButton{
 /* delete input allows */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
 }
