@@ -23,7 +23,7 @@ const actions = {
     const config = {
       headers: {
         Authorization: "Bearer " + store.token,
-      }
+      },
     };
     return config;
   },
@@ -170,6 +170,16 @@ const actions = {
         console.log("Customs is already update");
       })
       .then(() => {
+        const postSampleCustom = function (i) {
+          let data = {
+            author: store.id,
+            title: sampleCustoms[i].title,
+            start_time: sampleCustoms[i].start_time,
+            end_time: sampleCustoms[i].end_time,
+            repeat_flag: sampleCustoms[i].repeatFlag,
+          };
+          return instance.post("customs/", data, config);
+        };
         console.log("store Boolean is " + Boolean(store.customs.length));
         if (store.customs.length) {
           console.log("custom is set.");
@@ -194,16 +204,6 @@ const actions = {
             .catch((error) => {
               console.log(error.response);
             });
-          const postSampleCustom = function (i) {
-            let data = {
-              author: store.id,
-              title: sampleCustoms[i].title,
-              start_time: sampleCustoms[i].start_time,
-              end_time: sampleCustoms[i].end_time,
-              repeat_flag: sampleCustoms[i].repeatFlag,
-            };
-            return instance.post("customs/", data, config);
-          };
         }
       });
   },
