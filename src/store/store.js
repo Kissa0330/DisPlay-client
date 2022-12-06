@@ -99,11 +99,7 @@ const actions = {
         deadline_time: deadline_time,
       };
     }
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .put("todo/" + id, data, config)
       .then((response) => {
@@ -129,11 +125,7 @@ const actions = {
       });
   },
   deleteTodo(id) {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .delete("todo/" + id, config)
       .then((response) => {
@@ -158,11 +150,7 @@ const actions = {
       });
   },
   getCustoms() {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .get("customs/", config)
       .then((response) => {
@@ -174,11 +162,7 @@ const actions = {
       });
   },
   initialCustomSetting() {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .get("customs/", config)
       .then((response) => {
@@ -231,11 +215,7 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .post("customs/", data, config)
       .then((response) => {
@@ -259,11 +239,7 @@ const actions = {
       end_time: end_time,
       repeat_flag: flag,
     };
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .put("customs/" + id, data, config)
       .then((response) => {
@@ -280,11 +256,7 @@ const actions = {
       });
   },
   deleteCustom(id) {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .delete("customs/" + id, config)
       .then((response) => {
@@ -303,11 +275,7 @@ const actions = {
     store.customs = customs;
   },
   getMypage() {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     return instance.get("/mypage", config).then((res) => {
       store.id = res.data[0].id;
       store.isFirstVisit = res.data[0].isFirstVisit;
@@ -319,11 +287,7 @@ const actions = {
     });
   },
   patchMypage(data) {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .patch("users/" + store.id, data, config)
       .then((res) => {
