@@ -1,7 +1,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
-import sampleCustoms from "../assets/sampleCustoms.json"
+import sampleCustoms from "../assets/sampleCustoms.json";
 
 const store = reactive({
   icons: {},
@@ -16,15 +16,19 @@ const store = reactive({
 });
 const BASEURL = "https://display-api.onrender.com/";
 const instance = axios.create({
-  baseURL: BASEURL,
+  baseURL: BASEURL + "api/",
 });
 const actions = {
-  getTodo() {
-    let config = {
+  getBasicConfig() {
+    const config = {
       headers: {
         Authorization: "Bearer " + store.token,
-      },
+      }
     };
+    return config;
+  },
+  getTodo() {
+    let config = actions.getBasicConfig();
     instance
       .get("todo/", config)
       .then((response) => {
@@ -48,11 +52,7 @@ const actions = {
       });
   },
   postTodo(data) {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + store.token,
-      },
-    };
+    let config = actions.getBasicConfig();
     instance
       .post("todo/", data, config)
       .then((response) => {
@@ -219,7 +219,7 @@ const actions = {
               repeat_flag: sampleCustoms[i].repeatFlag,
             };
             return instance.post("customs/", data, config);
-          }
+          };
         }
       });
   },
@@ -356,7 +356,7 @@ const actions = {
       id_token: tokens.id_token,
     };
     console.log(data);
-    const URL = BASEURL + "accounts/token/refresh/";
+    const URL = BASEURL + "social-login/google/";
     axios
       .post(URL, data)
       .then((res) => {
