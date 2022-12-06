@@ -14,7 +14,7 @@ const store = reactive({
   errorFlag: false,
 });
 const instance = axios.create({
-  baseURL: "https://sp-display-server.herokuapp.com/api/",
+  baseURL: "https://display-api.onrender.com/",
 });
 const actions = {
   getTodo() {
