@@ -13,8 +13,9 @@ const store = reactive({
   isFirstVisit: false,
   errorFlag: false,
 });
+const BASEURL = "https://display-api.onrender.com/";
 const instance = axios.create({
-  baseURL: "https://display-api.onrender.com/",
+  baseURL: BASEURL,
 });
 const actions = {
   getTodo() {
@@ -386,9 +387,9 @@ const actions = {
       id_token: tokens.id_token,
     };
     console.log(data);
-    const url = "https://display-api.onrender.com/social-login/google/";
+    const URL = BASEURL + "accounts/token/refresh/";
     axios
-      .post(url, data)
+      .post(URL, data)
       .then((res) => {
         Cookies.set("access_token", res.data.access_token, {
           expires: 0.0034,
@@ -420,13 +421,12 @@ const actions = {
       });
   },
   refreshAccessToken(refresh_token) {
-    const url =
-      "https://sp-display-server.herokuapp.com/accounts/token/refresh/";
+    const URL = BASEURL + "accounts/token/refresh/";
     const data = {
       refresh: refresh_token,
     };
     axios
-      .post(url, data)
+      .post(URL, data)
       .then((res) => {
         Cookies.set("access_token", res.data.access, {
           expires: 0.0034,
