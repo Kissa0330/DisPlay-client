@@ -386,7 +386,7 @@ const actions = {
       id_token: tokens.id_token,
     };
     console.log(data);
-    const url = "https://sp-display-server.herokuapp.com/social-login/google/";
+    const url = "https://display-api.onrender.com/social-login/google/";
     axios
       .post(url, data)
       .then((res) => {
@@ -411,7 +411,7 @@ const actions = {
           console.log("Welcome!!");
           _this.$router.push("/initial");
         } else {
-          console.log("Okoaeri!!");
+          console.log("Welcome back!!");
           _this.$router.push("/");
         }
       })
