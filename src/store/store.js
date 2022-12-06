@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
+import sampleCustoms from "../assets/sampleCustoms.json"
 
 const store = reactive({
   icons: {},
@@ -190,38 +191,6 @@ const actions = {
           console.log("custom is set.");
         } else {
           console.log("custom is not set.");
-          const sampleCustoms = [
-            {
-              title: "朝食",
-              start_time: "07:00:00",
-              end_time: "07:30:00",
-              repeatFlag: "1111111",
-            },
-            {
-              title: "昼食",
-              start_time: "12:00:00",
-              end_time: "13:00:00",
-              repeatFlag: "1111111",
-            },
-            {
-              title: "夕食",
-              start_time: "19:00:00",
-              end_time: "20:00:00",
-              repeatFlag: "1111111",
-            },
-            {
-              title: "睡眠",
-              start_time: "23:00:00",
-              end_time: "07:00:00",
-              repeatFlag: "1111111",
-            },
-            {
-              title: "入浴",
-              start_time: "22:00:00",
-              end_time: "23:30:00",
-              repeatFlag: "1111111",
-            },
-          ];
           let myPromise = Promise.resolve();
           for (let i = 0; i < sampleCustoms.length; i++) {
             myPromise = myPromise
