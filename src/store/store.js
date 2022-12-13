@@ -27,6 +27,37 @@ const actions = {
     };
     return config;
   },
+  getTodoData(setTime, id, title, deadline, start, end) {
+    if (setTime) {
+      const data = {
+        id: id,
+        author: store.id,
+        title: title,
+        deadline_time: deadline,
+        start_time: start,
+        end_time: end,
+      };
+      return data;
+    } else {
+      const data = {
+        id: id,
+        author: store.id,
+        title: title,
+        deadline_time: deadline,
+      };
+      return data;
+    }
+  },
+  getCustomData(id, title, start, end, repeatFlag) {
+    const data = {
+      author: id,
+      title: title,
+      start_time: start,
+      end_time: end,
+      repeat_flag: repeatFlag,
+    };
+    return data;
+  },
   getTodo() {
     let config = actions.getBasicConfig();
     instance
@@ -78,27 +109,8 @@ const actions = {
         store.errorFlag = true;
       });
   },
-  putTodo(setTime, id, title, deadline_time, start_time, end_time) {
-    let data;
-    if (setTime) {
-      console.log("setTime");
-      data = {
-        id: id,
-        author: store.id,
-        title: title,
-        deadline_time: deadline_time,
-        start_time: start_time,
-        end_time: end_time,
-      };
-    } else {
-      console.log("not setTime");
-      data = {
-        id: id,
-        author: store.id,
-        title: title,
-        deadline_time: deadline_time,
-      };
-    }
+  putTodo(setTime, id, title, deadline, start, end) {
+    const data = this.getTodoData(setTime, id, title, deadline, start, end);
     let config = actions.getBasicConfig();
     instance
       .put("todo/" + id, data, config)
@@ -171,13 +183,13 @@ const actions = {
       })
       .then(() => {
         const postSampleCustom = function (i) {
-          let data = {
-            author: store.id,
-            title: sampleCustoms[i].title,
-            start_time: sampleCustoms[i].start_time,
-            end_time: sampleCustoms[i].end_time,
-            repeat_flag: sampleCustoms[i].repeatFlag,
-          };
+          const data = this.getCustomData(
+            store.id,
+            sampleCustoms[i].title,
+            sampleCustoms[i].start_time,
+            sampleCustoms[i].end_time,
+            sampleCustoms[i].repeatFlag
+          );
           return instance.post("customs/", data, config);
         };
         console.log("store Boolean is " + Boolean(store.customs.length));
@@ -207,14 +219,8 @@ const actions = {
         }
       });
   },
-  postCustom(title, start_time, end_time, flag) {
-    const data = {
-      author: store.id,
-      title: title,
-      start_time: start_time,
-      end_time: end_time,
-      repeat_flag: flag,
-    };
+  postCustom(title, start, end, flag) {
+    const data = this.getCustomData(store.id, title, start, end, flag);
     let config = actions.getBasicConfig();
     instance
       .post("customs/", data, config)
@@ -231,14 +237,8 @@ const actions = {
         console.log(error.response);
       });
   },
-  putCustom(title, flag, start_time, end_time, id) {
-    const data = {
-      author: store.id,
-      title: title,
-      start_time: start_time,
-      end_time: end_time,
-      repeat_flag: flag,
-    };
+  putCustom(title, flag, start, end, id) {
+    const data = this.getCustomData(store.id, title, start, end, flag);
     let config = actions.getBasicConfig();
     instance
       .put("customs/" + id, data, config)
