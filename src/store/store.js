@@ -58,24 +58,26 @@ const actions = {
     };
     return data;
   },
+  arrangeTodoData(response) {
+    let data;
+    for (let i = 0; i < response.data.length; i++) {
+      data = response.data;
+      const splitDate = data[i].d_date.split("-");
+      const month = Number(splitDate[1]);
+      const day = Number(splitDate[2]);
+
+      data[i].displayDate = month + "/" + day;
+    }
+    return data;
+  },
   getTodo() {
     let config = actions.getBasicConfig();
     instance
       .get("todo/", config)
       .then((response) => {
         // arrange todos data
-        let data;
-        for (let i = 0; i < response.data.length; i++) {
-          data = response.data;
-          const splitDate = data[i].d_date.split("-");
-          const month = Number(splitDate[1]);
-          const day = Number(splitDate[2]);
-
-          data[i].displayDate = month + "/" + day;
-        }
-        store.todos = data;
+        store.todos = this.arrangeTodoData(response);
         store.todoHandler = !store.todoHandler;
-        console.log(data);
         console.log(response);
       })
       .catch((error) => {
@@ -91,16 +93,7 @@ const actions = {
         return instance.get("todo/", config);
       })
       .then((response) => {
-        let data;
-        for (let i = 0; i < response.data.length; i++) {
-          data = response.data;
-          const splitDate = data[i].d_date.split("-");
-          const month = Number(splitDate[1]);
-          const day = Number(splitDate[2]);
-
-          data[i].displayDate = month + "/" + day;
-        }
-        store.todos = data;
+        store.todos = this.arrangeTodoData(response);
         store.todoHandler = !store.todoHandler;
         console.log(response);
       })
@@ -119,16 +112,7 @@ const actions = {
         return instance.get("/todo/", config);
       })
       .then((response) => {
-        let data;
-        for (let i = 0; i < response.data.length; i++) {
-          data = response.data;
-          const splitDate = data[i].d_date.split("-");
-          const month = Number(splitDate[1]);
-          const day = Number(splitDate[2]);
-
-          data[i].displayDate = month + "/" + day;
-        }
-        store.todos = data;
+        store.todos = this.arrangeTodoData(response);
         store.todoHandler = !store.todoHandler;
       })
       .catch((error) => {
@@ -145,16 +129,7 @@ const actions = {
         return instance.get("todo/", config);
       })
       .then((response) => {
-        let data;
-        for (let i = 0; i < response.data.length; i++) {
-          data = response.data;
-          const splitDate = data[i].d_date.split("-");
-          const month = Number(splitDate[1]);
-          const day = Number(splitDate[2]);
-
-          data[i].displayDate = month + "/" + day;
-        }
-        store.todos = data;
+        store.todos = this.arrangeTodoData(response);
         store.todoHandler = !store.todoHandler;
       })
       .catch((error) => {
