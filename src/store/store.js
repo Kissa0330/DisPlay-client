@@ -71,7 +71,7 @@ const actions = {
     return data;
   },
   getTodo() {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .get("todo/", config)
       .then((response) => {
@@ -85,7 +85,7 @@ const actions = {
       });
   },
   postTodo(data) {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .post("todo/", data, config)
       .then((response) => {
@@ -104,7 +104,7 @@ const actions = {
   },
   putTodo(setTime, id, title, deadline, start, end) {
     const data = this.getTodoData(setTime, id, title, deadline, start, end);
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .put("todo/" + id, data, config)
       .then((response) => {
@@ -121,7 +121,7 @@ const actions = {
       });
   },
   deleteTodo(id) {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .delete("todo/" + id, config)
       .then((response) => {
@@ -137,7 +137,7 @@ const actions = {
       });
   },
   getCustoms() {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .get("customs/", config)
       .then((response) => {
@@ -149,7 +149,7 @@ const actions = {
       });
   },
   initialCustomSetting() {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .get("customs/", config)
       .then((response) => {
@@ -196,7 +196,7 @@ const actions = {
   },
   postCustom(title, start, end, flag) {
     const data = this.getCustomData(store.id, title, start, end, flag);
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .post("customs/", data, config)
       .then((response) => {
@@ -214,7 +214,7 @@ const actions = {
   },
   putCustom(title, flag, start, end, id) {
     const data = this.getCustomData(store.id, title, start, end, flag);
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .put("customs/" + id, data, config)
       .then((response) => {
@@ -231,7 +231,7 @@ const actions = {
       });
   },
   deleteCustom(id) {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .delete("customs/" + id, config)
       .then((response) => {
@@ -250,7 +250,7 @@ const actions = {
     store.customs = customs;
   },
   getMypage() {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     return instance.get("/mypage", config).then((res) => {
       store.id = res.data[0].id;
       store.isFirstVisit = res.data[0].isFirstVisit;
@@ -262,7 +262,7 @@ const actions = {
     });
   },
   patchMypage(data) {
-    let config = actions.getBasicConfig();
+    const config = actions.getBasicConfig();
     instance
       .patch("users/" + store.id, data, config)
       .then((res) => {
