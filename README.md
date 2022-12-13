@@ -1,24 +1,14 @@
-# client
+# DisPlay-client
+DisPlayは週間に着目したTodo管理アプリで、以下の特徴を持っています。
 
-## Project setup
-```
-npm install
-```
+- 誰でも無料で簡単に使うことが可能に
+- 習慣を可視化することが可能に
+- Todoを空き時間に消化することが容易に可能に
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+詳しい機能はLPを参照してください。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## URL
+app:https://display-90jn.onrender.com
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+LP:https://display-90jn.onrender.com/lp
