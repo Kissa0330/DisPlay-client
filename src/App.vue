@@ -6,6 +6,8 @@
 
 <script>
 // import { changeManifest } from "./static/js/changeManifest";
+import "../src/static/css/reset.css"
+
 export default {
   name: "App",
   created(){
