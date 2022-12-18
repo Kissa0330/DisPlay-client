@@ -51,7 +51,7 @@ const base = function () {
     { name: "Tuesday", initial: "T", x: "17.5" },
     { name: "Wednesday", initial: "W", x: "15.5" },
     { name: "Thursday", initial: "T", x: "15.5" },
-    { name: "Fryday", initial: "F", x: "17.5" },
+    { name: "Friday", initial: "F", x: "17.5" },
     { name: "Saturday", initial: "S", x: "17.5" },
   ];
   for (let i = 0; i < WeekDays.length; ++i) {
@@ -65,8 +65,8 @@ const base = function () {
       .attr("y", 20);
   }
 };
-//removecustom
-const removecustom = function (id) {
+//removeCustom
+const removeCustom = function (id) {
   // console.log("remove custom " + id);
   d3.select("#" + id).remove();
 };
@@ -128,4 +128,4 @@ const custom = function (number, startTime, endTime, name, gradientId, id) {
   }
 };
 
-export default { svg, base, createGradient, custom, removecustom };
+export default { svg, base, createGradient, custom, removeCustom };

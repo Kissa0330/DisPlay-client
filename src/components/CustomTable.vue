@@ -63,7 +63,7 @@ export default {
         let childnthNumber = 1;
         for (let j = 0; j < repeatFlagLength; j++) {
           let id = "CT" + i + "r" + childnthNumber;
-          depiction.removecustom(id);
+          depiction.removeCustom(id);
           const repeatFlag = this.customs[i].repeat_flag[j];
           if (repeatFlag == 1) {
             let textNum = this.customs[i].title.charCodeAt(0);
@@ -72,7 +72,7 @@ export default {
             startTime.pop();
             let endTime = this.customs[i].end_time.split(":");
             endTime.pop();
-            // console.log("Starttime is " + startTime);
+            // console.log("Start time is " + startTime);
             // console.log("End time is " + endTime);
             depiction.createGradient(
               gradients[colorCode].color,
